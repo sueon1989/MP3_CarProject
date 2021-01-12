@@ -38,18 +38,30 @@
   	
 <!--   	회원정보 수정 -->
   	
-  	<update id="myInfoUpdate">
+  	<update id="myInfoUpdatePassCheck">
 		<![CDATA[
-		UPDATE member SET member_pass = #{member_pass}, member_name = #{member_name}, member_gender = #{member_gender},
+		UPDATE member SET member_name = #{member_name}, member_gender = #{member_gender},
 		member_phone = #{member_phone}, member_address = #{member_address},
 		member_mail = #{member_mail}, member_mailaccept = #{member_mailaccept}
 		WHERE member_no = #{member_no} ]]>
 	</update>
   	
   	
+  	<!-- 회원탈퇴시 아이디로 비밀번호 체크 Test  	 -->
+	 <select id="passID" resultType="String">
+		SELECT member_pass FROM MEMBER
+		WHERE member_id = #{member_id}
+	</select> 	
   	
   	
   	
+  	
+<!-- 비밀번호 체크 Test  	 -->
+	 <select id="passChk" resultType="int">
+		SELECT COUNT(*) FROM MEMBER
+		WHERE member_id = #{member_id}
+		  AND member_pass = #{member_pass}
+	</select> 	
   	
   	
   	

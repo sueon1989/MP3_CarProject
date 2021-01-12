@@ -13,7 +13,7 @@
               
               
 	<!-- 기본 화면 -->
-	<h2 class="mb-2 page-title">Main Page</h2>
+	<h2 class="mb-2 page-title">차량 관리 프로그램</h2>
 	<hr class="my-4">
 	
 	<!-- 로그인하지 않은 경우 -->
@@ -53,7 +53,11 @@
                           </tr>  
 <!--                           <tr> -->
 <!--                             <th width="30" >Birth</th> -->
-<%--                             <td width="250"><fmt:formatDate pattern="yyyy-MM-dd" value="<sec:authentication property="principal.member.member_birth"/>" /></td> --%>
+<%--                             <td><fmt:formatDate value="<sec:authentication property="principal.member.member_birth"/>" type="date" pattern="yyyy-MM-dd"  /></td> --%>
+<%--                             <sec:authentication property="principal.member.member_birth"/> --%>
+<%--    							<fmt:formatDate value="${date }" type="both" pattern="yy-MM-dd"/> --%>
+
+                            
 <!--                           </tr>   -->
                           <tr>
                             <th width="30" >Phone</th>
@@ -85,9 +89,9 @@
                                 <span class="text-muted sr-only">Action</span>
                               </button>
                               <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Edit</a>
-                                <a class="dropdown-item" href="#">Remove</a>
-                                <a class="dropdown-item" href="#">Assign</a>
+                                <a class="dropdown-item" href="/mypage/myInfoUpdate">Edit</a>
+                                <a class="dropdown-item" href="/mypage/myInfoDelete">Remove</a>
+                                <a class="dropdown-item" href="/">Assign</a>
                               </div>
                             </td>
                           </tr>  

@@ -17,18 +17,39 @@ public interface MypageMapper {
     
     
     // 내 정보 수정
-    public int myInfoUpdate(MemberVO member);
+    public int myInfoUpdatePassCheck(MemberVO member);
     
     
     // 내 정보 수정 결과 화면
     
     
-//    //탈퇴 시 비밀번호 확인
-//    public MemberVO myInfoDeletePassCheck(Long member_no);
-//    
+    //탈퇴 시 비밀번호 확인
+    public MemberVO myInfoDeletePassCheck(Long member_no);
+    
     
     // 탈퇴	 (사용자입력 회원번호 사용)
     public int myInfoDelete_auth(Long member_no);
     public int myInfoDelete_member(Long member_no);
+    
+    
+    //탈퇴시 패스워드 체크
+    public int passChk(MemberVO member);
+    
+    
+    //탈퇴시 아이디로 체크
+    public String passID(String member_id);
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -7,9 +7,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-<form action="/mypage/myInfoDeleteFinished" method="get">
-비밀 번호 확인 입력 : <input type="number" id="Deletenum" name="Deletenum" /><br>
-<input type="submit" value="입력">
+<form action="/mypage/myInfoDeletePassCheck" method="post">
+${result}
+탈퇴 성공!
 </form>
 
 </body>

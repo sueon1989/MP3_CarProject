@@ -38,6 +38,7 @@ public class MypageMapperTests {
 		MemberVO member= mapper.myInfoRead(292L);	// member_no 95번 정보 호출
 		log.info(member);
 		
+		
 	}
 	
 //	//탈퇴 비밀번호 확인
@@ -60,7 +61,7 @@ public class MypageMapperTests {
 	
 	//회원정보 수정
 		@Test
-		public void myInfoUpdate() {
+		public void myInfoDeletePassCheck() {
 			MemberVO member = new MemberVO();			
 			member.setMember_no(7L);
 			member.setMember_id("1111");
@@ -72,10 +73,30 @@ public class MypageMapperTests {
 			member.setMember_address("서울특별시");
 			member.setMember_mail("123123123123@mp3.com");
 			member.setMember_mailaccept("no");	
-			mapper.myInfoUpdate(member);
+			mapper.myInfoUpdatePassCheck(member);
 		}
 		
 		
+		//회원탈퇴 비밀번호 체크
+		@Test
+		public void passChk() {
+			MemberVO member = new MemberVO();
+			member.setMember_id("user2021");
+			member.setMember_pass("$2a$10$dZAzGOxPMPyxm7YRVDkS/eSL7HIIlWumniiDDJ/LS694jPHu6naKe");
+			mapper.passChk(member);
+			
+		}
+		
+		
+		@Test
+	    //탈퇴시 아이디로 체크
+	    public void passID() {
+			MemberVO member= new MemberVO();
+			member.setMember_id("user2021");
+	    	mapper.passID("user2021");
+			log.info(mapper.passID("user2021"));
+	    }
+
 		
 		
 	

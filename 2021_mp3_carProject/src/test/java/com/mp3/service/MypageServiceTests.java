@@ -39,14 +39,14 @@ public class MypageServiceTests {
 	//회원탈퇴 서비스 테스트
 	@Test
 	public void testmyInfoDelete() {
-		log.info("회원 탈퇴 성공" +service.myInfoDeletePassCheck(4L));	
+//		log.info("회원 탈퇴 성공" +service.myInfoDeletePassCheck(4L));	
 
 	}
 	
 	//회원탈퇴 비밀번호 확인 테스트
 	@Test
 	public void testmyInfoDeletePassCheck() {
-		service.myInfoDeletePassCheck(1L);	
+//		service.myInfoDeletePassCheck(1L);	
 
 
 	}
@@ -65,7 +65,7 @@ public class MypageServiceTests {
 		member.setMember_mail("123123123123@mp3.com");
 		member.setMember_mailaccept("no");	
 		
-		log.info("마이페이지 내정보 수정 결과: "+ service.myInfoUpdate(member));
+		log.info("마이페이지 내정보 수정 결과: "+ service.myInfoUpdatePassCheck(member));
 		log.info(member);
 	}
 	

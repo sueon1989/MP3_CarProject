@@ -48,17 +48,10 @@ public class MypageController {
 	  public String mapView(Model model,String Latitude,String Longitude) {
 		 model.addAttribute("Latitude", Latitude);
 		 model.addAttribute("Longitude", Longitude);
-		 return "/member/mypage/mapResult";
+		 return "/member/mypage/mapView";
 	  }
 	 
-	 //map test
-	 @GetMapping("/mapResult")
-	  public String mapResult(Model model,String Latitude,String Longitude) {
-		 model.addAttribute("Latitude", Latitude);
-		 model.addAttribute("Longitude", Longitude);
-		 return "/member/mypage/mapResult";
-	  }
-	 
+
 	 
 	 //내 차량 정보 상세보기 페이지
 	 @GetMapping("/myInfoCar")

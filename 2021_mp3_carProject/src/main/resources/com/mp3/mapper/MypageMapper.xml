@@ -21,6 +21,14 @@
   		select * from member where member_no =#{member_no}
   	</select>
   	
+  	
+  	<!-- car_no 로 회원 차 정보 보기 -->
+  	<select id="myInfoCar" resultType="com.mp3.domain.CarVO">
+  		select * from car where car_no =#{car_no}
+  	</select>
+  	
+  	
+  	
 <!-- 	탈퇴하기 비밀번호 확인 쿼리 -->
 <!-- 	<select id="myInfoDeletePassCheck" resultType="com.mp3.domain.MemberVO"> -->
 <!--   		select member_pass from member where member_no = #{member_no} -->

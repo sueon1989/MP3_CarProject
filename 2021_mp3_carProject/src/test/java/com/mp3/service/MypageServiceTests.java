@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
+import com.mp3.domain.CarVO;
 import com.mp3.domain.MemberVO;
 import com.mp3.mapper.MypageMapper;
 import com.mp3.service.MypageService;
@@ -34,8 +35,15 @@ public class MypageServiceTests {
 	public void testmyInfoRead() {
 		MemberVO memberVO = service.myInfoRead(95L);	
 		log.info(memberVO);	
-
 	}
+	//내 차 정보 보기 서비스 테스트
+	@Test	
+	public void testmyInfoCar() {
+		CarVO car = service.myInfoCar(1L);
+		log.info(car);
+	}
+		
+	
 	//회원탈퇴 서비스 테스트
 	@Test
 	public void testmyInfoDelete() {

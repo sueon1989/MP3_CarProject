@@ -37,6 +37,35 @@ public class MypageController {
 		 return "/member/mypage/myInfoRead";
 	  }
 	 
+	 //map test
+	 @GetMapping("/mapTest")
+	  public String mapTest() {
+		 return "/member/mypage/mapTest";
+	  }
+	 
+	 //map test
+	 @GetMapping("/mapView")
+	  public String mapView(Model model,String Latitude,String Longitude) {
+		 model.addAttribute("Latitude", Latitude);
+		 model.addAttribute("Longitude", Longitude);
+		 return "/member/mypage/mapResult";
+	  }
+	 
+	 //map test
+	 @GetMapping("/mapResult")
+	  public String mapResult(Model model,String Latitude,String Longitude) {
+		 model.addAttribute("Latitude", Latitude);
+		 model.addAttribute("Longitude", Longitude);
+		 return "/member/mypage/mapResult";
+	  }
+	 
+	 
+	 //내 차량 정보 상세보기 페이지
+	 @GetMapping("/myInfoCar")
+	  public String myInfoCar() {
+		 return "/member/mypage/myInfoCar";
+	  }
+	 
 	 
 	 //내 정보 탈퇴 페이지
 	 //비밀번호 확인 페이지

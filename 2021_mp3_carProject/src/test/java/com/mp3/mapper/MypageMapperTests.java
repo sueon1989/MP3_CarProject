@@ -10,7 +10,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-
+import com.mp3.domain.CarVO;
 import com.mp3.domain.MemberVO;
 
 import com.mp3.domain.MemberVO;
@@ -40,6 +40,17 @@ public class MypageMapperTests {
 		
 		
 	}
+	
+	//내 차 정보 보기
+	@Test
+	public void myInfoCar() {
+		CarVO car= mapper.myInfoCar(2L);	// car_no 2번 정보 호출
+		log.info(car);
+				
+	}
+	
+	
+	
 	
 //	//탈퇴 비밀번호 확인
 //	@Test

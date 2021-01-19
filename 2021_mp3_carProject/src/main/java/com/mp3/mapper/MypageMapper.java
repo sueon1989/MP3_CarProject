@@ -3,6 +3,8 @@ package com.mp3.mapper;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
+
+import com.mp3.domain.CarVO;
 import com.mp3.domain.MemberVO;
 
 import com.mp3.domain.MemberVO;
@@ -12,8 +14,11 @@ public interface MypageMapper {
 	//@Select("select * from member where member_no>0")
     public List<MemberVO> getList();
     
-    // 내 정보 보기  (사용자입력 회원번호 사용)
+    // 내 정보 보기 
     public MemberVO myInfoRead(Long member_no);
+    
+    //내 차량 정보 보기 
+    public CarVO myInfoCar(Long car_no);
     
     
     // 내 정보 수정
@@ -38,6 +43,8 @@ public interface MypageMapper {
     
     //탈퇴시 아이디로 체크
     public String passID(String member_id);
+    
+    
 
 }
 

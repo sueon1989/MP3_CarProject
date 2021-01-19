@@ -193,6 +193,14 @@
 		    <version>2.8.5</version>
 		</dependency>
 		
+		<!-- json-simple: JSON 파싱 -->
+		<!-- https://mvnrepository.com/artifact/com.googlecode.json-simple/json-simple -->
+		<dependency>
+		    <groupId>com.googlecode.json-simple</groupId>
+		    <artifactId>json-simple</artifactId>
+		    <version>1.1.1</version>
+		</dependency>
+				
 						
 		<!-- 사용자 추가 끝 -->
 		

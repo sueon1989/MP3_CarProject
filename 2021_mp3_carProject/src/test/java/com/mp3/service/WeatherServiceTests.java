@@ -42,13 +42,13 @@ public class WeatherServiceTests {
 	public void weatherReadTest() {
 		
 		// 공공데이터포털 API 연동
-		String serviceKey = "HnXMKIO%2FZdGJgfHsO%2Fxv2OlX0AR%2BuhAAV0zyLZlER5M7ehOb%2BHzBPgWBPmJ4BKr1FfIfxNxtKbERPR1t5gtnrA%3D%3D";
+		String serviceKey = "#";
 		String baseDate = "20210115"; // 자신이 조회하고싶은 날짜를 입력해주세요
         String baseTime = "0500"; //자신이 조회하고싶은 시간대를 입력해주세요
 		String nx = "126";  //경도
         String ny = "37";   //위도
         
-        String apiURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?"
+        String apiURL = "http://"
         		+ "serviceKey=" + serviceKey 
 //        		+ "&pageNo=1"
 //        		+ "&numOfRows=10"

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mp3.domain.GpsVO;
 import com.mp3.domain.MemberVO;
 import com.mp3.service.MypageService;
 
@@ -31,7 +32,7 @@ public class MypageController {
 	private MypageService service;
 	
 	
-	 //내정보 보기 페이지
+	 //내정보 보기 페이지http://localhost:8082/#ui-elements
 	 @GetMapping("/myInfoRead")
 	  public String myInfoRead() {
 		 return "/member/mypage/myInfoRead";
@@ -39,18 +40,44 @@ public class MypageController {
 	 
 	 //map test
 	 @GetMapping("/mapTest")
-	  public String mapTest() {
+	  public String mapTest(Model model,String Latitude,String Longitude) {
+		 model.addAttribute("Latitude", Latitude);
+		 model.addAttribute("Longitude", Longitude);
 		 return "/member/mypage/mapTest";
 	  }
 	 
 	 //map test
 	 @GetMapping("/mapView")
-	  public String mapView(Model model,String Latitude,String Longitude) {
-		 model.addAttribute("Latitude", Latitude);
-		 model.addAttribute("Longitude", Longitude);
+	  public String mapView(Model model) {
+		 GpsVO gps = new GpsVO();
+		 model.addAttribute("Latitude", gps.getLatitude());
+		 log.info(gps.getLatitude()+"****gps.getLatitude()값 로그인포");
+		 model.addAttribute("Latitude", gps.getLongitude());
+		 log.info(gps.getLatitude()+"****gps.getLongitude()값 로그인포");
 		 return "/member/mypage/mapView";
 	  }
+	 //map Test 2 ***
+	 @GetMapping("/ViewTest")
+	  public String ViewTest() {
+		 return "/member/mypage/ViewTest";
+	  }
 	 
+
+	 //map test
+	 @GetMapping("/mapResult")
+	  public String mapResult(Model model,String Latitude,String Longitude) {
+		 GpsVO gps = new GpsVO();
+		 model.addAttribute("Latitude", Latitude);
+		 model.addAttribute("Longitude", Longitude);
+		 log.info("1");
+		 gps.setLatitude(Latitude);
+		 gps.setLongitude(Longitude);
+		 log.info("2");
+		 service.gps(Latitude, Longitude);
+		 log.info("3");
+		 return "/member/mypage/mapResultTest";
+	  }	 
+
 
 	 
 	 //내 차량 정보 상세보기 페이지
@@ -136,7 +163,7 @@ public class MypageController {
 	 //내정보 수정 확인 페이지
 	 @PostMapping("/myInfoUpdatePassCheck")
 	  public String myInfoUpdatePassCheck(Model model,Long member_no,String member_id,String member_name,
-		String member_gender/*,Date member_birth*/,String member_phone,String member_address,String member_mail,String member_mailaccept) {
+		String member_gender,Date member_birth,String member_phone,String member_address,String member_mail,String member_mailaccept) {
 		 MemberVO member = new MemberVO();
 		 member.setMember_no(member_no);
 		 member.setMember_id(member_id);

@@ -59,10 +59,10 @@
             <label for="input4">성별</label>
             <input type="text" class="form-control" id="member_gender" name="member_gender" value="<sec:authentication property="principal.member.member_gender"/>" required>
           </div>
-<!-- 		  <div class="form-group"> -->
-<!--             <label for="input5">생년월일</label> -->
-<%--             <input type="date" class="form-control" id="input5" name="member_birth" value="${member.member_birth}" required> --%>
-<!--           </div> -->
+		  <div class="form-group">
+            <label for="input5">생년월일</label>
+            <input type="date" class="form-control" id="input5" name="member_birth" value="<sec:authentication property="principal.member.member_birth"/>" required>
+          </div>
 		  <div class="form-group">
             <label for="input6">전화번호</label>
             <input type="text" class="form-control" id="member_phone" name="member_phone" value="<sec:authentication property="principal.member.member_phone"/>" required>

@@ -1,33 +1,33 @@
-package com.mp3.service;
+//package com.mp3.service;
 
-import java.util.List;
+//import java.util.List;
 
-import org.springframework.stereotype.Service;
+//import org.springframework.stereotype.Service;
 
-import com.mp3.domain.WeatherVO;
-import com.mp3.mapper.WeatherMapper;
+//import com.mp3.domain.WeatherVO;
+//import com.mp3.mapper.WeatherMapper;
 
-import lombok.AllArgsConstructor;
-import lombok.extern.log4j.Log4j;
+//import lombok.AllArgsConstructor;
+//import lombok.extern.log4j.Log4j;
 
-@Log4j
-@Service
-@AllArgsConstructor
-public class WeatherServiceImpl implements WeatherService {
+//@Log4j
+//@Service
+//@AllArgsConstructor
+//public class WeatherServiceImpl implements WeatherService {
 	
 //	@Autowired
 //	단일 파라미터를 받는 생성자의 경우, 필요한 파라미터를 자동으로 주입
-	private WeatherMapper mapper;
+	//private WeatherMapper mapper;
 
-	@Override
-	public WeatherVO get(String baseDate, String baseTime, String nx, String ny) {
+	//@Override
+	//public WeatherVO get(String baseDate, String baseTime, String nx, String ny) {
 		// TODO Auto-generated method stub
-		log.info("조회......"+baseDate);
+		//log.info("조회......"+baseDate);
 		
 		
 		
-		return mapper.read(baseDate, baseTime, nx, ny);
-	}
+		//return mapper.read(baseDate, baseTime, nx, ny);
+//	}
 
 	
 
@@ -62,4 +62,4 @@ public class WeatherServiceImpl implements WeatherService {
 //			return false;
 //		}
 //	}
-}
+//}

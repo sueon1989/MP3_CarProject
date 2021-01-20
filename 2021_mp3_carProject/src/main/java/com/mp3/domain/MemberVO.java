@@ -24,6 +24,7 @@ public class MemberVO {
     private String member_permission;
     private List<AuthVO> authList;
     private String send_mail;
+    
 }
 
 

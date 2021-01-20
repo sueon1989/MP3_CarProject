@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import com.mp3.mapper.MypageMapper;
 import com.mp3.service.MypageServiceImpl;
 import com.mp3.domain.CarVO;
+import com.mp3.domain.GpsVO;
 import com.mp3.domain.MemberVO;
 
 import lombok.AllArgsConstructor;
@@ -116,6 +117,26 @@ public class MypageServiceImpl implements MypageService {
 			return result;
 	}
 
+	@Override
+	public void gps(String Latitude, String Longitude) {
+		GpsVO gps = new GpsVO();
+		gps.setLatitude(Latitude);
+		gps.setLongitude(Longitude);
+		log.info("서비스 확인 로그인포"+Latitude+"**********"+Longitude);
+		log.info("VO gps 확인 로그인포"+gps.getLatitude());
+		log.info("VO gps 확인 로그인포"+gps.getLongitude());
+		log.info("서비스 확인완료 로그인포"+Latitude+"**********"+Longitude);
+		mapper.gps(Latitude, Longitude);
+	}
+
+	@Override
+	public GpsVO mapView(String Latitude, String Longitude) {
+		GpsVO gps = new GpsVO(); 
+		log.info(gps+"****gpsVO값");
+		mapper.mapView(gps.getLatitude(),gps.getLongitude());
+		log.info("최근 gps 상세보기");
+		return gps;
+	}
 }
 
 

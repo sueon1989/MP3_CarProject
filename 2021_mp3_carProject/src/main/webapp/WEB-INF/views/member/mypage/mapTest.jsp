@@ -12,7 +12,7 @@
 	<title>Kakao 지도 시작하기</title>
 </head>
 <body>
-<form action="mapView" method="get">
+<form action="mapResult" method="get">
 위도 입력:<input type="text" name="Latitude" id="Latitude"><br>
 경도 입력:<input type="text" name="Longitude" id="Longitude"><br>
 <input type="submit" value="입력">

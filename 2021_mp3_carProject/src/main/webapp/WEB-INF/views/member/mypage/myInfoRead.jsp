@@ -51,14 +51,14 @@
                             <th width="30" >Gender</th>
                             <td width="250"><sec:authentication property="principal.member.member_gender"/></td>
                           </tr>  
-<!--                           <tr> -->
-<!--                             <th width="30" >Birth</th> -->
+                          <tr>
+                            <th width="30" >Birth</th>
 <%--                             <td><fmt:formatDate value="<sec:authentication property="principal.member.member_birth"/>" type="date" pattern="yyyy-MM-dd"  /></td> --%>
 <%--                             <sec:authentication property="principal.member.member_birth"/> --%>
 <%--    							<fmt:formatDate value="${date }" type="both" pattern="yy-MM-dd"/> --%>
-
+                            <td width="250"><sec:authentication property="principal.member.member_birth"/></td>
                             
-<!--                           </tr>   -->
+                          </tr>  
                           <tr>
                             <th width="30" >Phone</th>
                             <td width="250"><sec:authentication property="principal.member.member_phone"/></td>
@@ -75,10 +75,11 @@
                             <th width="30" >MailAccept</th>
                             <td width="250"><sec:authentication property="principal.member.member_mailaccept"/></td>
                           </tr>  
-<!--                           <tr> -->
-<!--                             <th width="30" >RegDate</th> -->
-<%--                             <td width="250"><fmt:formatDate pattern="yyyy-MM-dd" value="<sec:authentication property="principal.member.member_regDate"/>" /></td> --%>
-<!--                           </tr>   -->
+                          <tr>
+                            <th width="30" >RegDate</th>
+<%--                        <td width="250"><fmt:formatDate pattern="yyyy-MM-dd" value="<sec:authentication property="principal.member.member_regDate"/>" /></td> --%>
+                            <td width="250"><sec:authentication property="principal.member.member_regDate"/></td>
+                          </tr>  
                           <tr>
                             <th width="30" >Permission</th>
                             <td width="250"><sec:authentication property="principal.member.member_permission"/></td>
@@ -89,9 +90,9 @@
                                 <span class="text-muted sr-only">Action</span>
                               </button>
                               <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="/mypage/myInfoUpdate">Edit</a>
-                                <a class="dropdown-item" href="/mypage/myInfoDelete">Remove</a>
-                                <a class="dropdown-item" href="/">Assign</a>
+                                <a class="dropdown-item" href="/mypage/myInfoUpdate">수정</a>
+                                <a class="dropdown-item" href="/mypage/myInfoDelete">탈퇴</a>
+                                <a class="dropdown-item" href="/">메인화면으로</a>
                               </div>
                             </td>
                           </tr>  

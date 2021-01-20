@@ -171,7 +171,7 @@
                   <a class="nav-link pl-3" href="./ui-icons.html"><span class="ml-1 item-text">계절별 추천 드라이브 코스</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./ui-buttons.html"><span class="ml-1 item-text">#####</span></a>
+                  <a class="nav-link pl-3" href="/mypage/mapTest"><span class="ml-1 item-text">지도보기 테스트</span></a>
                 </li>
 <!--                 <li class="nav-item"> -->
 <!--                   <a class="nav-link pl-3" href="./ui-notification.html"><span class="ml-1 item-text">Notifications</span></a> -->
@@ -245,7 +245,7 @@
                   <a class="nav-link pl-3" href="/mypage/myInfoUpdate""><span class="ml-1 item-text">내 정보 수정</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./chart-apexcharts.html"><span class="ml-1 item-text">등록된 차량 관리</span></a>
+                  <a class="nav-link pl-3" href="/mypage/myInfoCar"><span class="ml-1 item-text">등록된 차량 관리</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="/mypage/myInfoDelete"><span class="ml-1 item-text">회원 탈퇴</span></a>

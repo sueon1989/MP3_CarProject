@@ -11,6 +11,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 import com.mp3.domain.CarVO;
+import com.mp3.domain.GpsVO;
 import com.mp3.domain.MemberVO;
 
 import com.mp3.domain.MemberVO;
@@ -46,6 +47,14 @@ public class MypageMapperTests {
 	public void myInfoCar() {
 		CarVO car= mapper.myInfoCar(2L);	// car_no 2번 정보 호출
 		log.info(car);
+				
+	}
+	
+	//gps 저장하기 
+	@Test
+	public void gps() {
+		mapper.gps("999","98899999");
+		
 				
 	}
 	

@@ -1,6 +1,8 @@
 package com.mp3.service;
 
+import com.mp3.domain.AuthVO;
 import com.mp3.domain.CarVO;
+import com.mp3.domain.GpsVO;
 import com.mp3.domain.MemberVO;
 
 public interface MypageService {
@@ -13,6 +15,12 @@ public interface MypageService {
 	
 	//마이페이지 회원탈퇴 비밀번호 확인
 	public boolean myInfoDeletePassCheck(Long member_no,String Deletenum,String Deletenum1);
+	
+	//gps값 데이터베이스에 저장
+	public void gps(String Latitude,String Longitude);
+	
+	//최근 gps값 정보 보기
+	public GpsVO mapView(String Latitude,String Longitude);
 	
 	
 	// 마이페이지 내 정보 수정

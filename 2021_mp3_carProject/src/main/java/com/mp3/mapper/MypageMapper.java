@@ -2,9 +2,11 @@ package com.mp3.mapper;
 
 import java.util.List;
 
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import com.mp3.domain.CarVO;
+import com.mp3.domain.GpsVO;
 import com.mp3.domain.MemberVO;
 
 import com.mp3.domain.MemberVO;
@@ -43,6 +45,13 @@ public interface MypageMapper {
     
     //탈퇴시 아이디로 체크
     public String passID(String member_id);
+    
+    
+    //gps 값 데이터베이스 저장
+    public void gps(@Param("Latitude") String Latitude,@Param("Longitude") String Longitude);
+    
+    //최근 gps값 보기
+    public GpsVO mapView(@Param("Latitude") String Latitude,@Param("Longitude") String Longitude);
     
     
 

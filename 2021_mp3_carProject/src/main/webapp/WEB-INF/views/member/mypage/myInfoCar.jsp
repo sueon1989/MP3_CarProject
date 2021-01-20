@@ -36,10 +36,10 @@
                       table
                       <table class="table datatables" id="dataTable-1">
                         <thead>
-                          <tr>
-                            <th width="30" >No.</th>
-                            <td width="250" ><sec:authentication property="principal.car.car_no"/></td>
-                          </tr>
+<!--                           <tr> -->
+<!--                             <th width="30" >No.</th> -->
+<%--                             <td width="250" ><sec:authentication property="principal.car.car_no"/></td> --%>
+<!--                           </tr> -->
                           <tr>
                             <th width="30" >number</th>
                             <td width="250"><sec:authentication property="principal.car.car_number"/></td>

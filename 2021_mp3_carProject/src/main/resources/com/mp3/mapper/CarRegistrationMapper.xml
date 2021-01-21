@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 담당자: Oh -->
+<mapper namespace="com.mp3.mapper.CarRegistrationMapper">
+<!--   내 차량 등록 -->
+	
+	<insert id="Mycar">
+  		INSERT INTO CAR (CAR_NO, CAR_COMPANY, CAR_MODEL_YEAR, CAR_MODEL, CAR_FUAL, CAR_ENGINEOILRP, CAR_DISTANCEDRIVEN, MEMBER_ID) 
+		VALUES (seq_car.nextval, #{car_company},#{car_model_year}, #{car_model}, #{car_fual},#{car_engineoilrp},#{car_distancedriven},#{member_id})
+	</insert>
+	
+ 
+	
+
+  	
+  	  	<!-- 회원 수정 - update 처리 -->
+  	<update id="MycarUpdate">
+  		update car
+  		set car_company = #{car_company}, 
+  			car_model_year = #{car_model_year}, 
+  			car_model = #{car_model}, 
+  			car_fual = #{car_fual}, 
+	    	car_engineoilrp = #{car_engineoilrp}, 
+	    	car_distancedriven = #{car_distancedriven}, 
+	    	car_updateDate= sysdate
+  		where member_id = #{member_id}
+  	</update>
+  	
+		<!--   	내차량 정보 보기 -->
+  	<select id="Mycarlist" resultType="com.mp3.domain.CarRegistrationVO">
+		select * from car where member_id = #{member_id}
+  	</select>
+  	
+
+
+
+  	
+</mapper>

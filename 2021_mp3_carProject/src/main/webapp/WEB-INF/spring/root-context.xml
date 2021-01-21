@@ -3,41 +3,31 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mybatis-spring="http://mybatis.org/schema/mybatis-spring"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring 
-		http://mybatis.org/schema/mybatis-spring-1.2.xsd
-		http://www.springframework.org/schema/beans 
-		https://www.springframework.org/schema/beans/spring-beans.xsd
-		http://www.springframework.org/schema/context 
-		http://www.springframework.org/schema/context/spring-context-4.3.xsd">
+	xsi:schemaLocation="http://mybatis.org/schema/mybatis-spring http://mybatis.org/schema/mybatis-spring-1.2.xsd
+		http://www.springframework.org/schema/beans https://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd">
 	
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
+		
 	<!-- properties 파일 자동 로드 -->
     <!-- <context:property-placeholder location="classpath:/*.properties" /> -->
 	
 	<!-- HikariCP connection pool bean 셋팅-->
-    <!-- Oracle + mybatis +log4jdbc -->
-	<!-- <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<property name="driverClassName" value="${spring.datasource.driverClassName}"></property>
-		<property name="jdbcUrl" value="${spring.datasource.jdbcUrl}"></property>
-		<property name="username" value="${spring.datasource.username}"></property>
-		<property name="password" value="${spring.datasource.password}"></property>
-	</bean> -->
-    <!-- <bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-        <property name="driverClassName" value="${hikcariConfig.driverClassName}"></property>
-        <property name="jdbcUrl" value="${hikariConfig.jdbcUrl}"></property>
-        <property name="username" value="${hikariConfig.username}"></property>
-        <property name="password" value="${hikariConfig.password}"></property>
-    </bean> -->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">
-		<!-- <property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:oracle:thin:@192.168.0.11:1521:XE"></property> -->
-		<property name="driverClassName" value="net.sf.log4jdbc.sql.jdbcapi.DriverSpy"></property>
-		<property name="jdbcUrl" value="jdbc:log4jdbc:mariadb://192.168.0.38:3307/car_mp3"></property>
+	
+		<!-- MariaDB 커넥션풀 설정 -->
+		<property name="driverClassName" value="org.mariadb.jdbc.Driver"></property>
+	   	<property name="jdbcUrl" value="jdbc:mariadb://192.168.0.38:3307/car_mp3"></property>
 		<property name="username" value="car_mp3"></property>
 		<property name="password" value="1234"></property>
+		
+    	<!-- properties 파일 사용 -->
+		<!-- <property name="driverClassName" value="${spring.datasource.driverClassName}"></property>
+		<property name="jdbcUrl" value="${spring.datasource.jdbcUrl}"></property>
+		<property name="username" value="${spring.datasource.username}"></property>
+		<property name="password" value="${spring.datasource.password}"></property> -->
+		
 	</bean>
-	
 
 	<!-- HikariCP configuration -->
 	<bean id="dataSource" class="com.zaxxer.hikari.HikariDataSource"

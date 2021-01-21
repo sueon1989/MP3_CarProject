@@ -5,7 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
-import com.mp3.domain.CarVO;
+//import com.mp3.domain.CarVO;
 import com.mp3.domain.GpsVO;
 import com.mp3.domain.MemberVO;
 
@@ -20,7 +20,7 @@ public interface MypageMapper {
     public MemberVO myInfoRead(Long member_no);
     
     //내 차량 정보 보기 
-    public CarVO myInfoCar(Long car_no);
+//    public CarVO myInfoCar(Long car_no);
     
     
     // 내 정보 수정

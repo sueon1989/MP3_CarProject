@@ -4,7 +4,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.mp3.mapper.MypageMapper;
 import com.mp3.service.MypageServiceImpl;
-import com.mp3.domain.CarVO;
+//import com.mp3.domain.CarVO;
 import com.mp3.domain.GpsVO;
 import com.mp3.domain.MemberVO;
 
@@ -30,12 +30,12 @@ public class MypageServiceImpl implements MypageService {
 	}
 	
 	//내 차 정보 보기 Service
-	@Override
-	public CarVO myInfoCar(Long car_no) {
-		CarVO car = mapper.myInfoCar(car_no);
-		log.info("마이페이지 내 차량 정보 상세보기");
-		return car;
-	}
+//	@Override
+//	public CarVO myInfoCar(Long car_no) {
+//		CarVO car = mapper.myInfoCar(car_no);
+//		log.info("마이페이지 내 차량 정보 상세보기");
+//		return car;
+//	}
 	
 	
 	//사용자가 입력한 비밀번호 memberVO에 저장하기

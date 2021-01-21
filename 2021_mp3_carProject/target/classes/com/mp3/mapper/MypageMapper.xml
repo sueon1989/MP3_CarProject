@@ -23,9 +23,9 @@
   	
   	
   	<!-- car_no 로 회원 차 정보 보기 -->
-  	<select id="myInfoCar" resultType="com.mp3.domain.CarVO">
+  	<!-- <select id="myInfoCar" resultType="com.mp3.domain.CarVO">
   		select * from car where car_no =#{car_no}
-  	</select>
+  	</select> -->
   	
   	
   	

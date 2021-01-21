@@ -163,11 +163,11 @@
 		</dependency> -->
 
 		<!-- MariaDB Java Client -->
-		<!-- <dependency>
+		<dependency>
 		    <groupId>org.mariadb.jdbc</groupId>
 		    <artifactId>mariadb-java-client</artifactId>
 		    <version>2.7.0</version>
-		</dependency> -->
+		</dependency>
 		
 		
 		<!-- JSON/XML 관련 라이브러리 추가: 객체를 JSON/XML로 변환 -->

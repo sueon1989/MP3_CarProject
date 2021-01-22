@@ -230,12 +230,12 @@ public class MemberController {
 
 	// 삭제
 	@PostMapping("/remove")
-	public String remove(@RequestParam("member_no") Long member_no, RedirectAttributes rttr)
+	public String remove(@RequestParam("member_id") String member_id, RedirectAttributes rttr)
 	{
 		
-		log.info("remove..." + member_no);
-		if (service.remove(member_no)) {					// 글 삭제에 성공한 경우에만
-			rttr.addFlashAttribute("result", member_no);	// RedirectAttributes에 추가
+		log.info("remove..." + member_id);
+		if (service.remove(member_id)) {						// 회원 삭제에 성공한 경우에만
+			rttr.addFlashAttribute("result", member_id);		// RedirectAttributes에 추가
 			rttr.addFlashAttribute("status", "remove_success");	// RedirectAttributes에 추가
 		}
 		return "redirect:/manager/member/memberList";

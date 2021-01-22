@@ -72,9 +72,18 @@ public class MemberServiceImpl implements MemberService {
 
 	// 昏力 - delete 贸府
 	@Override
-	public boolean remove(Long member_no) {
-		log.info("昏力......"+member_no);
-		return mapper.delete(member_no) == 1;
+	public boolean remove(String member_id) {
+		log.info("昏力......"+member_id);
+		
+		
+		boolean deleteAuth = mapper.deleteAuth(member_id) == 1;
+		boolean deleteMember = mapper.deleteMember(member_id) == 1;
+		
+		if (deleteAuth == true && deleteMember == true) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 }

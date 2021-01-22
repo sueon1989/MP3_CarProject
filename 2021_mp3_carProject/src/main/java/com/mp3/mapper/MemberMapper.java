@@ -37,7 +37,8 @@ public interface MemberMapper {
 	public int insertAuth(AuthVO auth);
 		
 	// 회원 삭제 - delete 처리
-	public int delete(Long member_no);
+	public int deleteAuth(String member_id);
+	public int deleteMember(String member_id);
 
 	// 회원 수정 - update 처리
 	public int update(MemberVO member);

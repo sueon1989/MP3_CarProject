@@ -1,5 +1,8 @@
 package com.mp3.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mp3.domain.AuthVO;
 import com.mp3.domain.MemberVO;
+import com.mp3.domain.WeatherVO;
 import com.mp3.service.MemberService;
 
 import lombok.AllArgsConstructor;
@@ -27,17 +31,17 @@ public class MemberController {
 	private MemberService service;	
 	
 	BCryptPasswordEncoder pwencoder;
-	
-	// 준택 테스트
-	@GetMapping("/findIdInput")
-	public String findIdInput() {
-		return "/common/auth/findIdInput";
 		
-	}
-	@GetMapping("/findPassInput")
-	public String findPassInput() {
-		return "/common/auth/findPassInput";
-	}
+//	// 준택 테스트
+//	@GetMapping("/findIdInput")
+//	public String findIdInput() {
+//		return "/common/auth/findIdInput";
+//		
+//	}
+//	@GetMapping("/findPassInput")
+//	public String findPassInput() {
+//		return "/common/auth/findPassInput";
+//	}
 	
 //	http://localhost:8080/Member/list
 //		* Console에서 로그를 확인하기 위해 

@@ -57,6 +57,13 @@ public class MypageMapperTests {
 		
 				
 	}
+	//gpsadd  저장하기 
+	@Test
+	public void gpsadd() {
+		mapper.gpsadd("안녕111");
+		
+				
+	}
 	
 	
 	

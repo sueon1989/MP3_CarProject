@@ -73,13 +73,18 @@
 	
 <!-- 	gps값 데이터베이스 저장 -->
   	<insert id="gps" parameterType="string">
-  		INSERT INTO GPS VALUES (#{Latitude},#{Longitude})
+  		INSERT INTO gps VALUES (#{Latitude},#{Longitude})
+  	</insert>
+  	
+<!-- 	gps값 데이터베이스 저장 -->
+  	<insert id="gpsadd" parameterType="string">
+  		INSERT INTO gpsadd VALUES (#{gpsadd});
   	</insert>
   	
 <!--   	최근 gps값 보기 -->
   	<select id="mapView" resultType="com.mp3.domain.GpsVO">
   	<![CDATA[	
-		select * from gps where ROWNUM=1
+		SELECT * FROM gps ORDER BY Longitude LIMIT 1
 	]]>
   	</select>
   	

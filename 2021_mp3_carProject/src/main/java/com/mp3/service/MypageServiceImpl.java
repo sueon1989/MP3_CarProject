@@ -130,10 +130,10 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public GpsVO mapView(String Latitude, String Longitude) {
-		GpsVO gps = new GpsVO(); 
+	public GpsVO mapView(){
+		
+		GpsVO gps = mapper.mapView();
 		log.info(gps+"****gpsVO값");
-		mapper.mapView(gps.getLatitude(),gps.getLongitude());
 		log.info("최근 gps 상세보기");
 		return gps;
 	}

@@ -46,21 +46,41 @@ public class MypageController {
 		 return "/member/mypage/mapTest";
 	  }
 	 
-	 //map test
+	 //map View
 	 @GetMapping("/mapView")
-	  public String mapView(Model model) {
-		 GpsVO gps = new GpsVO();
+		public String mapView(/* GpsVO gps, */Model model) {
+		 GpsVO gps = service.mapView();
 		 model.addAttribute("Latitude", gps.getLatitude());
 		 log.info(gps.getLatitude()+"****gps.getLatitude()값 로그인포");
-		 model.addAttribute("Latitude", gps.getLongitude());
-		 log.info(gps.getLatitude()+"****gps.getLongitude()값 로그인포");
+		 model.addAttribute("Longitude", gps.getLongitude());
+		 log.info(gps.getLongitude()+"****gps.getLongitude()값 로그인포");
 		 return "/member/mypage/mapView";
 	  }
-	 //map Test 2 ***
+	 
+	 
+	 //map test
 	 @GetMapping("/ViewTest")
-	  public String ViewTest() {
+		public String ViewTest(/* GpsVO gps, */Model model) {
+		 GpsVO gps = service.mapView();
+		 model.addAttribute("Latitude", gps.getLatitude());
+		 log.info(gps.getLatitude()+"****gps.getLatitude()값 로그인포");
+		 model.addAttribute("Longitude", gps.getLongitude());
+		 log.info(gps.getLongitude()+"****gps.getLongitude()값 로그인포");
 		 return "/member/mypage/ViewTest";
 	  }
+	 
+	 //map test
+	 @GetMapping("/ViewTest1")
+		public String ViewTest1(/* GpsVO gps, */Model model) {
+		 GpsVO gps = service.mapView();
+		 model.addAttribute("Latitude", gps.getLatitude());
+		 log.info(gps.getLatitude()+"****gps.getLatitude()값 로그인포");
+		 model.addAttribute("Longitude", gps.getLongitude());
+		 log.info(gps.getLongitude()+"****gps.getLongitude()값 로그인포");
+		 return "/member/mypage/ViewTest1";
+	  }
+	 
+
 	 
 
 	 //map test

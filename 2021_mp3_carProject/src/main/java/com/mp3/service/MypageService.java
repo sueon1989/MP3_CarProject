@@ -20,7 +20,7 @@ public interface MypageService {
 	public void gps(String Latitude,String Longitude);
 	
 	//최근 gps값 정보 보기
-	public GpsVO mapView(String Latitude,String Longitude);
+	public GpsVO mapView();
 	
 	
 	// 마이페이지 내 정보 수정

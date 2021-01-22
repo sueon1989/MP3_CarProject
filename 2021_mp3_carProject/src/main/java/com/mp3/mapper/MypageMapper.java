@@ -53,6 +53,9 @@ public interface MypageMapper {
     //최근 gps값 보기
     public GpsVO mapView();
     
+    //gpsadd 값 저장
+    public GpsVO gpsadd(@Param("gpsadd") String gpsadd);
+    
     
 
 }

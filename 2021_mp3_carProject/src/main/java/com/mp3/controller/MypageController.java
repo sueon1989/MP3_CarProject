@@ -80,6 +80,16 @@ public class MypageController {
 		 return "/member/mypage/ViewTest1";
 	  }
 	 
+	 //map test
+	 @GetMapping("/ViewTest2")
+		public String ViewTest2(/* GpsVO gps, */Model model) {
+		 GpsVO gps = service.mapView();
+		 model.addAttribute("Latitude", gps.getLatitude());
+		 log.info(gps.getLatitude()+"****gps.getLatitude()값 로그인포");
+		 model.addAttribute("Longitude", gps.getLongitude());
+		 log.info(gps.getLongitude()+"****gps.getLongitude()값 로그인포");
+		 return "/member/mypage/ViewTest2";
+	  }
 
 	 
 
@@ -97,7 +107,21 @@ public class MypageController {
 		 log.info("3");
 		 return "/member/mypage/mapResultTest";
 	  }	 
-
+	 // 저장완료
+	 //
+	 
+	 //map test
+	 @GetMapping("/gpsadd")
+		public String gpsadd() {
+		 return "/member/mypage/gpsadd";
+	  }
+	 //map test
+	 @GetMapping("/gpsadd1")
+		public String gpsadd1(Model model,String gpsadd) {
+		 model.addAttribute("gpsadd", gpsadd);
+		 return "/member/mypage/gpsadd1";
+	  }
+	 // 동 저장
 
 	 
 	 //내 차량 정보 상세보기 페이지

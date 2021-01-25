@@ -1,5 +1,6 @@
 package com.mp3.controller;
 
+import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -37,20 +38,30 @@ public class MemberFindController {
 		
 		return "/common/auth/findIdResultViewMail";
 	}
+
 	
-	
+//	@GetMapping("/test")
+//	public String find_pw_Mail1() {
+//		 return"common/auth/findPassInputMail" ;
+//	}	
+//	
+//	@PostMapping("/test")
+//	public String find_pw_Mail2() {
+//		 return"common/auth/findPassInputMail" ;
+//	}	
+//	
 	// 비밀번호 찾기
 	@GetMapping("/findPassInputMail")
 	public String find_pw_Mail() {
-		 return"/common/auth/findPassInputMail";
+		 return"common/auth/findPassInputMail" ;
 	}
 	
-	// 비밀번호 찾기
+//	 // 비밀번호 찾기
 	@PostMapping("/findPassInputMail")
 	public String find_pw_Mail(MemberVO member, Model model) {
 		log.info("아이디값"+member.getMember_id()+"이름 값"+member.getMember_name()+"메일 값");
 		model.addAttribute("resust", service.MemverPassFindMail(member));
-		 return"redirect: common/auth/findPassInputMail" ;
+		return"common/auth/findPassInputMail" ;
 		 		
 	}
 	

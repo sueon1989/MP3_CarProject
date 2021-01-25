@@ -7,6 +7,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
+
 	
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -30,6 +31,7 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/resources/light/css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="/resources/light/css/app-dark.css" id="darkTheme" disabled>
+	
 
 </head>
 
@@ -84,7 +86,7 @@
 
          
          <button type="submit" id=findBtn class="btn btn-lg btn-primary btn-block">find</button>
-         <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = 'customLogin'"> Login </button>
+         <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/customLogin'"> Login </button>
          <p class="mt-5 mb-3 text-muted">© 2021-</p>
          
 		
@@ -133,11 +135,11 @@
     <script src="/resources/light/js/apps.js"></script>
     <script src='/resources/light/js/jquery.dataTables.min.js'></script>
     <script src='/resources/light/js/dataTables.bootstrap4.min.js'></script>
-    
-   
+
+	   
 	
   
-  <script>
+  <script>  
 $(document).ready(function(){
 	var result ='${result}'; //result 값을 읽고 get타입으로 보내온
 	console.log("값찍기"+result);  //크롬F12 console 클릭
@@ -149,18 +151,15 @@ $(document).ready(function(){
 	console.log("후"+history.state);
 	
 	function checkModal(result){
-    	if(!(history.state)){ //뒤로 가기가 아닐때
+    	if(result == ''){ //뒤로 가기가 아닐때
+    		return;
     		if(result == 'findPassInputMail'){
     			$(".modal-body").html("메일 발송 완료 되었습니다.");
     			$("#myModal").modal("show");
     		}
 	   	}
  	}
-	$("#regBtn").on("click",function(){
-		self.location="/memberFind/findPassInputMail";
-	})
 })
-
  </script>    
 </body>
 </html>

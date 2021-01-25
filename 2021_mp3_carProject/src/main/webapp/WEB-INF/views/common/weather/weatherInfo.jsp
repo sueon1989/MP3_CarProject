@@ -16,7 +16,9 @@
 	<h2 class="mb-2 page-title">날씨예보</h2>
 	<hr class="my-4">
 	
-	
+	<span>      
+		<img src="/resources/weatherSVG/cloud.svg" alt="..." class="img-rounded" width="40px" height="35px">
+	</span> 
 	
 	<!-- 로그인하지 않은 경우 -->
 	<sec:authorize access="isAnonymous()">

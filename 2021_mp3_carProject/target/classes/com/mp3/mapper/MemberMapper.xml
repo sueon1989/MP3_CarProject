@@ -82,38 +82,38 @@
   	
   	<!-- 회원 등록1 - insert 처리 -->
   	<insert id="insert">
-		INSERT INTO MEMBER (member_no, member_id, member_pass, member_name, member_gender, 
+		INSERT INTO member (member_id, member_pass, member_name, member_gender, 
 	  						member_birth, member_phone, member_address, member_mail, member_mailaccept)
-		VALUES (seq_member.nextval, #{member_id}, #{member_pass}, #{member_name}, #{member_gender}, 
+		VALUES (#{member_id}, #{member_pass}, #{member_name}, #{member_gender}, 
 				#{member_birth}, #{member_phone}, #{member_address}, #{member_mail}, #{member_mailaccept})
   	</insert>
   	
   	<!-- 회원 등록2 - @SelectKey 사용 (자동으로 추가되는 PK 값 확인) -->
   	<insert id="insertSelectKey">
-  		<selectKey keyProperty="member_no" order="BEFORE" resultType="long">
-  			select seq_member.nextval from dual
-  		</selectKey>
-  		
   		<![CDATA[	
-  		INSERT INTO MEMBER (member_no, member_id, member_pass, member_name, member_gender, 
+  		INSERT INTO member (member_id, member_pass, member_name, member_gender, 
   			member_birth, member_phone, member_address, member_mail, member_mailaccept)
-		VALUES (#{member_no}, #{member_id}, #{member_pass}, #{member_name}, #{member_gender}, 
+		VALUES (#{member_id}, #{member_pass}, #{member_name}, #{member_gender}, 
 			#{member_birth}, #{member_phone}, #{member_address}, #{member_mail}, #{member_mailaccept})
     	]]>
   	</insert>
   	
   	<!-- 회원권한 등록 - insert 처리 -->
   	<insert id="insertAuth">
-  		INSERT INTO MEMBER_AUTH (member_id, member_auth) VALUES (#{member_id}, 'ROLE_USER')
+  		INSERT INTO member_auth (member_id, member_auth) VALUES (#{member_id}, 'ROLE_USER')
   	</insert>
   	
-	<!-- 회원 삭제 - delete 처리 -->
-  	<delete id="delete">
-		delete from member where member_no = #{member_no}
-  	</delete>
+	<!-- 회원정보로 회원 탈퇴 -->
+	<delete id="deleteAuth">		
+		delete from member_auth where member_id = #{member_id}
+	</delete> 
+	<delete id="deleteMember">		
+		delete from member where member_id = #{member_id}
+	</delete>
+  	
   	
   	<!-- 회원 수정 - update 처리 -->
-  	<update id="update">
+  	<!-- <update id="update">
   		update member
   		set member_id = #{member_id}, 
   			member_pass = #{member_pass}, 
@@ -124,14 +124,8 @@
 	    	member_address = #{member_address}, 
 	    	member_mail = #{member_mail}, 
 	    	member_mailaccept = #{member_mailaccept},
-	    	member_updateDate = sysdate
+	    	member_updateDate = NOW()
   		where member_no = #{member_no}
-  	</update>
-  	
-  	
-    <!-- 준택 test -->
-   	<select id="test" resultType="com.mp3.domain.MemberVO">
-		select * from member where member_name = #{member_name} and member_mail = #{member_mail}
-  	</select>
+  	</update> -->
   	
 </mapper>

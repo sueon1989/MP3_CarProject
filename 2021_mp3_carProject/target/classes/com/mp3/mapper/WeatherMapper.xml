@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 담당자: kim -->
+<mapper namespace="com.mp3.mapper.WeatherMapper">
+	
+	<!-- Oracle 쿼리 -->
+  	
+  	<!-- 날씨 등록 - @SelectKey 사용 (자동으로 추가되는 PK 값 확인) -->
+  	<insert id="insertSelectKey">
+  		<![CDATA[	
+   		INSERT INTO weather (baseDate, baseTime, fcstDate, fcstTime, nx, ny, 
+   			pop, pty, r06, reh, s06, sky, t3h, tmn, tmx, uuu, vvv, wav, vec, wsd) 
+		VALUES (#{baseDate}, #{baseTime}, #{fcstDate}, #{fcstTime}, #{nx}, #{ny},
+			#{pop}, #{pty}, #{r06}, 
+			#{reh}, #{s06}, #{sky}, 
+			#{t3h}, #{tmn}, #{tmx}, 
+			#{uuu}, #{vvv}, #{wav}, #{vec}, #{wsd})
+    	]]>
+  	</insert>
+  	 	
+  	
+</mapper>

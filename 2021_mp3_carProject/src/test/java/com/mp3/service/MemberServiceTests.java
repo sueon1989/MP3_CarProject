@@ -90,7 +90,7 @@ public class MemberServiceTests {
 	public void testGet() {
 		
 		// 존재하는 회원 번호로 테스트
-		log.info("조회 결과: "+ service.get("user2003"));
+		log.info("조회 결과: "+ service.get("user10"));
 	}
 	
 //	삭제 - delete 처리
@@ -98,31 +98,30 @@ public class MemberServiceTests {
 	public void testDelete() {
 		
 		// 존재하는 회원 번호로 테스트
-		log.info("삭제 DELETE 결과: "+ service.remove(102L));
+		String member_id = "test1";
+		log.info("삭제 DELETE 결과: "+ service.remove(member_id));
 	}
 	
-//	수정 - update 처리
-	@Test
-	public void testUpdate() {
-		
-		// 특정한 회원을 먼저 조회
-		MemberVO member = service.get("user12");
-
-		// 존재하는 회원 번호로 테스트
-		member.setMember_no(1L);
-		member.setMember_id("user12");
-		member.setMember_pass("1234");
-		member.setMember_name("홍길동1");
-		member.setMember_gender("남");
-		member.setMember_birth(Date.valueOf("2010-12-25"));	// String을 Date로 변환
-		member.setMember_phone("010-1245-1231");
-		member.setMember_address("용인시");
-		member.setMember_mail("12aaa@mp3.com");
-		member.setMember_mailaccept("yes");	
-		
-		log.info("수정 UPDATE 결과: "+ service.modify(member));
-		log.info(member);
-	}
-	
-	
+////	수정 - update 처리
+//	@Test
+//	public void testUpdate() {
+//		
+//		// 특정한 회원을 먼저 조회
+//		MemberVO member = service.get("user12");
+//
+//		// 존재하는 회원 번호로 테스트
+//		member.setMember_no(1L);
+//		member.setMember_id("user12");
+//		member.setMember_pass("1234");
+//		member.setMember_name("홍길동1");
+//		member.setMember_gender("남");
+//		member.setMember_birth(Date.valueOf("2010-12-25"));	// String을 Date로 변환
+//		member.setMember_phone("010-1245-1231");
+//		member.setMember_address("용인시");
+//		member.setMember_mail("12aaa@mp3.com");
+//		member.setMember_mailaccept("yes");	
+//		
+//		log.info("수정 UPDATE 결과: "+ service.modify(member));
+//		log.info(member);
+//	}
 }

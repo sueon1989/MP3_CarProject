@@ -3,12 +3,14 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+        
+<%@include file="/WEB-INF/views/includes/header.jsp" %>  
 
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>선의 거리 계산하기</title>
+    <title>최근 주행 경로</title>
     <style>
 .dot {overflow:hidden;float:left;width:12px;height:12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png');}    
 .dotOverlay {position:relative;bottom:10px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;font-size:12px;padding:5px;background:#fff;}
@@ -21,10 +23,17 @@
 </style>
 </head>
 <body>
-<div id="map" style="width:100%;height:350px;"></div>  
-<p>
-    <em>지도를 마우스로 클릭하면 선 그리기가 시작되고<br>오른쪽 마우스를 클릭하면 선 그리기가 종료됩니다</em>
-</p>
+
+        <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12">
+              
+              
+
+	<h2 class="mb-2 page-title">최근 주행 경로</h2>
+	<hr class="my-4">
+
+<div id="map" style="width:60%;height:400px;"></div>  
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=89a27e9b9c5188451b86f925bb3f4a6f"></script>
 <script>
@@ -306,6 +315,12 @@ function getTimeHTML(distance) {
 }
     
 </script>
+
+
+            </div> <!-- .col-12 -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+<%@include file="/WEB-INF/views/includes/footer.jsp" %>
 </body>
 </html>
 

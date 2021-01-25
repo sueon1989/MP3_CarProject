@@ -1,5 +1,8 @@
 package com.mp3.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
@@ -13,6 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mp3.domain.AuthVO;
 import com.mp3.domain.MemberVO;
+import com.mp3.domain.WeatherVO;
 import com.mp3.service.MemberService;
 
 import lombok.AllArgsConstructor;
@@ -27,17 +31,17 @@ public class MemberController {
 	private MemberService service;	
 	
 	BCryptPasswordEncoder pwencoder;
-	
-	// 준택 테스트
-	@GetMapping("/findIdInput")
-	public String findIdInput() {
-		return "/common/auth/findIdInput";
 		
-	}
-	@GetMapping("/findPassInput")
-	public String findPassInput() {
-		return "/common/auth/findPassInput";
-	}
+//	// 준택 테스트
+//	@GetMapping("/findIdInput")
+//	public String findIdInput() {
+//		return "/common/auth/findIdInput";
+//		
+//	}
+//	@GetMapping("/findPassInput")
+//	public String findPassInput() {
+//		return "/common/auth/findPassInput";
+//	}
 	
 //	http://localhost:8080/Member/list
 //		* Console에서 로그를 확인하기 위해 
@@ -230,12 +234,12 @@ public class MemberController {
 
 	// 삭제
 	@PostMapping("/remove")
-	public String remove(@RequestParam("member_no") Long member_no, RedirectAttributes rttr)
+	public String remove(@RequestParam("member_id") String member_id, RedirectAttributes rttr)
 	{
 		
-		log.info("remove..." + member_no);
-		if (service.remove(member_no)) {					// 글 삭제에 성공한 경우에만
-			rttr.addFlashAttribute("result", member_no);	// RedirectAttributes에 추가
+		log.info("remove..." + member_id);
+		if (service.remove(member_id)) {						// 회원 삭제에 성공한 경우에만
+			rttr.addFlashAttribute("result", member_id);		// RedirectAttributes에 추가
 			rttr.addFlashAttribute("status", "remove_success");	// RedirectAttributes에 추가
 		}
 		return "redirect:/manager/member/memberList";

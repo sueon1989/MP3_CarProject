@@ -30,24 +30,6 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/resources/light/css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="/resources/light/css/app-dark.css" id="darkTheme" disabled>
-<!--     <script> -->
-<!--  	$(function(){ -->
-<!--  		$("#findBtn").click(function(){ -->
-<!--  			$.ajax({ -->
-<!--  				url : "../memberFind/findPassInputMail", -->
-<!--  				type : "POST", -->
-<!--  				data : { -->
-<!-- 					id : $("#id").val(), -->
-<!--  					name : $("#name").val(), -->
-<!-- 					email : $("#email").val() -->
-<!--  				}, -->
-<!--  				success : function(result) { -->
-<!--  					alert(result); -->
-<!-- 			}, -->
-<!-- 		}) -->
-<!-- 		}); -->
-<!-- 	}) -->
-<!-- </script> -->
 
 </head>
 
@@ -56,7 +38,7 @@
 
 <div class="wrapper vh-100">
      <div class="row align-items-center h-100">
-     
+     <form role="form" action= "findPassInputMail" method="post" class="col-lg-3 col-md-4 col-10 mx-auto text-center">
        
          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/">
 <!--            <svg version="1.1" id="logo" class="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve"> -->
@@ -79,10 +61,11 @@
               class="img-rounded" width="45px" height="40px"></span>     
         
          </a>
- 
          
+ 
+       
          <h1 class="h1 mb-3"><font size="15"> Find Pass </font></h1>
-         <form role="form" action= "findPassInputMail" method="post" class="col-lg-3 col-md-4 col-10 mx-auto text-center">
+        
         <div class="form-group">
            <label>ID</label>
            <input type="text" name='id' 

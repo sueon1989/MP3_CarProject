@@ -132,18 +132,18 @@
                 <span class="ml-3 item-text">Home</span><span class="sr-only">(current)</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="dashboard">
-                <li class="nav-item active">
-                  <a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">메인화면</span></a>
-                </li>
+<!--                 <li class="nav-item active"> -->
+<!--                   <a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">메인화면</span></a> -->
+<!--                 </li> -->
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./dashboard-analytics.html"><span class="ml-1 item-text">서비스 소개</span></a>
+                  <a class="nav-link pl-3" href="/Intro/ServiceInfo"><span class="ml-1 item-text">서비스 소개</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="./dashboard-sales.html"><span class="ml-1 item-text">내 정보 관리</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="./dashboard-saas.html"><span class="ml-1 item-text">차량 정보 관리</span></a>
-                </li>
+<!--                 <li class="nav-item"> -->
+<!--                   <a class="nav-link pl-3" href="./dashboard-sales.html"><span class="ml-1 item-text">내 정보 관리</span></a> -->
+<!--                 </li> -->
+<!--                 <li class="nav-item"> -->
+<!--                   <a class="nav-link pl-3" href="./dashboard-saas.html"><span class="ml-1 item-text">차량 정보 관리</span></a> -->
+<!--                 </li> -->
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="./dashboard-system.html"><span class="ml-1 item-text">인사말</span></a>
                 </li>
@@ -161,7 +161,7 @@
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./ui-color.html"><span class="ml-1 item-text">내 주변 실시간 기상 정보</span>
+                  <a class="nav-link pl-3" href="/weather/weatherInfo"><span class="ml-1 item-text">내 주변 실시간 기상 정보</span>
                   </a>
                 </li>
                 <li class="nav-item">
@@ -170,9 +170,9 @@
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="./ui-icons.html"><span class="ml-1 item-text">계절별 추천 드라이브 코스</span></a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/mypage/mapTest"><span class="ml-1 item-text">지도보기 테스트</span></a>
-                </li>
+<!--                 <li class="nav-item"> -->
+<!--                   <a class="nav-link pl-3" href="/mypage/mapView"><span class="ml-1 item-text">지도보기</span></a> -->
+<!--                 </li> -->
 <!--                 <li class="nav-item"> -->
 <!--                   <a class="nav-link pl-3" href="./ui-notification.html"><span class="ml-1 item-text">Notifications</span></a> -->
 <!--                 </li> -->
@@ -186,18 +186,18 @@
 <!--                   <a class="nav-link pl-3" href="./ui-progress.html"><span class="ml-1 item-text">Progress</span></a> -->
 <!--                 </li> -->
               </ul>
-            </li>
-            <li class="nav-item w-100">
-              <a class="nav-link" href="widgets.html">
-                <i class="fe fe-layers fe-16"></i>
-                <span class="ml-3 item-text">차량용품 보러가기</span>
-                <span class="badge badge-pill badge-primary">New</span>
-              </a>
-            </li>
+<!--             </li> -->
+<!--             <li class="nav-item w-100"> -->
+<!--               <a class="nav-link" href="widgets.html"> -->
+<!--                 <i class="fe fe-layers fe-16"></i> -->
+<!--                 <span class="ml-3 item-text">차량용품 보러가기</span> -->
+<!--                 <span class="badge badge-pill badge-primary">New</span> -->
+<!--               </a> -->
+<!--             </li> -->
             <li class="nav-item dropdown">
               <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-credit-card fe-16"></i>
-                <span class="ml-3 item-text">My Car Care</span>
+                <span class="ml-3 item-text">My Car Care & GPS</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="forms">
                 <li class="nav-item">
@@ -207,10 +207,13 @@
                   <a class="nav-link pl-3" href="./form_advanced.html"><span class="ml-1 item-text">주행거리별 차량점검 List</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./form_validation.html"><span class="ml-1 item-text">########</span></a>
+                  <a class="nav-link pl-3" href="/mypage/ViewTest"><span class="ml-1 item-text">현재 차량 위치</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./form_wizard.html"><span class="ml-1 item-text">#####</span></a>
+                  <a class="nav-link pl-3" href="/mypage/mapView"><span class="ml-1 item-text">최근 주행 경로</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href="/mypage/ViewTest1"><span class="ml-1 item-text">차량 주변 편의시설</span></a>
                 </li>
               </ul>
             </li>
@@ -221,13 +224,13 @@
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="tables">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./table_basic.html"><span class="ml-1 item-text">######</span></a>
+                  <a class="nav-link pl-3" href="/mypage/ViewTest"><span class="ml-1 item-text">지도 테스트 1</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./table_advanced.html"><span class="ml-1 item-text">######## ########</span></a>
+                  <a class="nav-link pl-3" href="/mypage/ViewTest1"><span class="ml-1 item-text">지도 테스트 2</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./table_datatables.html"><span class="ml-1 item-text">######## ########</span></a>
+                  <a class="nav-link pl-3" href="/mypage/ViewTest2"><span class="ml-1 item-text">지도 테스트 3</span></a>
                 </li>
               </ul>
             </li>
@@ -238,8 +241,7 @@
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="charts">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="/mypage/myInfoRead"
-                  	 id="member_no" name="member_no" ><span class="ml-1 item-text">내 정보 보기</span></a>
+                  <a class="nav-link pl-3" href="/mypage/myInfoRead"><span class="ml-1 item-text">내 정보 보기</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="/mypage/myInfoUpdate""><span class="ml-1 item-text">내 정보 수정</span></a>
@@ -249,6 +251,33 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="/mypage/myInfoDelete"><span class="ml-1 item-text">회원 탈퇴</span></a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item dropdown">
+             <a href="#auth" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link"> 
+                <i class="fe fe-pie-chart fe-16"></i>
+                <span class="ml-3 item-text">차량 용품</span>
+                 <span class="badge badge-pill badge-primary">업데이트 예정</span>
+              </a>
+              <ul class="collapse list-unstyled pl-4 w-100" id="auth">
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href="/mypage/myInfoDelete"><span class="ml-1 item-text">BEST 아이템</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href="/mypage/myInfoUpdate""><span class="ml-1 item-text">여름 차량 용품</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href="/mypage/myInfoCar"><span class="ml-1 item-text">겨울 차량 용품</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href="/mypage/myInfoDelete"><span class="ml-1 item-text">장바구니</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href="/mypage/myInfoDelete"><span class="ml-1 item-text">최근결제내역</span></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link pl-3" href="/mypage/myInfoDelete"><span class="ml-1 item-text">배송내역</span></a>
                 </li>
               </ul>
             </li>
@@ -382,20 +411,20 @@
 <!--               </ul> -->
 <!--             </li> -->
 <!--           </ul> -->
-          <p class="text-muted nav-heading mt-4 mb-1">
-            <span>#### ??? ###</span>
-          </p>
-          <ul class="navbar-nav flex-fill w-100 mb-2">
-            <li class="nav-item w-100">
-              <a class="nav-link" href="../docs/index.html">
-                <i class="fe fe-help-circle fe-16"></i>
-                <span class="ml-3 item-text">??@@@!!#$$$#</span>
-              </a>
-            </li>
-          </ul>
+<!--           <p class="text-muted nav-heading mt-4 mb-1"> -->
+<!--             <span>#### ??? ###</span> -->
+<!--           </p> -->
+<!--           <ul class="navbar-nav flex-fill w-100 mb-2"> -->
+<!--             <li class="nav-item w-100"> -->
+<!--               <a class="nav-link" href="../docs/index.html"> -->
+<!--                 <i class="fe fe-help-circle fe-16"></i> -->
+<!--                 <span class="ml-3 item-text">??@@@!!#$$$#</span> -->
+<!--               </a> -->
+<!--             </li> -->
+<!--           </ul> -->
           <div class="btn-box w-100 mt-4 mb-1">
-            <a href="https://themeforest.net/item/tinydash-bootstrap-html-admin-dashboard-template/27511269" target="_blank" class="btn mb-2 btn-primary btn-lg btn-block">
-              <i class="fe fe-shopping-cart fe-12 mx-2"></i><span class="small">Buy now</span>
+            <a href="https://www.google.com/search?q=%EA%B5%AC%EA%B8%80+%EC%B0%A8%EB%9F%89%EC%9A%A9%ED%92%88&sxsrf=ALeKk01YN3m3gLX-Y5fb28t4izQtBP7qUw:1611327302438&source=lnms&tbm=shop&sa=X&ved=2ahUKEwiot-n75a_uAhUMBZQKHc1zDrwQ_AUoAHoECAUQCg&biw=1920&bih=937" target="_blank" class="btn mb-2 btn-primary btn-lg btn-block">
+              <i class="fe fe-shopping-cart fe-12 mx-2"></i><span class="small">BEST ITEM 보러가기</span>
             </a>
           </div>
         </nav>

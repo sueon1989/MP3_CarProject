@@ -23,12 +23,6 @@
 	
 	<!-- 로그인하지 않은 경우 -->
 	<sec:authorize access="isAnonymous()">
-<<<<<<< HEAD
-		        <a href="/customLogin">로그인</a><br>
-		        <a href="/member/register">회원가입</a><br>
-				<a href="/memberFind/findIdInputMail">ID 찾기</a><br>
-				<a href="/memberFind/findPassInputMail">PW 찾기</a><br>
-=======
 	
 	<div class="mb-2 align-items-center">
                <div class="card shadow mb-4">
@@ -78,7 +72,6 @@
         <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/memberFind/findIdInputMail'">Find ID</button>	
         <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/memberFind/findPassInputMail'">Find PW</button>
 				
->>>>>>> branch 'master' of https://github.com/sueon1989/mp3_carProject.git
 	</sec:authorize>
 	
 	

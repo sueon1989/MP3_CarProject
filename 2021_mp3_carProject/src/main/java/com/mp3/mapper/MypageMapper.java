@@ -51,7 +51,10 @@ public interface MypageMapper {
     public void gps(@Param("Latitude") String Latitude,@Param("Longitude") String Longitude);
     
     //최근 gps값 보기
-    public GpsVO mapView(@Param("Latitude") String Latitude,@Param("Longitude") String Longitude);
+    public GpsVO mapView();
+    
+    //gpsadd 값 저장
+    public void gpsadd(@Param("gpsadd") String gpsadd);
     
     
 

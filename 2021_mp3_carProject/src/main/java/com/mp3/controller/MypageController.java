@@ -46,21 +46,51 @@ public class MypageController {
 		 return "/member/mypage/mapTest";
 	  }
 	 
-	 //map test
+	 //map View
 	 @GetMapping("/mapView")
-	  public String mapView(Model model) {
-		 GpsVO gps = new GpsVO();
+		public String mapView(/* GpsVO gps, */Model model) {
+		 GpsVO gps = service.mapView();
 		 model.addAttribute("Latitude", gps.getLatitude());
 		 log.info(gps.getLatitude()+"****gps.getLatitude()값 로그인포");
-		 model.addAttribute("Latitude", gps.getLongitude());
-		 log.info(gps.getLatitude()+"****gps.getLongitude()값 로그인포");
+		 model.addAttribute("Longitude", gps.getLongitude());
+		 log.info(gps.getLongitude()+"****gps.getLongitude()값 로그인포");
 		 return "/member/mypage/mapView";
 	  }
-	 //map Test 2 ***
+	 
+	 
+	 //map test
 	 @GetMapping("/ViewTest")
-	  public String ViewTest() {
+		public String ViewTest(/* GpsVO gps, */Model model) {
+		 GpsVO gps = service.mapView();
+		 model.addAttribute("Latitude", gps.getLatitude());
+		 log.info(gps.getLatitude()+"****gps.getLatitude()값 로그인포");
+		 model.addAttribute("Longitude", gps.getLongitude());
+		 log.info(gps.getLongitude()+"****gps.getLongitude()값 로그인포");
 		 return "/member/mypage/ViewTest";
 	  }
+	 
+	 //map test
+	 @GetMapping("/ViewTest1")
+		public String ViewTest1(/* GpsVO gps, */Model model) {
+		 GpsVO gps = service.mapView();
+		 model.addAttribute("Latitude", gps.getLatitude());
+		 log.info(gps.getLatitude()+"****gps.getLatitude()값 로그인포");
+		 model.addAttribute("Longitude", gps.getLongitude());
+		 log.info(gps.getLongitude()+"****gps.getLongitude()값 로그인포");
+		 return "/member/mypage/ViewTest1";
+	  }
+	 
+	 //map test
+	 @GetMapping("/ViewTest2")
+		public String ViewTest2(/* GpsVO gps, */Model model) {
+		 GpsVO gps = service.mapView();
+		 model.addAttribute("Latitude", gps.getLatitude());
+		 log.info(gps.getLatitude()+"****gps.getLatitude()값 로그인포");
+		 model.addAttribute("Longitude", gps.getLongitude());
+		 log.info(gps.getLongitude()+"****gps.getLongitude()값 로그인포");
+		 return "/member/mypage/ViewTest2";
+	  }
+
 	 
 
 	 //map test
@@ -77,7 +107,24 @@ public class MypageController {
 		 log.info("3");
 		 return "/member/mypage/mapResultTest";
 	  }	 
-
+	 // 저장완료
+	 //
+	 
+	 //map test
+	 @GetMapping("/gpsadd")
+		public String gpsadd() {
+		 return "/member/mypage/gpsadd";
+	  }
+	 //map test
+	 @GetMapping("/gpsadd1")
+		public String gpsadd1(Model model,String gpsadd) {
+		 GpsVO gps = new GpsVO();
+		 gps.setGpsadd(gpsadd);
+		 service.gpsadd(gpsadd);
+		 model.addAttribute("gpsadd", gpsadd);
+		 return "/member/mypage/gpsadd1";
+	  }
+	 // 동 저장
 
 	 
 	 //내 차량 정보 상세보기 페이지

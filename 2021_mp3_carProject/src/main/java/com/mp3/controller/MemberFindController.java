@@ -49,8 +49,9 @@ public class MemberFindController {
 	@PostMapping("/findPassInputMail")
 	public String find_pw_Mail(MemberVO member, Model model) {
 		log.info("아이디값"+member.getMember_id()+"이름 값"+member.getMember_name()+"메일 값");
-		model.addAttribute("find_pw_Mail", service.MemverPassFindMail(member));
-		 return"/common/auth/findPassInputMail";
+		model.addAttribute("resust", service.MemverPassFindMail(member));
+		 return"redirect: common/auth/findPassInputMail" ;
+		 		
 	}
 	
 }

@@ -34,9 +34,9 @@ public class MemberTests {
 	  public void testInsertMember() {
 
 	    String sql = 
-	    "INSERT INTO MEMBER (MEMBER_NO, "
-	    + "MEMBER_ID, MEMBER_PASS, MEMBER_NAME, MEMBER_GENDER, MEMBER_BIRTH, MEMBER_PHONE, MEMBER_ADDRESS, MEMBER_MAIL, MEMBER_MAILACCEPT) "
-	    + "VALUES (seq_member.nextval, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+	    		"INSERT INTO member (member_id, member_pass, member_name, member_gender, "
+	    		+ "member_birth, member_phone, member_address, member_mail, member_mailaccept)"
+	    		+ "VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)";
 	    for(int i = 1; i <= 100; i++) {
 	      
 	      Connection con = null;
@@ -95,7 +95,7 @@ public class MemberTests {
 	  @Test
 	  public void testInsertAuth() {
 	    
-	    String sql = "INSERT INTO MEMBER_AUTH (MEMBER_ID, MEMBER_AUTH) values (?,?)";
+	    String sql = "INSERT INTO member_auth (member_id, member_auth) values (?,?)";
 	    for(int i = 1; i <= 100; i++) {
 	      
 	      Connection con = null;

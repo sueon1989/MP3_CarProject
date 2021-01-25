@@ -34,30 +34,15 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/resources/light/css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="/resources/light/css/app-dark.css" id="darkTheme" disabled>
-        <script>
-	$(function(){
-		$("#findBtn").click(function(){
-			$.ajax({
-				url : "../memberFind/findIdInputMail",
-				type : "POST",
-				data : {
-					name : $("#name").val(),
-					email : $("#email").val()
-				},
-				success : function(result) {
-					alert(result);
-				},
-			})
-		});
-	})
-</script>
+
 </head>
 
-
+ 
 <div class="wrapper vh-100">
+
      <div class="row align-items-center h-100">
      
-       <form action="/findIdResultViewMail" method='post' class="col-lg-3 col-md-4 col-10 mx-auto text-center">
+             <form action="/findIdResultViewMail" method='post' class="col-lg-3 col-md-4 col-10 mx-auto text-center">
          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/">
 <!--            <svg version="1.1" id="logo" class="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve"> -->
 <!--              <g> -->
@@ -80,22 +65,21 @@
         
          </a>
  
-         
          <h1 class="h1 mb-3"><font size="15"> Find ID </font></h1>
          
          
-         <div class="form-group">
-           <label for="name" class="sr-only">Name</label>
-           <input type="text" name='name' value='Name' 
-           	id="member_name" class="form-control form-control-lg" required="" autofocus="">
+        <div class="form-group">
+           <label>Name</label>
+           <input type="text" name='name'  
+           	id="member_name" class="form-control form-control-lg" required>
          </div>
          <div class="form-group">
-           <label for="email" class="sr-only">Email</label>
-           <input type="text" name='email' value='Email' 
-           	id="member_mail" class="form-control form-control-lg" required="" autofocus="">
+           <label>Email</label>
+           <input type="text" name='email'  
+           	id="member_mail" class="form-control form-control-lg" required>
          </div>
          
-          <button type="button" id=findBtn class="btn btn-lg btn-primary btn-block" >find</button>
+          <button type="submit" id=findBtn class="btn btn-lg btn-primary btn-block" >find</button>
          <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = 'member/customLogin'">Login</button>
          <p class="mt-5 mb-3 text-muted">© 2021-</p>
          

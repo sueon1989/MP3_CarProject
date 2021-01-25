@@ -31,27 +31,22 @@
       
       
       
-       <form role="form" action="carReg1_company2" method="post" class="col-lg-6 col-md-8 col-10 mx-auto">
+       <form role="form" action="/carReg1_company2" method="post" class="col-lg-6 col-md-8 col-10 mx-auto">
           <div class="mx-auto text-center my-4">
             <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/">
  			<span>      
              	 <img src="/resources/light/assets/images/car_logo.png" alt="..." 
               		  class="img-rounded" width="50px" height="45px"></span>     
             </a>
-            <h2 class="my-3">차량 등록</h2>
+            <h2 class="my-3">내 차량 목록</h2>
           </div>
 	
-	    
+	   
+	       </p>
 	      <div class="form-group">
-	       <p><label for="car_company">제조사 :</label>
-	        <select name = "car_company" id="car_company" onchange="firstChange(this.form);">
-	            <option value="">제조사를 선택 하세요</option> 
-	            <option value="현대">현대</option>
-	            <option value="기아">기아</option>
-	            <option value="쉐보레">쉐보레</option>
-	            <option value="르노삼성">르노삼성</option>
-	            <option value="쌍용자동차">쌍용자동차</option>
-	        </select></p>
+	       <p><label for="car_company">제조사 : ${carRegistrationVO.car_company}</label>
+	                 
+	       </p>
 	       </div>
 	       
 	      <div class="form-group">
@@ -73,8 +68,8 @@
                 
           <div class="form-group">
             <label for="car_model_year">차량 연식</label>
-            <input type="date" class="form-control" id=car_model_year 
-            name="car_model_year"  required>
+            <input type="month" class="form-control" id=car_model_year 
+            name="car_model_year" value="0000-00" required>
           </div>
 
 

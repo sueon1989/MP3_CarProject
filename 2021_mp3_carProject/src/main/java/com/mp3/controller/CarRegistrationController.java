@@ -26,11 +26,36 @@ public class CarRegistrationController {
 	}
 	
 	@PostMapping("/carReg1_company")
-	public void  Mycar(CarRegistrationVO carRegistration,Model model){
-		model.addAttribute("Member",service.Mycar(carRegistration));
-		
+	public String  Mycar(CarRegistrationVO carRegistration,Model model){
+		model.addAttribute("Mycar",service.Mycar(carRegistration));
+		return "member/mycar/carReg1_company2";
 		
 	}
+	
+
+	@GetMapping("/myCarUpdate")
+	public String  car_myCarUpdate() {
+		return "member/mycar/myCarUpdate";
+	}
+	
+	@PostMapping("/myCarUpdate")
+	public String  myCarUpdate(CarRegistrationVO carRegistration,Model model){
+		model.addAttribute("MycarUpdate",service.MycarUpdate(carRegistration));
+		return "member/mycar/myCarUpdate1";
+		
+	}
+	
+	@GetMapping("/myCarlist")
+	public String car_Mycarlist(){
+		return "member/mycar/myCarlist";
+	}
+	
+	@PostMapping("/myCarlist")
+	public String Mycarlist(String member_id,Model model){
+		model.addAttribute("Mycarlist",service.Mycarlist(member_id));
+		return "member/mycar/myCarlist";
+	}
+	
 	
 }
 	

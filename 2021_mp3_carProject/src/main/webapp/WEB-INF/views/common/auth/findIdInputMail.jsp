@@ -70,12 +70,12 @@
          
         <div class="form-group">
            <label>Name</label>
-           <input type="text" name='name'  
+           <input type="text" name='member_name'  
            	id="member_name" class="form-control form-control-lg" required>
          </div>
          <div class="form-group">
            <label>Email</label>
-           <input type="text" name='email'  
+           <input type="text" name='member_mail'  
            	id="member_mail" class="form-control form-control-lg" required>
          </div>
          

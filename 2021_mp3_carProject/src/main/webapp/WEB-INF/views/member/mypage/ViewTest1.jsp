@@ -4,11 +4,13 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
 
+<%@include file="/WEB-INF/views/includes/header.jsp" %> 
+
 <!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8">
-    <title>주변 주유소 검색하기</title>
+    <title>주변 시설 검색하기</title>
     <style>
 .map_wrap, .map_wrap * {margin:0; padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap {position:relative;width:100%;height:350px;}
@@ -38,14 +40,15 @@
 .placeinfo .jibun {color:#999;font-size:11px;margin-top:0;}
 </style>
 </head>
-<body><br>
-<p style="margin-top:-10px" color="black">
-    <em class="link">
-        <a href="https://www.google.com/search?tbs=lf:1,lf_ui:3&tbm=lcl&sxsrf=ALeKk0125mgooSXD9L1BdD4fISLcS1iLYA:1611286992217&q=%EC%A3%BC%EB%B3%80+%EC%A3%BC%EC%9C%A0%EC%86%8C+%EA%B2%80%EC%83%89&rflfq=1&num=10&sa=X&ved=2ahUKEwjwhbXmz67uAhWyIaYKHcc_CVQQjGp6BAgIECM&biw=1920&bih=937" target="_blank">내위치 주변 주유소 더보기</a><br>
-    </em>
-</p>
+<body>
+      <div class="container-fluid">
+          <div class="row justify-content-center">
+            <div class="col-12">.
+	<h2 class="mb-2 page-title">사용자 1km 반경 내 편의 시설</h2>
+	<hr class="my-4">
+<p><em>아래 아이콘을 클릭하세요</em></p>  
 <div class="map_wrap">
-    <div id="map" style="width:100%;height:100%;position:relative;"></div>
+    <div id="map" style="width:60%;height:400px;position:relative;"></div>
     <ul id="category">
         <li id="BK9" data-order="0"> 
             <span class="category_bg bank"></span>
@@ -273,5 +276,11 @@ function changeCategoryClass(el) {
     } 
 } 
 </script>
+
+
+            </div> <!-- .col-12 -->
+          </div> <!-- .row -->
+        </div> <!-- .container-fluid -->
+<%@include file="/WEB-INF/views/includes/footer.jsp" %>
 </body>
 </html>

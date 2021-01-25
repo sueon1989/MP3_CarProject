@@ -139,12 +139,11 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public GpsVO gpsadd(String gpsadd) {
+	public void gpsadd(String gpsadd) {
 		GpsVO gps = new GpsVO();
 		gps.setGpsadd(gpsadd);
 		log.info("gpsadd 확인 로그인포"+"**********"+gpsadd);
 		mapper.gpsadd(gpsadd);
-		return null;
 	}
 }
 

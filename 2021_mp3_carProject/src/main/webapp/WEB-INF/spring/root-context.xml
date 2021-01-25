@@ -12,7 +12,7 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 		
 	<!-- properties 파일 자동 로드 -->
-    <!-- <context:property-placeholder location="classpath:/*.properties" /> -->
+    <context:property-placeholder location="classpath:/*.properties" />
 	
 	<!-- HikariCP connection pool bean 셋팅-->
 	<bean id="hikariConfig" class="com.zaxxer.hikari.HikariConfig">

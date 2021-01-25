@@ -95,10 +95,10 @@ local.properties
 #.sts4-cache/
 
 
-# ignore properties file (DB ì •ë³´ ì €ì¥)
+# ignore properties file (DB ? •ë³? ???¥)
 config.properties
 
-### ìë™ ì—…ë°ì´íŠ¸ íŒŒì¼
-#.classpath
-#MANIFEST.MF
-#pom.properties
+### ??™ ?—…?°?´?Š¸ ?ŒŒ?¼
+.classpath
+MANIFEST.MF
+pom.properties

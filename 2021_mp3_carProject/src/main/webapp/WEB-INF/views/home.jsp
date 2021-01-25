@@ -19,7 +19,7 @@
 	<!-- 기본 화면 -->
 	<h2></h2>
 	<h2 class="mb-2 page-title">Main Page</h2>
-	<hr class="my-4">
+	<hr class="my-4"> 
 	
 	<!-- 로그인하지 않은 경우 -->
 	<sec:authorize access="isAnonymous()">

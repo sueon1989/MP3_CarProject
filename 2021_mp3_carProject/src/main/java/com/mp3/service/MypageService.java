@@ -23,7 +23,7 @@ public interface MypageService {
 	public GpsVO mapView();
 	
 	//gpsadd 값 저장하기
-	public GpsVO gpsadd(String gpsadd);
+	public void gpsadd(String gpsadd);
 	
 	
 	// 마이페이지 내 정보 수정

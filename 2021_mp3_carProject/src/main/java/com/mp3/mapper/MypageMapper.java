@@ -54,7 +54,7 @@ public interface MypageMapper {
     public GpsVO mapView();
     
     //gpsadd °ª ÀúÀå
-    public GpsVO gpsadd(@Param("gpsadd") String gpsadd);
+    public void gpsadd(@Param("gpsadd") String gpsadd);
     
     
 

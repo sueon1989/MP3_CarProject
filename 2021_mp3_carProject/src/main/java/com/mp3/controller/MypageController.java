@@ -118,6 +118,9 @@ public class MypageController {
 	 //map test
 	 @GetMapping("/gpsadd1")
 		public String gpsadd1(Model model,String gpsadd) {
+		 GpsVO gps = new GpsVO();
+		 gps.setGpsadd(gpsadd);
+		 service.gpsadd(gpsadd);
 		 model.addAttribute("gpsadd", gpsadd);
 		 return "/member/mypage/gpsadd1";
 	  }

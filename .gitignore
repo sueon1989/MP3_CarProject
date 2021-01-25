@@ -95,10 +95,10 @@ local.properties
 #.sts4-cache/
 
 
-# ignore properties file (DB 정보 저장)
+# ignore properties file
 config.properties
 
-### 자동 업데이트 파일
-#.classpath
-#MANIFEST.MF
-#pom.properties
+###
+.classpath
+MANIFEST.MF
+pom.properties

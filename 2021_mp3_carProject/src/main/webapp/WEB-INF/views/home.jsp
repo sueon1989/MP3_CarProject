@@ -20,10 +20,8 @@
 	<sec:authorize access="isAnonymous()">
 		        <a href="/customLogin">로그인</a><br>
 		        <a href="/member/register">회원가입</a><br>
-				<a href="/memberFind/findIdInputMail">메일</a> / 
-				<a href="/memberFind/findIdInputPhone">전화번호</a>로 ID 찾기<br>
-				<a href="/memberFind/findPassInputMail">메일</a> / 
-				<a href="/memberFind/findPassInputPhone">전화번호</a>로 PW 찾기<br>
+				<a href="/memberFind/findIdInputMail">ID 찾기</a><br>
+				<a href="/memberFind/findPassInputMail">PW 찾기</a><br>
 	</sec:authorize>
 	
 	

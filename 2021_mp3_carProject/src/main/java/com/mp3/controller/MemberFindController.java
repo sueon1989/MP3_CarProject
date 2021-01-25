@@ -3,6 +3,7 @@ package com.mp3.controller;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.mp3.domain.MemberVO;
@@ -20,11 +21,7 @@ public class MemberFindController {
 	
 	private MemberFindService service;
 	
-	@GetMapping("/findInput")
-	public String loginFind() {
-		return "/common/auth/findInput";
-	}
-	
+
 	
 //	아이디 찾기 폼 
 	@GetMapping("/findIdInputMail")
@@ -45,15 +42,15 @@ public class MemberFindController {
 	// 비밀번호 찾기
 	@GetMapping("/findPassInputMail")
 	public String find_pw_Mail() {
-		return"/common/auth/findPassInputMail";
+		 return"/common/auth/findPassInputMail";
 	}
 	
 	// 비밀번호 찾기
-	@RequestMapping("/findPassInputMail")
-	public void find_pw_Mail(MemberVO member, Model model) {
+	@PostMapping("/findPassInputMail")
+	public String find_pw_Mail(MemberVO member, Model model) {
 		log.info("아이디값"+member.getMember_id()+"이름 값"+member.getMember_name()+"메일 값");
 		model.addAttribute("find_pw_Mail", service.MemverPassFindMail(member));
-		
+		 return"/common/auth/findPassInputMail";
 	}
 	
 }

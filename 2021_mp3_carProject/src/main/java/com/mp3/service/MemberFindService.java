@@ -1,5 +1,7 @@
 package com.mp3.service;
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.ibatis.annotations.Param;
 
 import com.mp3.domain.MemberVO;

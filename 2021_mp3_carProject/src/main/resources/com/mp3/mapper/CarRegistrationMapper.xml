@@ -8,8 +8,9 @@
 <!--   내 차량 등록 -->
 	
 	<insert id="Mycar">
-  		INSERT INTO CAR (CAR_NO, CAR_COMPANY, CAR_MODEL_YEAR, CAR_MODEL, CAR_FUAL, CAR_ENGINEOILRP, CAR_DISTANCEDRIVEN, MEMBER_ID) 
-		VALUES (seq_car.nextval, #{car_company},#{car_model_year}, #{car_model}, #{car_fual},#{car_engineoilrp},#{car_distancedriven},#{member_id})
+  		INSERT INTO car (car_company, car_model_year, car_model, car_fual, car_engineoilrp, car_distancedriven, member_id) 
+  		VALUES (#{car_company}, #{car_model_year}, #{car_model}, #{car_fual}, #{car_engineoilrp}, #{car_distancedriven}, #{member_id})
+
 	</insert>
 	
  
@@ -25,7 +26,7 @@
   			car_fual = #{car_fual}, 
 	    	car_engineoilrp = #{car_engineoilrp}, 
 	    	car_distancedriven = #{car_distancedriven}, 
-	    	car_updateDate= sysdate
+	    	car_updateDate= now()
   		where member_id = #{member_id}
   	</update>
   	

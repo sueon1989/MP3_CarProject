@@ -4,11 +4,14 @@ package com.mp3.service;
 
 
 
+import javax.servlet.http.HttpServletResponse;
+
 import org.apache.commons.mail.HtmlEmail;
 import org.springframework.stereotype.Service;
 
 import com.mp3.domain.MemberVO;
 import com.mp3.mapper.MemberFindMapper;
+import com.mp3.mapper.MemberMapper;
 
 import lombok.AllArgsConstructor;
 import lombok.extern.log4j.Log4j;
@@ -19,6 +22,7 @@ import lombok.extern.log4j.Log4j;
 public class MemberFindServiceImpl implements MemberFindService {
 	
 	private MemberFindMapper mapper;
+	private MemberMapper mapper1;
 	
 
 
@@ -31,7 +35,7 @@ public class MemberFindServiceImpl implements MemberFindService {
 			String charSet = "utf-8";
 			String hostSMTP = "smtp.naver.com";
 			String hostSMTPid = "ghgh4075@naver.com";
-			String hostSMTPpwd = "#";
+			String hostSMTPpwd = "##";
 
 			// 보내는 사람 EMail, 제목, 내용
 			String fromEmail = "ghgh4075@naver.com";
@@ -92,7 +96,7 @@ public class MemberFindServiceImpl implements MemberFindService {
 	//아이디 찾기
 	@Override
 	public MemberVO MemverIDFindMail(MemberVO member) {
-			mapper.MemverIDFindMail(member);
+		mapper.MemverIDFindMail(member);
 			//메일 발송
 			send_mail(member, "MemverIDFindMail");
 			log.info(member);		
@@ -103,18 +107,20 @@ public class MemberFindServiceImpl implements MemberFindService {
 	//비밀번호 찾기	
 	@Override
 	public MemberVO MemverPassFindMail(MemberVO member) {
-
+		boolean checkId = mapper1.checkId(member) == 1;
+		
 			String member_pw= "";
 			for (int i = 0; i < 12; i++) {
 				member_pw += (char) ((Math.random() * 26) + 97);
 			}
-				member.setMember_pass(member_pw);
+				member.setMember_pass(member_pw);		
 				mapper.MemverPassFindMail(member);
-				log.info(member);		
 				// 비밀번호 변경 메일 발송
+			
 				send_mail(member, "MemverPassFindMail");
-		
-		return member;	
+				log.info(member);	
+				
+		return 	member;	
 	}
 	
 	

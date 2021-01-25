@@ -1,73 +1,135 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+    
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<title>아이디 찾기</title>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+
+	
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="favicon.ico">
+	<title>MIT Car Project</title>
+	
+    <!-- Simple bar CSS -->
+    <link rel="stylesheet" href="/resources/light/css/simplebar.css">
+    
+    <!-- Fonts CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <!-- Icons CSS -->
+    <link rel="stylesheet" href="/resources/light/css/feather.css">
+    
+    <!-- Date Range Picker CSS -->
+    <link rel="stylesheet" href="/resources/light/css/daterangepicker.css">
+    
+    <!-- App CSS -->
+    <link rel="stylesheet" href="/resources/light/css/app-light.css" id="lightTheme">
+    <link rel="stylesheet" href="/resources/light/css/app-dark.css" id="darkTheme" disabled>
+        <script>
+	$(function(){
+		$("#findBtn").click(function(){
+			$.ajax({
+				url : "../memberFind/findIdInputMail",
+				type : "POST",
+				data : {
+					name : $("#name").val(),
+					email : $("#email").val()
+				},
+				success : function(result) {
+					alert(result);
+				},
+			})
+		});
+	})
+</script>
 </head>
-<body>
-	<div class="w3-content w3-container w3-margin-top">
-		<div class="w3-container w3-card-4">
+
+
+<div class="wrapper vh-100">
+     <div class="row align-items-center h-100">
+     
+       <form action="/findIdResultViewMail" method='post' class="col-lg-3 col-md-4 col-10 mx-auto text-center">
+         <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/">
+<!--            <svg version="1.1" id="logo" class="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve"> -->
+<!--              <g> -->
+<!--                <polygon class="st0" points="78,105 15,105 24,87 87,87 	" /> -->
+<!--                <polygon class="st0" points="96,69 33,69 42,51 105,51 	" /> -->
+<!--                <polygon class="st0" points="78,33 15,33 24,15 87,15 	" /> -->
+<!--              </g> -->
+<!--            </svg> -->
 		
-			<form action="MemverIDFindMail" method="get">
-				
-				<div class="w3-center w3-large w3-margin-top">
-					
-					<h3>아이디 찾기</h3>
-				
-				</div>
-				<div>
-					<p>
-					<label>이름</label><br>
-					<input class="w3-input" type="text" id="name" name="member_name" required>
-					
-					<label>Email</label>
-					<input class="w3-input" type="text" id="email" name="member_mail" required>
-					</p>
-					<p class="w3-center">
-				<button type="submit" id=findBtn class="w3-button w3-block w3-black w3-ripple w3-margin-top w3-round">찾기</button>
-						
-					</p>
-				</div>
-			</form>
+		<span>      
+              <img src="/resources/light/assets/images/car_logo.png" alt="..." 
+              class="img-rounded" width="35px" height="30px"></span>
+              
+        <span>      
+              <img src="/resources/light/assets/images/car_logo.png" alt="..." 
+              class="img-rounded" width="40px" height="35px"></span>
+        <span>      
+              <img src="/resources/light/assets/images/car_logo.png" alt="..." 
+              class="img-rounded" width="45px" height="40px"></span>     
+        
+         </a>
+ 
+         
+         <h1 class="h1 mb-3"><font size="15"> Find ID </font></h1>
+         
+         
+         <div class="form-group">
+           <label for="name" class="sr-only">Name</label>
+           <input type="text" name='name' value='Name' 
+           	id="member_name" class="form-control form-control-lg" required="" autofocus="">
+         </div>
+         <div class="form-group">
+           <label for="email" class="sr-only">Email</label>
+           <input type="text" name='email' value='Email' 
+           	id="member_mail" class="form-control form-control-lg" required="" autofocus="">
+         </div>
+         
+          <button type="button" id=findBtn class="btn btn-lg btn-primary btn-block" >find</button>
+         <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = 'member/customLogin'">Login</button>
+         <p class="mt-5 mb-3 text-muted">© 2021-</p>
+         
+		
+	
+	<!-- 페이지 소스 보기: 
+		강제로 세션 쿠키를 삭제한 후에 "/customLogin"을 다시 호출했을 때 CSRF 토큰의 값이 변경된 것 확인
+		<input type="hidden" name="_csrf" value="c9c2f8c9-b49b-4faf-87ef-46e973c8cffd" /> 
+		<input type="hidden" name="_csrf" value="3c446b1b-6e93-4c9f-b3de-3146d1757c3c" />  -->
 
-		</div>
-	</div>
-
+       </form>
+	
+     </div>
+</div>
+         
+         
+         
+    
+    <script src="/resources/light/js/jquery.min.js"></script>
+    <script src="/resources/light/js/popper.min.js"></script>
+    <script src="/resources/light/js/moment.min.js"></script>
+    <script src="/resources/light/js/bootstrap.min.js"></script>
+    <script src="/resources/light/js/simplebar.min.js"></script>
+    <script src='/resources/light/js/daterangepicker.js'></script>
+    <script src='/resources/light/js/jquery.stickOnScroll.js'></script>
+    <script src="/resources/light/js/tinycolor-min.js"></script>
+    <script src="/resources/light/js/config.js"></script>
+    <script src="/resources/light/js/apps.js"></script>
+    <script src='/resources/light/js/jquery.dataTables.min.js'></script>
+    <script src='/resources/light/js/dataTables.bootstrap4.min.js'></script>
+    
+   
+	
+  
+  
 </body>
-			                            <!-- Modal -->
-                            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-                                            <h4 class="modal-title" id="myModalLabel">처리완료</h4>
-                                        </div>
-                                        <div class="modal-body">
-                                           해당 메일로 메일을 발송하였습니다.                            </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                        </div>
-                                    </div>
-                                    <!-- /.modal-content -->
-                                </div>
-                                <!-- /.modal-dialog -->
-                            </div>
-                            <!-- /.modal -->
-	<script>
-$(document).ready(function(){
-	var result ='${result}'; //result 값을 읽고 get타입으로 보내온
-	console.log("값찍기"+result);  //크롬F12 console 클릭
-	
-	console.log("전"+history.state);
-	checkModal(result);
-	
-	history.replaceState({},null,null);
-	console.log("후"+history.state);}
-	</script>
-	
 </html>

@@ -23,8 +23,8 @@ public class MemberFindServiceTests {
 	@Test
 	public void MemverIDFindMail() {
 		MemberVO member = new MemberVO();
-		member.setMember_name("사용자10");
-		member.setMember_mail("ghgh9795@naver.com");
+		member.setMember_name("사용자1");
+		member.setMember_mail("test@mp3.com");
 		service.MemverIDFindMail(member);		
 		log.info(member);
 	}
@@ -39,9 +39,9 @@ public class MemberFindServiceTests {
 		
 		MemberVO member = new MemberVO();
 		member.setMember_pass("pw");
-		member.setMember_id("user10");
-		member.setMember_name("사용자10");
-		member.setMember_mail("ghgh9795@naver.com");
+		member.setMember_id("user1");
+		member.setMember_name("사용자1");
+		member.setMember_mail("test@mp3.com");
 		service.MemverPassFindMail(member); 
 		log.info(member);
 		

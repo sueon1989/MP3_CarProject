@@ -17,7 +17,7 @@
  <div class="row justify-content-center">
    <div class="col-12">
 	<hr class="my-4">
-<span>      
+<span>
 	<img src="/resources/light/assets/images/ServiceInfo1.png" alt="..." 
 	class="img-rounded" width="350px" height="300px">
 </span>

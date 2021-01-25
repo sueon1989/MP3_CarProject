@@ -13,10 +13,21 @@
 <title>서비스 소개</title>
 </head>
 <body>
+<!-- <div class="container-fluid"> -->
+<!--  <div class="row justify-content-center"> -->
+<!--    <div class="col-12"> -->
+<!-- 	<hr class="my-4"> -->
 <div class="container-fluid">
- <div class="row justify-content-center">
-   <div class="col-12">
-	<hr class="my-4">
+   <div class="row justify-content-center">
+      <div class="col-12">.
+		<h2 class="mb-2 page-title">서비스 소개</h2>
+		<hr class="my-4">
+		
+		<p><em>개발 배경</em></p>  
+
+
+
+	
 <span>
 	<img src="/resources/light/assets/images/ServiceInfo1.png" alt="..." 
 	class="img-rounded" width="350px" height="300px">

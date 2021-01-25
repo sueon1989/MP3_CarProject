@@ -32,7 +32,7 @@
     <link rel="stylesheet" href="/resources/light/css/app-dark.css" id="darkTheme" disabled>
     
 </head>
-
+<body>
 
 <%-- <h1>Custom Login Page</h1>
 

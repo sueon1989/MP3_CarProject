@@ -161,7 +161,7 @@
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./ui-color.html"><span class="ml-1 item-text">내 주변 실시간 기상 정보</span>
+                  <a class="nav-link pl-3" href="/weather/weatherInfo"><span class="ml-1 item-text">내 주변 실시간 기상 정보</span>
                   </a>
                 </li>
                 <li class="nav-item">

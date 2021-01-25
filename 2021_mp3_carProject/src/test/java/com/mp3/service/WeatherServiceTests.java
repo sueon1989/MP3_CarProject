@@ -6,6 +6,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.sql.Date;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -17,6 +20,7 @@ import org.json.simple.parser.JSONParser;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -25,12 +29,13 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mp3.domain.AuthVO;
 import com.mp3.domain.MemberVO;
+import com.mp3.domain.WeatherInfoVO;
 import com.mp3.domain.WeatherVO;
 
 import lombok.extern.log4j.Log4j;
 
-// ´ã´çÀÚ: kim
-@RunWith(SpringJUnit4ClassRunner.class)	// ÇöÀç Å×½ºÆ® ÄÚµå°¡ ½ºÇÁ¸µÀ» ½ÇÇàÇÏ´Â ¿ªÇÒÀ» ÇÒ °Í
+// ë‹´ë‹¹ì: kim
+@RunWith(SpringJUnit4ClassRunner.class)	// í˜„ì¬ í…ŒìŠ¤íŠ¸ ì½”ë“œê°€ ìŠ¤í”„ë§ì„ ì‹¤í–‰í•˜ëŠ” ì—­í• ì„ í•  ê²ƒ
 @ContextConfiguration("file:src/main/webapp/WEB-INF/spring/root-context.xml")
 @Log4j
 public class WeatherServiceTests {
@@ -38,17 +43,90 @@ public class WeatherServiceTests {
 	@Autowired
 	private WeatherService service;
 	
+//	@Value("${weather.api.serviceKey}")
+//	private String serviceKey;
+
+	@Test
+	public void testExist() {
+		
+		// WeatherService ê°ì²´ê°€ ì œëŒ€ë¡œ ì£¼ì…ì´ ê°€ëŠ¥í•œì§€ í™•ì¸
+		log.info("ì„œë¹„ìŠ¤ "+service);
+		assertNotNull(service);
+	}
+	
+
+    // ê¸°ìƒì²­ì—ì„œ ì œê³µí•˜ëŠ” ë™ë„¤ ê¸°ìƒì •ë³´ë¥¼ JSONë°ì´í„°ë¡œ ê°€ì ¸ì™€ì„œ WeatherVO ê°ì²´ë¡œ ì €ì¥í•˜ì—¬ ë°˜í™˜
+    // ê¸°ì¤€ ë‚ ì§œ, ì‹œê°„, ìœ„ë„, ê²½ë„ë¥¼ ì…ë ¥í•˜ë©´ í•´ë‹¹í•˜ëŠ” ì§€ì—­ì˜ ë™ë„¤ê¸°ìƒì •ë³´ë¥¼ JSONë°ì´í„°ë¡œ ê°€ì ¸ì™€ 
+	// WeatherVO ê°ì²´ë¥¼ ë§Œë“¤ì–´ ë°˜í™˜
+	@Test
+	public void getVillageWeather() {
+		
+		// ê³µê³µë°ì´í„°í¬í„¸ API ì—°ë™
+//		String serviceKey = "ìœ„ì—ì„œ ì „ì—­ë³€ìˆ˜ ì„ ì–¸(properties íŒŒì¼ ì‚¬ìš©)";
+		String serviceKey = "HnXMKIO%2FZdGJgfHsO%2Fxv2OlX0AR%2BuhAAV0zyLZlER5M7ehOb%2BHzBPgWBPmJ4BKr1FfIfxNxtKbERPR1t5gtnrA%3D%3D";
+		String baseDate = "20210122"; 	// ì˜ˆë³´ì¼ì
+        String baseTime = "0200"; 		// ì˜ˆë³´ì‹œê°		(0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1ì¼ 8íšŒ))
+		int nx = 60;  	//ê²½ë„
+        int ny = 120;   //ìœ„ë„
+        
+        WeatherVO weather = service.getWeatherAPI(serviceKey, baseDate, baseTime, nx, ny);
+        log.info("ë‚ ì”¨ì¡°íšŒ API service ì™„ë£Œ: "+ weather);
+        log.info("ë‚ ì”¨ DBë“±ë¡ service ì™„ë£Œ: "+ service.register(weather) +" (baseDate: "+weather.getFcstDate()+" "+weather.getFcstTime()+")");
+    }
+
+
+
+	@Test
+	public void getNowDate() {
+		WeatherVO weather = new WeatherVO();
+		weather = service.getNowDate(weather);
+		log.info("í˜„ì¬ ë‚ ì§œì¡°íšŒ service ì™„ë£Œ: "+ weather.getBaseDate()+" "+weather.getBaseTime());
+	}
+
+
+
+		
+		
+	
+	@Test
+	public void getVillageWeatherInfo() {
+		
+		
+		// ì—¬ê¸°ë¶€í„° ì´ì „ êµ¬í˜„ ë‚´ìš©
+		
+		// ê³µê³µë°ì´í„°í¬í„¸ API ì—°ë™
+//		String serviceKey = "ìœ„ì—ì„œ ì „ì—­ë³€ìˆ˜ ì„ ì–¸(properties íŒŒì¼ ì‚¬ìš©)";
+		String serviceKey = "HnXMKIO%2FZdGJgfHsO%2Fxv2OlX0AR%2BuhAAV0zyLZlER5M7ehOb%2BHzBPgWBPmJ4BKr1FfIfxNxtKbERPR1t5gtnrA%3D%3D";
+		String baseDate = "20210122"; 	// ì˜ˆë³´ì¼ì
+        String baseTime = "0200"; 		// ì˜ˆë³´ì‹œê°		(0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1ì¼ 8íšŒ))
+		int nx = 60;  	//ê²½ë„
+        int ny = 120;   //ìœ„ë„
+        
+        WeatherVO weather = service.getWeatherAPI(serviceKey, baseDate, baseTime, nx, ny);
+        log.info("ë‚ ì”¨ì¡°íšŒ API service ì™„ë£Œ: "+ weather);
+        log.info("ë‚ ì”¨ DBë“±ë¡ service ì™„ë£Œ: "+ service.register(weather) +" (no: "+ weather.getWeather_no() +")");
+        // ì—¬ê¸°ê¹Œì§€ controller êµ¬í˜„ ì™„ë£Œ
+    	
+        WeatherInfoVO weatherInfo = service.getWeatherInfo(weather);
+        log.info("ë‚ ì”¨ì¡°íšŒ: "+ weather);
+        log.info("ë‚ ì”¨ì •ë³´: "+ weatherInfo);
+        
+    }
+	
+
+	// ë‚ ì”¨ API í…ŒìŠ¤íŠ¸
 	@Test
 	public void weatherReadTest() {
 		
-		// °ø°øµ¥ÀÌÅÍÆ÷ÅĞ API ¿¬µ¿
-		String serviceKey = "#";
-		String baseDate = "20210115"; // ÀÚ½ÅÀÌ Á¶È¸ÇÏ°í½ÍÀº ³¯Â¥¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä
-        String baseTime = "0500"; //ÀÚ½ÅÀÌ Á¶È¸ÇÏ°í½ÍÀº ½Ã°£´ë¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä
-		String nx = "126";  //°æµµ
-        String ny = "37";   //À§µµ
+		// ê³µê³µë°ì´í„°í¬í„¸ API ì—°ë™
+//		String serviceKey = "ìœ„ì—ì„œ ì „ì—­ë³€ìˆ˜ ì„ ì–¸(properties íŒŒì¼ ì‚¬ìš©)";
+		String serviceKey = "HnXMKIO%2FZdGJgfHsO%2Fxv2OlX0AR%2BuhAAV0zyLZlER5M7ehOb%2BHzBPgWBPmJ4BKr1FfIfxNxtKbERPR1t5gtnrA%3D%3D";
+		String baseDate = "20210121"; // ìì‹ ì´ ì¡°íšŒí•˜ê³ ì‹¶ì€ ë‚ ì§œë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”
+        String baseTime = "0500"; //ìì‹ ì´ ì¡°íšŒí•˜ê³ ì‹¶ì€ ì‹œê°„ëŒ€ë¥¼ ì…ë ¥í•´ì£¼ì„¸ìš”
+		int nx = 126;  //ê²½ë„
+        int ny = 37;   //ìœ„ë„
         
-        String apiURL = "http://"
+        String apiURL = "http://apis.data.go.kr/1360000/VilageFcstInfoService/getVilageFcst?"
         		+ "serviceKey=" + serviceKey 
 //        		+ "&pageNo=1"
 //        		+ "&numOfRows=10"
@@ -59,194 +137,73 @@ public class WeatherServiceTests {
         		+ "&ny=" + ny;
         		
         try {
-	        // apiURLÀ» ÀÌ¿ëÇØ¼­ URL °´Ã¼ »ı¼º
+	        // apiURLì„ ì´ìš©í•´ì„œ URL ê°ì²´ ìƒì„±
 	        URL url = new URL(apiURL); 
 	        BufferedReader bf;
 	        String line = "";
 	        String result="";
         
-        	//³¯¾¾ Á¤º¸¸¦ ¹Ş¾Æ¿É´Ï´Ù.
+        	//ë‚ ì”¨ ì •ë³´ë¥¼ ë°›ì•„ì˜µë‹ˆë‹¤.
         	bf = new BufferedReader(new InputStreamReader(url.openStream()));
 
-        	//¹öÆÛ¿¡ ÀÖ´Â Á¤º¸¸¦ ÇÏ³ªÀÇ ¹®ÀÚ¿­·Î º¯È¯.
+        	//ë²„í¼ì— ìˆëŠ” ì •ë³´ë¥¼ í•˜ë‚˜ì˜ ë¬¸ìì—´ë¡œ ë³€í™˜.
         	while((line=bf.readLine())!=null){
             	result=result.concat(line);
-            	System.out.println("³¯¾¾¿¹º¸: "+result);  // ¹Ş¾Æ¿Â µ¥ÀÌÅÍ¸¦ È®ÀÎÇØº¾´Ï´Ù.
+//            	System.out.println("ë‚ ì”¨ì˜ˆë³´: "+result);  // ë°›ì•„ì˜¨ ë°ì´í„°ë¥¼ í™•ì¸í•´ë´…ë‹ˆë‹¤.
+            	log.info("ë‚ ì”¨ì˜ˆë³´: "+result);
         	}
      
-        	// Json parser¸¦ ¸¸µé¾î ¸¸µé¾îÁø ¹®ÀÚ¿­ µ¥ÀÌÅÍ¸¦ °´Ã¼È­ ÇÕ´Ï´Ù. 
+        	// Json parserë¥¼ ë§Œë“¤ì–´ ë§Œë“¤ì–´ì§„ ë¬¸ìì—´ ë°ì´í„°ë¥¼ ê°ì²´í™” í•©ë‹ˆë‹¤. 
         	JsonParser parser = new JsonParser();
         	JsonObject obj = (JsonObject) parser.parse(result);
 		
-        	// Top·¹º§ ´Ü°èÀÎ response Å°¸¦ °¡Áö°í µ¥ÀÌÅÍ¸¦ ÆÄ½ÌÇÕ´Ï´Ù.
+        	// Topë ˆë²¨ ë‹¨ê³„ì¸ response í‚¤ë¥¼ ê°€ì§€ê³  ë°ì´í„°ë¥¼ íŒŒì‹±í•©ë‹ˆë‹¤.
         	JsonObject parse_response = (JsonObject) obj.get("response");
-        	// response ·Î ºÎÅÍ body Ã£¾Æ¿É´Ï´Ù.
+        	// response ë¡œ ë¶€í„° body ì°¾ì•„ì˜µë‹ˆë‹¤.
         	JsonObject parse_body = (JsonObject) parse_response.get("body");
-        	// body ·Î ºÎÅÍ items ¹Ş¾Æ¿É´Ï´Ù.
+        	// body ë¡œ ë¶€í„° items ë°›ì•„ì˜µë‹ˆë‹¤.
         	JsonObject parse_items = (JsonObject) parse_body.get("items");
 		
-        	// items·Î ºÎÅÍ itemlist ¸¦ ¹Ş¾Æ¿À±â itemlist : µÚ¿¡ [ ·Î ½ÃÀÛÇÏ¹Ç·Î jsonarrayÀÌ´Ù
+        	// itemsë¡œ ë¶€í„° itemlist ë¥¼ ë°›ì•„ì˜¤ê¸° itemlist : ë’¤ì— [ ë¡œ ì‹œì‘í•˜ë¯€ë¡œ jsonarrayì´ë‹¤
         	JsonArray parse_item = (JsonArray) parse_items.get("item");
 		
         	String category;
-        	JsonObject weather; // parse_itemÀº ¹è¿­ÇüÅÂÀÌ±â ¶§¹®¿¡ ÇÏ³ª¾¿ µ¥ÀÌÅÍ¸¦ ÇÏ³ª¾¿ °¡Á®¿Ã¶§ »ç¿ëÇÕ´Ï´Ù.
+        	JsonObject weather; // parse_itemì€ ë°°ì—´í˜•íƒœì´ê¸° ë•Œë¬¸ì— í•˜ë‚˜ì”© ë°ì´í„°ë¥¼ í•˜ë‚˜ì”© ê°€ì ¸ì˜¬ë•Œ ì‚¬ìš©í•©ë‹ˆë‹¤.
 
-        	// ÇÊ¿äÇÑ µ¥ÀÌÅÍ¸¸ °¡Á®¿À·Á°íÇÕ´Ï´Ù.
+        	// í•„ìš”í•œ ë°ì´í„°ë§Œ ê°€ì ¸ì˜¤ë ¤ê³ í•©ë‹ˆë‹¤.
         	for(int i = 0 ; i < parse_item.size(); i++) {
 				weather = (JsonObject) parse_item.get(i);
-				System.out.println(i+"¹øÂ° µ¥ÀÌÅÍ°ª: "+weather);
+//				System.out.println(i+"ë²ˆì§¸ ë°ì´í„°ê°’: "+weather);
+				log.info(i+"ë²ˆì§¸ ë°ì´í„°ê°’: "+weather);
 				//String base_Date = weather.get(baseDate);
 				//String base_Date = (String)weather.get("baseDate");
 				//String fcst_Time = (String)weather.get("fcstDate");
-//				double fcst_Value = ((Long)weather.get("fcstValue")).doubleValue(); //½Ç¼ö·ÎµÈ °ª°ú Á¤¼ö·ÎµÈ °ªÀÌ µÑ´Ù ÀÖ¾î¼­ ½Ç¼ö·Î ÅëÀÏÇß½À´Ï´Ù.
+//				double fcst_Value = ((Long)weather.get("fcstValue")).doubleValue(); //ì‹¤ìˆ˜ë¡œëœ ê°’ê³¼ ì •ìˆ˜ë¡œëœ ê°’ì´ ë‘˜ë‹¤ ìˆì–´ì„œ ì‹¤ìˆ˜ë¡œ í†µì¼í–ˆìŠµë‹ˆë‹¤.
 				//String nX = (String)weather.get("nx");
 				//String nY = (String)weather.get("ny");
 //				category = (String)weather.get("category");
 				//String base_Time = (String)weather.get("baseTime");
 				//String fcscDate = (String)weather.get("fcscDate");
 				
-				// Ãâ·ÂÇÕ´Ï´Ù.
-//				System.out.print("¹è¿­ÀÇ "+i+"¹øÂ° ¿ä¼Ò");
+				// ì¶œë ¥í•©ë‹ˆë‹¤.
+//				System.out.print("ë°°ì—´ì˜ "+i+"ë²ˆì§¸ ìš”ì†Œ");
 //				System.out.print("   category : "+ category);
 //				System.out.print("   fcst_Value : "+ fcst_Value);
 //				System.out.println();
 			}
-			// ¸¶Áö¸·¿¡º¸¸é ¿¡·¯°¡ ¹ß»ıÇÏ¿´´Âµ¥ casting¹®Á¦ÀÔ´Ï´Ù. 
-			// ÀÌ´Â ¹İÈ¯µÇ´Â µ¥ÀÌÅÍÅ¸ÀÔÀÌ ´Ş¶ó¼­ÀÎµ¥ ÀÌ¹ø ±Û¿¡¼­´Â ¿©±â±îÁö¸¸ÇÏ°í
-			// µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀÔ·ÂÇÒ¶§´Â ¼öÁ¤ÇØ¼­ ÇÏ°Ú½À´Ï´Ù.
-		
+			// ë§ˆì§€ë§‰ì—ë³´ë©´ ì—ëŸ¬ê°€ ë°œìƒí•˜ì˜€ëŠ”ë° castingë¬¸ì œì…ë‹ˆë‹¤. 
+			// ì´ëŠ” ë°˜í™˜ë˜ëŠ” ë°ì´í„°íƒ€ì…ì´ ë‹¬ë¼ì„œì¸ë° ì´ë²ˆ ê¸€ì—ì„œëŠ” ì—¬ê¸°ê¹Œì§€ë§Œí•˜ê³ 
+			// ë°ì´í„°ë² ì´ìŠ¤ì— ì…ë ¥í• ë•ŒëŠ” ìˆ˜ì •í•´ì„œ í•˜ê² ìŠµë‹ˆë‹¤.
     	bf.close();
 	  } catch(Exception e) {
 	      System.out.println(e.getMessage());
 	  }
-	  
-	  
-
-//        // requestHeaders?
-//        Map<String, String> requestHeaders = new HashMap<>();
-//        requestHeaders.put("serviceKey", serviceKey);
-//        requestHeaders.put("baseDate", baseDate);
-//        requestHeaders.put("baseTime", baseTime);
-//        requestHeaders.put("nx", nx);
-//        requestHeaders.put("ny", ny);
-////        service.get(baseDate, baseTime, nx, ny);
-//        
-//
-//      // API µ¥ÀÌÅÍ·ÎºÎÅÍ ¾òÀº JSONÀ» ÆÄ½ÌÇÏ±â
-//      // (JSONParser ¶óÀÌºê·¯¸® »ç¿ë: ÆÄ½ÌÇÑ µ¥ÀÌÅÍ¸¦ JSONObject·Î º¯È¯ÇÏ¿© »ç¿ë) 
-//
-//      // get?
-//      String responseBody = get(apiURL, requestHeaders);
-//      String json = responseBody;
-//
-//
-//      JSONParser parser = new JSONParser();
-//      JSONObject obj = (JSONObject)parser.parse(json);
-//      JSONArray item = (JSONArray)obj.get("items");
-//
-//      // ÆÄ½ÌÇÑ µ¥ÀÌÅÍ¸¦ Á¤ÀÇÇÑ Å¬·¡½º °´Ã¼¸¦ ÅëÇØ ¸®½ºÆ®·Î ´ã±â
-//      List < WeatherVO > list = null;
-//      list = new ArrayList<WeatherVO>();
 	}
 	
 	
-//	@Test
-//    public void weatherTest() {
-//        try{
-//        	/*¿äÃ»Á¤º¸ÀÔ·Â
-//        	 * ¾Æ·¡¿Í °°Àº Á¤º¸µéÀº »ç¿ëÀÚ °¡ÀÌµå¸¦ È®ÀÎÇÏ¿© Ã£¾ÆÁÖ½Ã¸é µË´Ï´Ù.
-//        	 * À§µµ °æµµ´Â ¿¢¼¿ÆÄÀÏ ¾È¿¡ ÀÖ½À´Ï´Ù.
-//        	 * */
-//        	
-//            // Á¶È¸¸¦ ¿øÇÏ´Â Áö¿ªÀÇ °æµµ¿Í À§µµ¸¦ ÀÔ·Â (¼ö¿ø½Ã±Ç¼±±¸ Æòµ¿)
-//            String nx = "126";  //°æµµ
-//            String ny = "37";   //À§µµ
-//            String baseDate = "20180502"; // ÀÚ½ÅÀÌ Á¶È¸ÇÏ°í½ÍÀº ³¯Â¥¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä
-//            String baseTime = "0500"; //ÀÚ½ÅÀÌ Á¶È¸ÇÏ°í½ÍÀº ½Ã°£´ë¸¦ ÀÔ·ÂÇØÁÖ¼¼¿ä
-//            // ¼­ºñ½º ÀÎÁõÅ°ÀÔ´Ï´Ù. °ø°øµ¥ÀÌÅÍÆ÷ÅĞ¿¡¼­ Á¦°øÇØÁØ ÀÎÁõÅ°¸¦ ³Ö¾îÁÖ½Ã¸é µË´Ï´Ù.
-//            String serviceKey = "°³ÀÎº°·Î ¹ŞÀº ÀÎÁõÅ°¸¦ ³Ö¾îÁÖ¼¼¿ä";
-//            
-//            // Á¤º¸¸¦ ¸ğ¾Æ¼­ URLÁ¤º¸¸¦ ¸¸µé¸éµË´Ï´Ù. ¸Ç ¸¶Áö¸· "&_type=json"¿¡ µû¶ó ¹İÈ¯ µ¥ÀÌÅÍÀÇ ÇüÅÂ°¡ Á¤ÇØÁı´Ï´Ù.
-//            String urlStr = "http://newsky2.kma.go.kr/service/SecndSrtpdFrcstInfoService2/ForecastSpaceData?"
-//            		+ "serviceKey=" + serviceKey + "&base_date=" + baseDate + "&base_time=" + baseTime
-//            		+ "&nx="+ nx + "&ny=" + ny + "&_type=json";
-//            URL url = new URL(urlStr); // À§ urlStrÀ» ÀÌ¿ëÇØ¼­ URL °´Ã¼¸¦ ¸¸µé¾îÁİ´Ï´Ù.
-//            BufferedReader bf;
-//            String line = "";
-//            String result="";
-//
-//            //³¯¾¾ Á¤º¸¸¦ ¹Ş¾Æ¿É´Ï´Ù.
-//            bf = new BufferedReader(new InputStreamReader(url.openStream()));
-//
-//            //¹öÆÛ¿¡ ÀÖ´Â Á¤º¸¸¦ ÇÏ³ªÀÇ ¹®ÀÚ¿­·Î º¯È¯.
-//            while((line=bf.readLine())!=null){
-//                result=result.concat(line);
-//               // System.out.println(result);  // ¹Ş¾Æ¿Â µ¥ÀÌÅÍ¸¦ È®ÀÎÇØº¾´Ï´Ù.
-//            }
-//           
-//             // Json parser¸¦ ¸¸µé¾î ¸¸µé¾îÁø ¹®ÀÚ¿­ µ¥ÀÌÅÍ¸¦ °´Ã¼È­ ÇÕ´Ï´Ù. 
-//    		JsonParser parser = new JsonParser();
-//    		JsonObject obj = (JsonObject) parser.parse(result);
-//    		
-//    		// Top·¹º§ ´Ü°èÀÎ response Å°¸¦ °¡Áö°í µ¥ÀÌÅÍ¸¦ ÆÄ½ÌÇÕ´Ï´Ù.
-//    		JsonObject parse_response = (JsonObject) obj.get("response");
-//    		// response ·Î ºÎÅÍ body Ã£¾Æ¿É´Ï´Ù.
-//    		JsonObject parse_body = (JsonObject) parse_response.get("body");
-//    		// body ·Î ºÎÅÍ items ¹Ş¾Æ¿É´Ï´Ù.
-//    		JsonObject parse_items = (JsonObject) parse_body.get("items");
-//    		
-//    		// items·Î ºÎÅÍ itemlist ¸¦ ¹Ş¾Æ¿À±â itemlist : µÚ¿¡ [ ·Î ½ÃÀÛÇÏ¹Ç·Î jsonarrayÀÌ´Ù
-//    		JsonArray parse_item = (JsonArray) parse_items.get("item");
-//    		
-//    		String category;
-//    		JsonObject weather; // parse_itemÀº ¹è¿­ÇüÅÂÀÌ±â ¶§¹®¿¡ ÇÏ³ª¾¿ µ¥ÀÌÅÍ¸¦ ÇÏ³ª¾¿ °¡Á®¿Ã¶§ »ç¿ëÇÕ´Ï´Ù.
-//
-//    		// ÇÊ¿äÇÑ µ¥ÀÌÅÍ¸¸ °¡Á®¿À·Á°íÇÕ´Ï´Ù.
-//    		for(int i = 0 ; i < parse_item.size(); i++)
-//    		{
-//    			weather = (JsonObject) parse_item.get(i);
-//    			//String base_Date = (String)weather.get("baseDate");
-//    			//String fcst_Time = (String)weather.get("fcstDate");
-//    			double fcst_Value = ((Long)weather.get("fcstValue")).doubleValue(); //½Ç¼ö·ÎµÈ °ª°ú Á¤¼ö·ÎµÈ °ªÀÌ µÑ´Ù ÀÖ¾î¼­ ½Ç¼ö·Î ÅëÀÏÇß½À´Ï´Ù.
-//    			//String nX = (String)weather.get("nx");
-//    			//String nY = (String)weather.get("ny");
-//    			category = (String)weather.get("category");
-//    			//String base_Time = (String)weather.get("baseTime");
-//    			//String fcscDate = (String)weather.get("fcscDate");
-//    			
-//    			// Ãâ·ÂÇÕ´Ï´Ù.
-//    			System.out.print("¹è¿­ÀÇ "+i+"¹øÂ° ¿ä¼Ò");
-//    			System.out.print("   category : "+ category);
-//    			System.out.print("   fcst_Value : "+ fcst_Value);
-//    			System.out.println();
-//    		}
-//    		// ¸¶Áö¸·¿¡º¸¸é ¿¡·¯°¡ ¹ß»ıÇÏ¿´´Âµ¥ casting¹®Á¦ÀÔ´Ï´Ù. 
-//    		// ÀÌ´Â ¹İÈ¯µÇ´Â µ¥ÀÌÅÍÅ¸ÀÔÀÌ ´Ş¶ó¼­ÀÎµ¥ ÀÌ¹ø ±Û¿¡¼­´Â ¿©±â±îÁö¸¸ÇÏ°í
-//    		// µ¥ÀÌÅÍº£ÀÌ½º¿¡ ÀÔ·ÂÇÒ¶§´Â ¼öÁ¤ÇØ¼­ ÇÏ°Ú½À´Ï´Ù.
-//    		
-//
-//            bf.close();
-//        }catch(Exception e){
-//            System.out.println(e.getMessage());
-//        }
-//    }
+	
 
-	
-	
-	
-	
-//	@Autowired
-//	private MemberService service;
-//	
-//	@Test
-//	public void testExist() {
-//		
-//		// MemberService °´Ã¼°¡ Á¦´ë·Î ÁÖÀÔÀÌ °¡´ÉÇÑÁö È®ÀÎ
-//		log.info("¼­ºñ½º "+service);
-//		assertNotNull(service);
-//	}
-//
-//	// ¸ñ·Ï(¸®½ºÆ®)
+//	// ëª©ë¡(ë¦¬ìŠ¤íŠ¸)
 //	@Test
 //	public void testGetList() {
 //		
@@ -255,85 +212,46 @@ public class WeatherServiceTests {
 //			log.info(member);
 //		}
 //		
-//		// ¶÷´Ù½ÄÀ¸·Î Ç¥Çö (±³Àç ¹æ¹ı)
+//		// ëŒë‹¤ì‹ìœ¼ë¡œ í‘œí˜„ (êµì¬ ë°©ë²•)
 //		// service.getList().forEach(member -> log.info(member));
 //	}
 //	
-//	// È¸¿ø°¡ÀÔ - insert Ã³¸® (SelectKey »ç¿ë)
-//	@Test
-//	public void testRegister() {
-//		
-//		MemberVO member = new MemberVO();
-//		member.setMember_id("user2003");	// Á¸ÀçÇÏ´Â È¸¿ø id¿Í Áßº¹µÇÁö ¾Ê°Ô Å×½ºÆ®
-//		member.setMember_pass("1234");
-//		member.setMember_name("È«±æµ¿");
-//		member.setMember_gender("³²");
-//		member.setMember_birth(Date.valueOf("2010-12-25"));	// StringÀ» Date·Î º¯È¯
-//		member.setMember_phone("010-1245-1231");
-//		member.setMember_address("¿ëÀÎ½Ã");
-//		member.setMember_mail("aaa123@mp3.com");
-//		member.setMember_mailaccept("yes");	
-//		
-//		AuthVO auth = new AuthVO();
-//		auth.setMember_id("user2003");
-//		auth.setMember_auth("ROLE_USER");
-//		
-//		service.register(member, auth);
-//		
-//		log.info("»ı¼ºµÈ È¸¿ø¹øÈ£: "+member.getMember_no());
-//		log.info("»ı¼ºµÈ È¸¿øÁ¤º¸: "+member);
-//		log.info("»ı¼ºµÈ È¸¿ø±ÇÇÑ: "+auth);
-//	}
-//	
-//    //¾ÆÀÌµğ Áßº¹Ã¼Å©
-//	@Test
-//	public void testCheckId() {
-//		
-//		// Á¸ÀçÇÏ´Â È¸¿øID·Î Å×½ºÆ®
-//		MemberVO member = new MemberVO();
-//		member.setMember_id("admin90");
-//
-//		log.info("¾ÆÀÌµğ Áßº¹Ã¼Å© °á°ú: "+service.checkId(member));
-//		// Áßº¹ID°¡ ¾øÀ¸¸é 0, ÀÖÀ¸¸é 1 ¹İÈ¯
-//	}
-//	
-//	
-//	// Á¶È¸ (ÇÑ Çà) - read (select) Ã³¸®
+//	// ì¡°íšŒ (í•œ í–‰) - read (select) ì²˜ë¦¬
 //	@Test
 //	public void testGet() {
 //		
-//		// Á¸ÀçÇÏ´Â È¸¿ø ¹øÈ£·Î Å×½ºÆ®
-//		log.info("Á¶È¸ °á°ú: "+ service.get("user2003"));
+//		// ì¡´ì¬í•˜ëŠ” íšŒì› ë²ˆí˜¸ë¡œ í…ŒìŠ¤íŠ¸
+//		log.info("ì¡°íšŒ ê²°ê³¼: "+ service.get("user2003"));
 //	}
 //	
-////	»èÁ¦ - delete Ã³¸®
+////	ì‚­ì œ - delete ì²˜ë¦¬
 //	@Test
 //	public void testDelete() {
 //		
-//		// Á¸ÀçÇÏ´Â È¸¿ø ¹øÈ£·Î Å×½ºÆ®
-//		log.info("»èÁ¦ DELETE °á°ú: "+ service.remove(102L));
+//		// ì¡´ì¬í•˜ëŠ” íšŒì› ë²ˆí˜¸ë¡œ í…ŒìŠ¤íŠ¸
+//		log.info("ì‚­ì œ DELETE ê²°ê³¼: "+ service.remove(102L));
 //	}
 //	
-////	¼öÁ¤ - update Ã³¸®
+////	ìˆ˜ì • - update ì²˜ë¦¬
 //	@Test
 //	public void testUpdate() {
 //		
-//		// Æ¯Á¤ÇÑ È¸¿øÀ» ¸ÕÀú Á¶È¸
+//		// íŠ¹ì •í•œ íšŒì›ì„ ë¨¼ì € ì¡°íšŒ
 //		MemberVO member = service.get("user12");
 //
-//		// Á¸ÀçÇÏ´Â È¸¿ø ¹øÈ£·Î Å×½ºÆ®
+//		// ì¡´ì¬í•˜ëŠ” íšŒì› ë²ˆí˜¸ë¡œ í…ŒìŠ¤íŠ¸
 //		member.setMember_no(1L);
 //		member.setMember_id("user12");
 //		member.setMember_pass("1234");
-//		member.setMember_name("È«±æµ¿1");
-//		member.setMember_gender("³²");
-//		member.setMember_birth(Date.valueOf("2010-12-25"));	// StringÀ» Date·Î º¯È¯
+//		member.setMember_name("í™ê¸¸ë™1");
+//		member.setMember_gender("ë‚¨");
+//		member.setMember_birth(Date.valueOf("2010-12-25"));	// Stringì„ Dateë¡œ ë³€í™˜
 //		member.setMember_phone("010-1245-1231");
-//		member.setMember_address("¿ëÀÎ½Ã");
+//		member.setMember_address("ìš©ì¸ì‹œ");
 //		member.setMember_mail("12aaa@mp3.com");
 //		member.setMember_mailaccept("yes");	
 //		
-//		log.info("¼öÁ¤ UPDATE °á°ú: "+ service.modify(member));
+//		log.info("ìˆ˜ì • UPDATE ê²°ê³¼: "+ service.modify(member));
 //		log.info(member);
 //	}
 	

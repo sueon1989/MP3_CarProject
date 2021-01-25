@@ -7,7 +7,7 @@ import java.util.List;
 import lombok.Data;
 
 @Data
-public class WeatherVO {
+public class WeatherInfoVO {
 	
 	private Long weather_no;
 	
@@ -42,7 +42,7 @@ public class WeatherVO {
 	private String vec;			// Ç³Çâ		(deg)
 	private String wsd;			// Ç³¼Ó		(m/s)
 	
-	public WeatherVO() {
+	public WeatherInfoVO() {
 		this.pop = "";
 		this.pty = "";
 		this.r06 = "";

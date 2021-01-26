@@ -9,13 +9,9 @@
           <div class="row justify-content-center">
             <div class="col-12">
 
-				<div>
-				     <div class="row align-items-center h-100">
-				     	<form action="/customLogout" method='post' class="col-lg-3 col-md-4 col-10 mx-auto text-center">
-						
-              
-              
-              
+
+
+
 	<!-- 기본 화면 -->
 	<h2></h2>
 	<h2 class="mb-2 page-title">Main Page</h2>
@@ -66,17 +62,19 @@
                  </div> <!-- .card-body -->
                </div> <!-- .card -->
              </div>
-
+	
+	<form action="#" method='post' class="col-lg-3 col-md-4 col-10 text-center">
 		<button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/customLogin'">Login</button>
 		<button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/member/register'">Sign Up</button>
         <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/memberFind/findIdInputMail'">Find ID</button>	
         <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/memberFind/findPassInputMail'">Find PW</button>
-				
+	</form>
 	</sec:authorize>
 	
 	
 	<!-- 로그인한 경우 -->
 	<sec:authorize access="isAuthenticated()">
+	<form action="/customLogout" method='post' class="col-lg-3 col-md-4 col-10 text-center">
 	
        	<h5>로그인 정보</h5>
 		<p>principal:	<sec:authentication property="principal"/></p>
@@ -89,25 +87,23 @@
        	
 		<button class="btn btn-lg btn-primary btn-block">로그아웃</button>
 		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-			
+		
+	</form>
 	</sec:authorize>
 	
 	
 	<!-- 관리자로 로그인한 경우 -->
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
-		<hr class="my-4">
-        <div>
-        	<h5>관리자</h5>
-        	<button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/sample/admin'">회원관리</button>
-        </div>
+	<hr class="my-4">
+	<form action="#" method='post' class="col-lg-3 col-md-4 col-10 text-center">
+       	<h5>관리자</h5>
+       	<button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/sample/admin'">회원관리</button>
+    </form>  	
 	</sec:authorize>
 
 
 
-						</form>
-					</div> <!-- wrapper vh-100 -->
-		     	</div> <!-- row align-items-center -->
-		     	
+
             </div> <!-- .col-12 -->
           </div> <!-- .row -->
         </div> <!-- .container-fluid -->

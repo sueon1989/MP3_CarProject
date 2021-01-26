@@ -60,7 +60,12 @@ public class WeatherController {
         log.info("날씨조회 API service 완료: "+ weather);
         log.info("날씨 DB등록 service 완료: "+ service.register(weather) +
         		" (baseDate: "+weather.getFcstDate()+" "+weather.getFcstTime()+")");
+        
+        weather = service.getWeatherInfo(weather);
+        log.info("날씨 정보등록 service 완료: "+ weather);
+        
         model.addAttribute("weather", weather);
+//        model.addAttribute("weatherInfo", weather);
 		log.info("날씨정보 조회완료");
 		
 		return "/common/weather/weatherInfo";

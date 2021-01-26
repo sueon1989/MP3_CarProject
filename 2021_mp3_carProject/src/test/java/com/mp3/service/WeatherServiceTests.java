@@ -29,7 +29,6 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mp3.domain.AuthVO;
 import com.mp3.domain.MemberVO;
-import com.mp3.domain.WeatherInfoVO;
 import com.mp3.domain.WeatherVO;
 
 import lombok.extern.log4j.Log4j;
@@ -72,6 +71,8 @@ public class WeatherServiceTests {
         WeatherVO weather = service.getWeatherAPI(serviceKey, baseDate, baseTime, nx, ny);
         log.info("날씨조회 API service 완료: "+ weather);
         log.info("날씨 DB등록 service 완료: "+ service.register(weather) +" (baseDate: "+weather.getFcstDate()+" "+weather.getFcstTime()+")");
+        
+        log.info("날씨 정보등록 service 완료: "+ service.getWeatherInfo(weather));
     }
 
 
@@ -83,7 +84,12 @@ public class WeatherServiceTests {
 		log.info("현재 날짜조회 service 완료: "+ weather.getBaseDate()+" "+weather.getBaseTime());
 	}
 
-
+	@Test
+	public void getWeatherInfo() {
+		WeatherVO weather = new WeatherVO();
+		weather = service.getNowDate(weather);
+		log.info("현재 날짜조회 service 완료: "+ weather.getBaseDate()+" "+weather.getBaseTime());
+	}
 
 		
 		
@@ -107,7 +113,7 @@ public class WeatherServiceTests {
         log.info("날씨 DB등록 service 완료: "+ service.register(weather) +" (no: "+ weather.getWeather_no() +")");
         // 여기까지 controller 구현 완료
     	
-        WeatherInfoVO weatherInfo = service.getWeatherInfo(weather);
+        WeatherVO weatherInfo = service.getWeatherInfo(weather);
         log.info("날씨조회: "+ weather);
         log.info("날씨정보: "+ weatherInfo);
         

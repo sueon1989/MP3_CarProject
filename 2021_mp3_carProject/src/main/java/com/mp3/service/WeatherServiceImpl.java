@@ -15,7 +15,6 @@ import org.springframework.stereotype.Service;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import com.mp3.domain.WeatherInfoVO;
 import com.mp3.domain.WeatherVO;
 import com.mp3.mapper.WeatherMapper;
 
@@ -227,9 +226,8 @@ public class WeatherServiceImpl implements WeatherService {
 
 
 	@Override
-	public WeatherInfoVO getWeatherInfo(WeatherVO weather) {
+	public WeatherVO getWeatherInfo(WeatherVO weather) {
 		
-        WeatherInfoVO weatherInfo = new WeatherInfoVO();
     	String pop = weather.getPop();					// 강수확률	(%)
     	String pty = weather.getPty();					// 강수형태
     	int r06 = Integer.parseInt(weather.getR06());	// 6시간 강수량	(1 mm)
@@ -246,39 +244,39 @@ public class WeatherServiceImpl implements WeatherService {
     	String wsd = weather.getWsd();			// 풍속		(m/s)
 
         // 하늘상태(SKY) 코드 : 맑음(1), 구름많음(3), 흐림(4)
-        if 		(sky.equals("1"))	weatherInfo.setSky("맑음");
-        else if (sky.equals("3"))	weatherInfo.setSky("구름많음");
-        else if (sky.equals("4"))	weatherInfo.setSky("흐림");
+        if 		(sky.equals("1"))	weather.setSky("맑음");
+        else if (sky.equals("3"))	weather.setSky("구름많음");
+        else if (sky.equals("4"))	weather.setSky("흐림");
         
     	// 강수형태(PTY) 코드 
-        if 		(pty.equals("0"))	weatherInfo.setPty("");
-        else if (pty.equals("1"))	weatherInfo.setPty("비");
-        else if (pty.equals("2"))	weatherInfo.setPty("진눈개비");
-        else if (pty.equals("3"))	weatherInfo.setPty("눈");
-        else if (pty.equals("4"))	weatherInfo.setPty("소나기");
-        else if (pty.equals("5"))	weatherInfo.setPty("빗방울");
-        else if (pty.equals("6"))	weatherInfo.setPty("빗방울/눈날림");
-        else if (pty.equals("7"))	weatherInfo.setPty("눈날림");
+        if 		(pty.equals("0"))	weather.setPty("");
+        else if (pty.equals("1"))	weather.setPty("비");
+        else if (pty.equals("2"))	weather.setPty("진눈개비");
+        else if (pty.equals("3"))	weather.setPty("눈");
+        else if (pty.equals("4"))	weather.setPty("소나기");
+        else if (pty.equals("5"))	weather.setPty("빗방울");
+        else if (pty.equals("6"))	weather.setPty("빗방울/눈날림");
+        else if (pty.equals("7"))	weather.setPty("눈날림");
         
         // 6시간 강수량	(1 mm)
         // 예)	R06 =  6 일 경우 강수량은 5~9mm
         // 		RO6 = 25 일 경우 강수량은 20~39mm
-        if(r06 < 0.1)		weatherInfo.setR06("");
-        else if(r06 < 1)	weatherInfo.setR06("1 mm 미만");
-        else if(r06 < 5)	weatherInfo.setR06("1~4 mm");
-        else if(r06 < 10)	weatherInfo.setR06("5~9 mm");
-        else if(r06 < 20)	weatherInfo.setR06("10~19 mm");
-        else if(r06 < 40)	weatherInfo.setR06("20~39 mm");
-        else if(r06 < 70)	weatherInfo.setR06("40~69 mm");
-        else 				weatherInfo.setR06("70 mm 이상");
+        if(r06 < 0.1)		weather.setR06("");
+        else if(r06 < 1)	weather.setR06("1 mm 미만");
+        else if(r06 < 5)	weather.setR06("1~4 mm");
+        else if(r06 < 10)	weather.setR06("5~9 mm");
+        else if(r06 < 20)	weather.setR06("10~19 mm");
+        else if(r06 < 40)	weather.setR06("20~39 mm");
+        else if(r06 < 70)	weather.setR06("40~69 mm");
+        else 				weather.setR06("70 mm 이상");
         
         // 6시간 신적설	(1 cm)
-        if(s06 < 0.1)		weatherInfo.setS06("");
-        else if(s06 < 1)	weatherInfo.setS06("1 cm 미만");
-        else if(s06 < 5)	weatherInfo.setS06("1~4 cm");
-        else if(s06 < 10)	weatherInfo.setS06("5~9 cm");
-        else if(s06 < 20)	weatherInfo.setS06("10~19 cm");
-        else 				weatherInfo.setS06("20 cm 이상");
+        if(s06 < 0.1)		weather.setS06("");
+        else if(s06 < 1)	weather.setS06("1 cm 미만");
+        else if(s06 < 5)	weather.setS06("1~4 cm");
+        else if(s06 < 10)	weather.setS06("5~9 cm");
+        else if(s06 < 20)	weather.setS06("10~19 cm");
+        else 				weather.setS06("20 cm 이상");
         
         // 풍속 정보
         // 동서바람성분(UUU) : 동(+표기), 서(-표기)
@@ -291,7 +289,7 @@ public class WeatherServiceImpl implements WeatherService {
         // - 해상에는 기온군, 강수확률, 강수량/적설, 습도를 제공하지 않음
         // (Missing값으로 마스킹처리 함)
 
-		return weatherInfo;
+		return weather;
 	}
 	
 

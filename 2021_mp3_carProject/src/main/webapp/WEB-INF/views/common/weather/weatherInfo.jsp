@@ -2,8 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-        
+
+
 <%@include file="/WEB-INF/views/includes/header.jsp" %>  
         <div class="container-fluid">
           <div class="row justify-content-center">
@@ -16,25 +18,55 @@
 	<h2 class="mb-2 page-title">날씨예보</h2>
 	<hr class="my-4">
 	
-	<span>      
-		<img src="/resources/weatherSVG/cloud.svg" alt="..." class="img-rounded" width="40px" height="35px">
-	</span> 
 	
-	<!-- 로그인하지 않은 경우 -->
-	<sec:authorize access="isAnonymous()">
 	
-		회원가입 후 자동차관리용 플러그를 신청하세요!<br>
-		평균 주행거리, 연비 자동계산, 
-		실시간 날씨정보에 따른 차량점검 tip 등의<br>
-		편리한 기능을 사용하실 수 있습니다!<br>
+	
+	<span>    
 		
-        <a href="/customLogin">로그인</a><br>
-        <a href="/member/register">회원가입</a><br>
-	</sec:authorize>
+	<!-- 예보시각		(0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회)) -->
+	<c:set var="FcstTime" value="${weather.fcstTime}"/>
+	<%-- 길이: ${fn:length(BaseTime) }	<br> --%> 
 	
 	
-	<!-- 로그인한 경우 -->
-	<sec:authorize access="isAuthenticated()">
+		<table>
+			<tr>
+				<td>
+					수원시 권선구 평동, <br>
+					
+					<img src="/resources/weatherSVG/cloud.svg" alt="..." class="img-rounded" height="120px">
+				</td>
+				<td>
+					<br>
+					<br>
+					<br>
+					</b><p>${fn:substring(FcstTime,0,2) }시 예보</p> 
+					<h2>${weather.sky}</h2><br> 
+				</td>
+			</tr>
+			<tr>
+				<th>22</th>
+			</tr>
+		</table>
+		
+		
+	<!-- 
+	private String pop;			// 강수확률	(%)
+	private String pty;			// 강수형태
+	private String r06;			// 6시간 강수량	(1 mm)
+	private String reh;			// 습도		(%)
+	private String s06;			// 6시간 신적설	(1 cm)
+	private String sky;			// 하늘상태
+	private String t3h;			// 3시간 기온		(℃)
+	private String tmn;			// 아침 최저기온	(℃)
+	private String tmx; 		// 낮 최고기온		(℃)
+	private String uuu;			// 풍속(동서성분)	(m/s)
+	private String vvv;			// 풍속(남북성분)	(m/s)
+	private String wav; 	//파고	(M)
+	private String vec;			// 풍향		(deg)
+	private String wsd;			// 풍속		(m/s) -->
+		
+	</span> <br> <br> <br> <br> <br>
+	경기도 수원시 권선구 평동 </br></br>
 	
 		위치: 경기도 수원시 권선구 평동 </br></br>
 		날씨: ${weather} </br></br>
@@ -115,7 +147,24 @@
              
                         
                         
-		      
+		     
+	
+	<!-- 로그인하지 않은 경우 -->
+	<sec:authorize access="isAnonymous()">
+	
+		회원가입 후 자동차관리용 플러그를 신청하세요!<br>
+		평균 주행거리, 연비 자동계산, 
+		실시간 날씨정보에 따른 차량점검 tip 등의<br>
+		편리한 기능을 사용하실 수 있습니다!<br>
+		
+        <a href="/customLogin">로그인</a><br>
+        <a href="/member/register">회원가입</a><br>
+	</sec:authorize>
+	
+	
+	<!-- 로그인한 경우 -->
+	<sec:authorize access="isAuthenticated()">
+	 
 	</sec:authorize>
 
 

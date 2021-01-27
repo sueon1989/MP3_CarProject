@@ -73,6 +73,8 @@ public class MypageController {
 		 return "/member/mypage/ViewTest";
 	  }
 	 
+	 
+	 
 	 //map test
 	 @GetMapping("/ViewTest1")
 		public String ViewTest1(/* GpsVO gps, */Model model) {
@@ -93,6 +95,18 @@ public class MypageController {
 		 model.addAttribute("Longitude", gps.getLongitude());
 		 log.info(gps.getLongitude()+"****gps.getLongitude()값 로그인포");
 		 return "/member/mypage/ViewTest2";
+	  }
+	 
+	 
+	 //map test
+	 @GetMapping("/ViewTest3")
+		public String ViewTest3(/* GpsVO gps, */Model model) {
+		 GpsVO gps = service.mapView();
+		 model.addAttribute("Latitude", gps.getLatitude());
+		 log.info(gps.getLatitude()+"****gps.getLatitude()값 로그인포");
+		 model.addAttribute("Longitude", gps.getLongitude());
+		 log.info(gps.getLongitude()+"****gps.getLongitude()값 로그인포");
+		 return "/member/mypage/ViewTest3";
 	  }
 
 	 
@@ -140,6 +154,12 @@ public class MypageController {
 	 @GetMapping("/myInfoCar")
 	  public String myInfoCar() {
 		 return "/member/mypage/myInfoCar";
+	  }
+	 
+	 //서비스 소개 페이지
+	 @GetMapping("/ServiceInfo")
+	  public String ServiceInfo() {
+		 return "/member/mypage/ServiceInfo";
 	  }
 	 
 	 

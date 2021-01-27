@@ -4,34 +4,39 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
 <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
         
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
-<head>
+        
+<%@include file="/WEB-INF/views/includes/header.jsp" %>  
+    <div class="container-fluid">
+       <div class="row justify-content-center">
+        <div class="col-12">
+<!-- <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd"> -->
+<!-- <html> -->
+<!-- <head> -->
 	
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="favicon.ico">
-	<title>MIT Car Project</title>
+<!--     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"> -->
+<!--     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> -->
+<!--     <meta name="description" content=""> -->
+<!--     <meta name="author" content=""> -->
+<!--     <link rel="icon" href="favicon.ico"> -->
+<!-- 	<title>MIT Car Project</title> -->
 	
-    <!-- Simple bar CSS -->
-    <link rel="stylesheet" href="/resources/light/css/simplebar.css">
+<!--     Simple bar CSS -->
+<!--     <link rel="stylesheet" href="/resources/light/css/simplebar.css"> -->
     
-    <!-- Fonts CSS -->
-    <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+<!--     Fonts CSS -->
+<!--     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100;0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> -->
     
-    <!-- Icons CSS -->
-    <link rel="stylesheet" href="/resources/light/css/feather.css">
+<!--     Icons CSS -->
+<!--     <link rel="stylesheet" href="/resources/light/css/feather.css"> -->
     
-    <!-- Date Range Picker CSS -->
-    <link rel="stylesheet" href="/resources/light/css/daterangepicker.css">
+<!--     Date Range Picker CSS -->
+<!--     <link rel="stylesheet" href="/resources/light/css/daterangepicker.css"> -->
     
-    <!-- App CSS -->
-    <link rel="stylesheet" href="/resources/light/css/app-light.css" id="lightTheme">
-    <link rel="stylesheet" href="/resources/light/css/app-dark.css" id="darkTheme" disabled>
+<!--     App CSS -->
+<!--     <link rel="stylesheet" href="/resources/light/css/app-light.css" id="lightTheme"> -->
+<!--     <link rel="stylesheet" href="/resources/light/css/app-dark.css" id="darkTheme" disabled> -->
     
-</head>
+<!-- </head> -->
 
 
 <%-- <h1>Custom Login Page</h1>
@@ -41,44 +46,43 @@
   
 <h2><c:out value="${error}"/></h2>
 <h2><c:out value="${logout}"/></h2> --%>
+	<!-- 기본 화면 -->
+	<h2 class="mb-2 page-title">회원 탈퇴</h2>
+	<hr class="my-4">
 
-<body>
-<div class="wrapper vh-100">
-     <div class="row align-items-center h-100">
+<!-- <body> -->
+<!-- <div class="wrapper vh-100"> -->
+<!--      <div class="row align-items-center h-100"> -->
      
-       <form action="/mypage/myInfoDeletePassCheck" method='post' class="col-lg-3 col-md-4 col-10 mx-auto text-center">
-         <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/">
-<!--            <svg version="1.1" id="logo" class="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve"> -->
-<!--              <g> -->
-<!--                <polygon class="st0" points="78,105 15,105 24,87 87,87 	" /> -->
-<!--                <polygon class="st0" points="96,69 33,69 42,51 105,51 	" /> -->
-<!--                <polygon class="st0" points="78,33 15,33 24,15 87,15 	" /> -->
-<!--              </g> -->
-<!--            </svg> -->
+<!--        <form action="/mypage/myInfoDeletePassCheck" method='post' class="col-lg-3 col-md-4 col-10 mx-auto text-center"> -->
+<!--          <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/"> -->
+<!-- <!--            <svg version="1.1" id="logo" class="navbar-brand-img brand-md" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 120 120" xml:space="preserve"> --> 
+<!-- <!--              <g> --> 
+<!-- <!--                <polygon class="st0" points="78,105 15,105 24,87 87,87 	" /> --> 
+<!-- <!--                <polygon class="st0" points="96,69 33,69 42,51 105,51 	" /> --> 
+<!-- <!--                <polygon class="st0" points="78,33 15,33 24,15 87,15 	" /> --> 
+<!-- <!--              </g> --> 
+<!-- <!--            </svg> --> 
 		
-		<span>      
-              <img src="/resources/light/assets/images/car_logo.png" alt="..." 
-              class="img-rounded" width="35px" height="30px"></span>
+<!-- 		<span>       -->
+<!--               <img src="/resources/light/assets/images/car_logo.png" alt="..."  -->
+<!--               class="img-rounded" width="35px" height="30px"></span> -->
               
-        <span>      
-              <img src="/resources/light/assets/images/car_logo.png" alt="..." 
-              class="img-rounded" width="40px" height="35px"></span>
-        <span>      
-              <img src="/resources/light/assets/images/car_logo.png" alt="..." 
-              class="img-rounded" width="45px" height="40px"></span>     
+<!--         <span>       -->
+<!--               <img src="/resources/light/assets/images/car_logo.png" alt="..."  -->
+<!--               class="img-rounded" width="40px" height="35px"></span> -->
+<!--         <span>       -->
+<!--               <img src="/resources/light/assets/images/car_logo.png" alt="..."  -->
+<!--               class="img-rounded" width="45px" height="40px"></span>      -->
         
-         </a>
+<!--          </a> -->
          
          
     <!-- 로그인하지 않은 경우 -->
 	<sec:authorize access="isAnonymous()">
-				<br>
-		        <a href="/customLogin">로그인</a><br>
-		        <a href="/member/register">회원가입</a><br>
-				<a href="/memberFind/findIdInputMail">메일</a> / 
-				<a href="/memberFind/findIdInputPhone">전화번호</a>로 ID 찾기<br>
-				<a href="/memberFind/findPassInputMail">메일</a> / 
-				<a href="/memberFind/findPassInputPhone">전화번호</a>로 PW 찾기<br>
+				<p><em>로그인후 이용하세요.</em></p>
+		      <button type="button" class="btn mb-2 btn-outline-info" onclick = "location.href = '/customLogin'">로그인</button><br>
+		      <button type="button" class="btn mb-2 btn-outline-info" onclick = "location.href = '/member/register'">회원가입</button>
 	</sec:authorize>
          
          
@@ -86,9 +90,11 @@
  	<!-- 로그인한 경우 -->
 	<sec:authorize access="isAuthenticated()">        
          <h1 class="h1 mb-3"><font size="5"> 비밀번호 확인 </font></h1>
-         
-         
+          <hr class="my-4"> 
+         <div class="row my-4">
          <div class="form-group">
+                           <div class="card shadow">
+<!--                     <div class="card-body"> -->
            <input type="password" name='Deletenum' value='' 
            	id="Deletenum" class="form-control form-control-lg" class="form-control" placeholder="비밀번호 입력" required="" autofocus="">
 		   <a href="/mypage/myInfoDeletePassCheck" class="btn btn-lg btn-success btn-block">비밀번호 확인</a> 
@@ -151,6 +157,8 @@
   
   
 </body>
+
+<%@include file="/WEB-INF/views/includes/footer.jsp" %>   
 </html>
 
 

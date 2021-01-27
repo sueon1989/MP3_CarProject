@@ -11,16 +11,16 @@
     <meta charset="utf-8">
     <title>내 차 위치 & 주변 로드뷰 보기</title>
     <style>
-    .screen_out {display:block;overflow:hidden;position:absolute;left:-9999px;width:1px;height:1px;font-size:0;line-height:0;text-indent:-9999px}
-    .wrap_content {overflow:hidden;height:330px}
-    .wrap_map {width:50%;height:300px;float:left;position:relative}
-    .wrap_roadview {width:50%;height:300px;float:left;position:relative}
-    .wrap_button {position:absolute;left:15px;top:12px;z-index:2}
-    .btn_comm {float:left;display:block;width:70px;height:27px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/sample_button_control.png) no-repeat}
-    .btn_linkMap {background-position:0 0;}
-    .btn_resetMap {background-position:-69px 0;}
-    .btn_linkRoadview {background-position:0 0;}
-    .btn_resetRoadview {background-position:-69px 0;}
+/*     .screen_out {display:block;overflow:hidden;position:absolute;left:-9999px;width:1px;height:1px;font-size:0;line-height:0;text-indent:-9999px} */
+/*     .wrap_content {overflow:hidden;height:330px} */
+/*     .wrap_map {width:50%;height:300px;float:left;position:relative} */
+/*     .wrap_roadview {width:50%;height:300px;float:left;position:relative} */
+/*     .wrap_button {position:absolute;left:15px;top:12px;z-index:2} */
+/*     .btn_comm {float:left;display:block;width:70px;height:27px;background:url(https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/sample_button_control.png) no-repeat} */
+/*     .btn_linkMap {background-position:0 0;} */
+/*     .btn_resetMap {background-position:-69px 0;} */
+/*     .btn_linkRoadview {background-position:0 0;} */
+/*     .btn_resetRoadview {background-position:-69px 0;} */
 </style>
 </head>
 <body>
@@ -31,18 +31,23 @@
 <h2 class="mb-2 page-title">내 차 위치 & 주변 로드뷰 보기</h2>
 <hr class="my-4">
 <div class="wrap_content">
+	      <div class="card-body">
+	        <div class="row mt-1 align-items-center">
+	        
+	          <div class="col-12 col-lg-4 text-left pl-4">
     <div class="wrap_map">
-    	<div id="map" style="width:95%;height:400px;"></div> <!-- 지도를 표시할 div 입니다 -->
+    	<div id="map" style="width:100%;height:350px;"></div> <!-- 지도를 표시할 div 입니다 -->
         <div class="wrap_button">
-            <a href="javascript:;" class="btn_comm btn_linkMap" target="_blank" onclick="moveKakaoMap(this)"><span class="screen_out">지도 크게보기</span></a> <!-- 지도 크게보기 버튼입니다 -->
-            <a href="javascript:;" class="btn_comm btn_resetMap" onclick="resetKakaoMap()"><span class="screen_out">지도 초기화</span></a> <!-- 지도 크게보기 버튼입니다 -->
+            <a href="javascript:;" class="btn mb-2 btn-outline-info" target="_blank" onclick="moveKakaoMap(this)"><span class="screen_out">지도 크게보기</span></a> <!-- 지도 크게보기 버튼입니다 -->
+            <a href="javascript:;" class="btn mb-2 btn-outline-info" onclick="resetKakaoMap()"><span class="screen_out">지도 초기화</span></a> <!-- 지도 크게보기 버튼입니다 -->
         </div>
     </div>
+    <br>
     <div class="wrap_roadview">
-        <div id="roadview" style="width:95%;height:400px;"></div> <!-- 로드뷰를 표시할 div 입니다 -->
+        <div id="roadview" style="width:100%;height:350px;"></div> <!-- 로드뷰를 표시할 div 입니다 -->
         <div class="wrap_button">
-            <a href="javascript:;" class="btn_comm btn_linkRoadview" target="_blank" onclick="moveKakaoRoadview(this)"><span class="screen_out">로드뷰 크게보기</span></a> <!-- 로드뷰 크게보기 버튼입니다 -->
-            <a href="javascript:;" class="btn_comm btn_resetRoadview" onclick="resetRoadview()"><span class="screen_out">로드뷰 크게보기</span></a> <!-- 로드뷰 리셋 버튼입니다 -->
+            <a href="javascript:;" class="btn mb-2 btn-outline-info" target="_blank" onclick="moveKakaoRoadview(this)"><span class="screen_out">로드뷰 크게보기</span></a> <!-- 로드뷰 크게보기 버튼입니다 -->
+            <a href="javascript:;" class="btn mb-2 btn-outline-info" onclick="resetRoadview()"><span class="screen_out">로드뷰 리셋</span></a> <!-- 로드뷰 리셋 버튼입니다 -->
         </div>
     </div>
 </div>
@@ -71,7 +76,7 @@ var mMarker = new kakao.maps.Marker({
 // 지도에 올릴 장소명 인포윈도우 입니다.
 var mLabel = new kakao.maps.InfoWindow({
     position: mapCenter, // 지도의 중심좌표에 올립니다.
-    content: '이 주변에 차가 있습니다' // 인포윈도우 내부에 들어갈 컨텐츠 입니다.
+    content: '내 차 위치' // 인포윈도우 내부에 들어갈 컨텐츠 입니다.
 });
 mLabel.open(map, mMarker); // 지도에 올리면서, 두번째 인자로 들어간 마커 위에 올라가도록 설정합니다.
 
@@ -150,6 +155,12 @@ function resetRoadview(){
 
 
 
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 
 <%@include file="/WEB-INF/views/includes/footer.jsp" %>
 </body>

@@ -137,7 +137,7 @@
 <!--                   <a class="nav-link pl-3" href="./index.html"><span class="ml-1 item-text">메인화면</span></a> -->
 <!--                 </li> -->
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="/Intro/ServiceInfo"><span class="ml-1 item-text">서비스 소개</span></a>
+                  <a class="nav-link pl-3" href="/mypage/ServiceInfo"><span class="ml-1 item-text">서비스 소개</span></a>
                 </li>
 <!--                 <li class="nav-item"> -->
 <!--                   <a class="nav-link pl-3" href="./dashboard-sales.html"><span class="ml-1 item-text">내 정보 관리</span></a> -->
@@ -145,9 +145,9 @@
 <!--                 <li class="nav-item"> -->
 <!--                   <a class="nav-link pl-3" href="./dashboard-saas.html"><span class="ml-1 item-text">차량 정보 관리</span></a> -->
 <!--                 </li> -->
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="./dashboard-system.html"><span class="ml-1 item-text">인사말</span></a>
-                </li>
+<!--                 <li class="nav-item"> -->
+<!--                   <a class="nav-link pl-3" href="./dashboard-system.html"><span class="ml-1 item-text">인사말</span></a> -->
+<!--                 </li> -->
               </ul>
             </li>
           </ul>
@@ -193,6 +193,9 @@
                   <a class="nav-link pl-3" href="/weather/weatherInfo"><span class="ml-1 item-text">내 주변 실시간 기상 정보</span></a>
                 </li>
                 <li class="nav-item">
+                   <a class="nav-link pl-3" href="/mypage/ViewTest2"><span class="ml-1 item-text">내 위치 최신화</span></a>
+                </li>
+                <li class="nav-item">
                   <a class="nav-link pl-3" href="/weather/carMagTipBySeason"><span class="ml-1 item-text">계절별 차량 관리 Tip</span></a>
                 </li>
                 <li class="nav-item">
@@ -225,43 +228,42 @@
             <li class="nav-item dropdown">
               <a href="#forms" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-credit-card fe-16"></i>
-                <span class="ml-3 item-text">My Car Care & GPS</span>
+                <span class="ml-3 item-text">My Car GPS</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="forms">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./form_elements.html"><span class="ml-1 item-text">주행거리 관리</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="./form_advanced.html"><span class="ml-1 item-text">주행거리별 차량점검 List</span></a>
-                </li>
+                  <a class="nav-link pl-3" href="./form_elements.html"><span class="ml-1 item-text">주행거리 관리<span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="/mypage/ViewTest"><span class="ml-1 item-text">현재 차량 위치</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="/mypage/mapView"><span class="ml-1 item-text">최근 주행 경로</span></a>
+                  <a class="nav-link pl-3" href="/mypage/mapView"><span class="ml-1 item-text">예상 경로 거리 측정</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="/mypage/ViewTest1"><span class="ml-1 item-text">차량 주변 편의시설</span></a>
                 </li>
-              </ul>
-            </li>
-            <li class="nav-item dropdown">
-              <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
-                <i class="fe fe-grid fe-16"></i>
-                <span class="ml-3 item-text">통계자료</span>
-              </a>
-              <ul class="collapse list-unstyled pl-4 w-100" id="tables">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="/mypage/ViewTest"><span class="ml-1 item-text">지도 테스트 1</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/mypage/ViewTest1"><span class="ml-1 item-text">지도 테스트 2</span></a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/mypage/ViewTest2"><span class="ml-1 item-text">지도 테스트 3</span></a>
+                  <a class="nav-link pl-3" href="/mypage/ViewTest3"><span class="ml-1 item-text">내 주변 실시간 교통정보</span></a>
                 </li>
               </ul>
             </li>
+<!--             <li class="nav-item dropdown"> -->
+<!--               <a href="#tables" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link"> -->
+<!--                 <i class="fe fe-grid fe-16"></i> -->
+<!--                 <span class="ml-3 item-text">통계자료</span> -->
+<!--               </a> -->
+<!--               <ul class="collapse list-unstyled pl-4 w-100" id="tables"> -->
+<!--                 <li class="nav-item"> -->
+<!--                   <a class="nav-link pl-3" href="/mypage/ViewTest"><span class="ml-1 item-text">지도 테스트 1</span></a> -->
+<!--                 </li> -->
+<!--                 <li class="nav-item"> -->
+<!--                   <a class="nav-link pl-3" href="/mypage/ViewTest1"><span class="ml-1 item-text">지도 테스트 2</span></a> -->
+<!--                 </li> -->
+<!--                 <li class="nav-item"> -->
+<!--                   <a class="nav-link pl-3" href="/mypage/ViewTest2"><span class="ml-1 item-text">날씨 위치 최신화</span></a> -->
+<!--                 </li> -->
+<!--               </ul> -->
+<!--             </li> -->
             <li class="nav-item dropdown">
               <a href="#charts" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-pie-chart fe-16"></i>

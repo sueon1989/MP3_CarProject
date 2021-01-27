@@ -10,7 +10,7 @@
 <html>
 <head>
     <meta charset="utf-8">
-    <title>최근 주행 경로</title>
+    <title>차 주변 예상 거리 측정하기</title>
     <style>
 .dot {overflow:hidden;float:left;width:12px;height:12px;background: url('https://t1.daumcdn.net/localimg/localimages/07/mapapidoc/mini_circle.png');}    
 .dotOverlay {position:relative;bottom:10px;border-radius:6px;border: 1px solid #ccc;border-bottom:2px solid #ddd;float:left;font-size:12px;padding:5px;background:#fff;}
@@ -30,10 +30,20 @@
               
               
 
-	<h2 class="mb-2 page-title">최근 주행 경로</h2>
+	<h2 class="mb-2 page-title">예상 거리 측정하기</h2>
 	<hr class="my-4">
+<div class="wrap_content">
+	      <div class="card-body">
+	        <div class="row mt-1 align-items-center">
+	        
+	          <div class="col-12 col-lg-4 text-left pl-4">  
+<p>
+    <em>지도를 마우스로 클릭하면 출발지점 설정 <br>
+        클릭지점 마다 경유지 선택<br>
+        오른쪽 마우스를 클릭하면 예상 거리가 측정됩니다.</em>
+</p>
+<div id="map" style="width:100%;height:350px;"></div>  
 
-<div id="map" style="width:60%;height:400px;"></div>  
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=89a27e9b9c5188451b86f925bb3f4a6f"></script>
 <script>
@@ -56,10 +66,10 @@ var dots = {}; // 선이 그려지고 있을때 클릭할 때마다 클릭 지�
 
 // 지도에 클릭 이벤트를 등록합니다
 // 지도를 클릭하면 선 그리기가 시작됩니다 그려진 선이 있으면 지우고 다시 그립니다
-kakao.maps.event.addListener(map, 'load', function(mouseEvent) {
+kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
 
     // 마우스로 클릭한 위치입니다 
-    var clickPosition = mouseEvent.latLng(Latitude,Longitude);
+    var clickPosition = mouseEvent.latLng;
 
     // 지도 클릭이벤트가 발생했는데 선을 그리고있는 상태가 아니면
     if (!drawingFlag) {
@@ -289,7 +299,7 @@ function getTimeHTML(distance) {
     walkMin = '<span class="number">' + walkkTime % 60 + '</span>분'
 
     // 자전거의 평균 시속은 16km/h 이고 이것을 기준으로 자전거의 분속은 267m/min입니다
-    var bycicleTime = distance / 227 | 0;
+    var bycicleTime = distance / 290 | 0;
     var bycicleHour = '', bycicleMin = '';
 
     // 계산한 자전거 시간이 60분 보다 크면 시간으로 표출합니다
@@ -304,10 +314,10 @@ function getTimeHTML(distance) {
     content += '        <span class="label">총거리</span><span class="number">' + distance + '</span>m';
     content += '    </li>';
     content += '    <li>';
-    content += '        <span class="label">도보</span>' + walkHour + walkMin;
+    content += '        <span class="label">도보 예상 소요 시간</span>' + walkHour + walkMin;
     content += '    </li>';
     content += '    <li>';
-    content += '        <span class="label">자전거</span>' + bycicleHour + bycicleMin;
+    content += '        <span class="label">차 예상 소요 시간</span>' + bycicleHour + bycicleMin;
     content += '    </li>';
     content += '</ul>'
 
@@ -315,6 +325,10 @@ function getTimeHTML(distance) {
 }
     
 </script>
+</div>
+</div>
+</div>
+</div>
 
 
             </div> <!-- .col-12 -->

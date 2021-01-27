@@ -15,6 +15,7 @@
 <form action="mapResult" method="get">
 위도 입력:<input type="text" name="Latitude" id="Latitude"><br>
 경도 입력:<input type="text" name="Longitude" id="Longitude"><br>
+아이디 입력:<input type="text" name="GpsNo" id="GpsNo"><br>
 <input type="submit" value="입력">
 
 

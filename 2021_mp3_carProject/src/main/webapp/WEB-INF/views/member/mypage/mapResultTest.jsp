@@ -31,12 +31,13 @@
 var Latitude=${Latitude};
 var Longitude=${Longitude};
 
+
 var mapContainer = document.getElementById('map'), // 지도를 표시할 div  
     mapOption = { 
         center: new kakao.maps.LatLng(Latitude,Longitude), // 지도의 중심좌표
         level: 3 // 지도의 확대 레벨
     };
-
+<div class="dotOverlay">거리 <span class="number">
 var map = new kakao.maps.Map(mapContainer, mapOption); // 지도를 생성합니다
 
 var drawingFlag = false; // 선이 그려지고 있는 상태를 가지고 있을 변수입니다

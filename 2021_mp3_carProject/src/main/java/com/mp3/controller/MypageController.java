@@ -95,16 +95,19 @@ public class MypageController {
 
 	 //map test
 	 @GetMapping("/mapResult")
-	  public String mapResult(Model model,String Latitude,String Longitude) {
+	  public String mapResult(Model model,String Latitude,String Longitude,String GpsNo) {
 		 GpsVO gps = new GpsVO();
 		 model.addAttribute("Latitude", Latitude);
 		 model.addAttribute("Longitude", Longitude);
+		 model.addAttribute("GpsNo",GpsNo);
 		 log.info("1");
 		 gps.setLatitude(Latitude);
 		 gps.setLongitude(Longitude);
+		 gps.setGpsNo(GpsNo);
 		 log.info("2");
-		 service.gps(Latitude, Longitude);
-		 log.info("3");
+		 service.gps(Latitude, Longitude,GpsNo);
+		 model.addAttribute("Time",gps.getTime());
+		 log.info("컨트롤러 확인 로그인포"+gps.getLongitude()+"*****"+gps.getLatitude()+"*****"+gps.getGpsNo());
 		 return "/member/mypage/mapResultTest";
 	  }	 
 	 // 저장완료

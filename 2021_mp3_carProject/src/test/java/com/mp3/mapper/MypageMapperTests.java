@@ -53,7 +53,7 @@ public class MypageMapperTests {
 	//gps 저장하기 
 	@Test
 	public void gps() {
-		mapper.gps("999","98899999");
+		mapper.gps("999","98899999","111111");
 		
 				
 	}

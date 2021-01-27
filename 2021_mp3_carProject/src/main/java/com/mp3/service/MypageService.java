@@ -17,12 +17,12 @@ public interface MypageService {
 	public boolean myInfoDeletePassCheck(Long member_no,String Deletenum,String Deletenum1);
 	
 	//gps값 데이터베이스에 저장
-	public void gps(String Latitude,String Longitude);
+	public void gps(String Latitude,String Longitude,String GpsNo);
 	
 	//최근 gps값 정보 보기
 	public GpsVO mapView();
 	
-	//gpsadd 값 저장하기
+	//gpsadd 값 지명으로 변경후 저장하기
 	public void gpsadd(String gpsadd);
 	
 	

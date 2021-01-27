@@ -73,7 +73,7 @@
 	
 <!-- 	gps값 데이터베이스 저장 -->
   	<insert id="gps" parameterType="string">
-  		INSERT INTO gps VALUES (#{Latitude},#{Longitude},#{GpsNo},NOW())
+  		INSERT INTO gps VALUES (#{Latitude},#{Longitude},#{GpsNo},#{StartNum},NOW())
   	</insert>
   	
 <!-- 	gps값 지명 변환후 데이터베이스 저장 -->

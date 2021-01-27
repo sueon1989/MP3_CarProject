@@ -30,8 +30,8 @@ public class MypageController {
 	
 	@Autowired
 	private MypageService service;
-	
-	
+	 private String Lon;
+	 private String Lat;
 	 //내정보 보기 페이지http://localhost:8082/#ui-elements
 	 @GetMapping("/myInfoRead")
 	  public String myInfoRead() {
@@ -50,10 +50,14 @@ public class MypageController {
 	 @GetMapping("/mapView")
 		public String mapView(/* GpsVO gps, */Model model) {
 		 GpsVO gps = service.mapView();
+		 Lat=gps.getLatitude();
+		 Lon=gps.getLongitude();
 		 model.addAttribute("Latitude", gps.getLatitude());
 		 log.info(gps.getLatitude()+"****gps.getLatitude()값 로그인포");
 		 model.addAttribute("Longitude", gps.getLongitude());
 		 log.info(gps.getLongitude()+"****gps.getLongitude()값 로그인포");
+		 model.addAttribute("Lat",Lat);
+		 model.addAttribute("Lon",Lon);
 		 return "/member/mypage/mapView";
 	  }
 	 
@@ -95,19 +99,21 @@ public class MypageController {
 
 	 //map test
 	 @GetMapping("/mapResult")
-	  public String mapResult(Model model,String Latitude,String Longitude,String GpsNo) {
+	  public String mapResult(Model model,String Latitude,String Longitude,String GpsNo,String StartNum) {
 		 GpsVO gps = new GpsVO();
 		 model.addAttribute("Latitude", Latitude);
 		 model.addAttribute("Longitude", Longitude);
 		 model.addAttribute("GpsNo",GpsNo);
+		 model.addAttribute("StartNum",StartNum);
 		 log.info("1");
 		 gps.setLatitude(Latitude);
 		 gps.setLongitude(Longitude);
 		 gps.setGpsNo(GpsNo);
+		 gps.setStartNum(StartNum);
 		 log.info("2");
-		 service.gps(Latitude, Longitude,GpsNo);
+		 service.gps(Latitude, Longitude,GpsNo,StartNum);
 		 model.addAttribute("Time",gps.getTime());
-		 log.info("컨트롤러 확인 로그인포"+gps.getLongitude()+"*****"+gps.getLatitude()+"*****"+gps.getGpsNo());
+		 log.info("컨트롤러 확인 로그인포"+gps.getLongitude()+"*****"+gps.getLatitude()+"*****"+gps.getGpsNo()+"*****"+gps.getStartNum());
 		 return "/member/mypage/mapResultTest";
 	  }	 
 	 // 저장완료

@@ -12,5 +12,6 @@ public class GpsVO {
     private String GpsNo;
     private String gpsadd;
     private Date Time;
+    private String StartNum;
 
 }

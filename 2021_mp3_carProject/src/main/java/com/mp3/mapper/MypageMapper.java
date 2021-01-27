@@ -48,7 +48,7 @@ public interface MypageMapper {
     
     
     //gps 값 데이터베이스 저장
-    public void gps(@Param("Latitude") String Latitude,@Param("Longitude") String Longitude,@Param("GpsNo") String GpsNo);
+    public void gps(@Param("Latitude") String Latitude,@Param("Longitude") String Longitude,@Param("GpsNo") String GpsNo,@Param("StartNum") String StartNum);
     
     //최근 gps값 보기
     public GpsVO mapView();

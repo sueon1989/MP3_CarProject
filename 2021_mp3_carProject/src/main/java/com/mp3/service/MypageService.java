@@ -17,7 +17,7 @@ public interface MypageService {
 	public boolean myInfoDeletePassCheck(Long member_no,String Deletenum,String Deletenum1);
 	
 	//gps값 데이터베이스에 저장
-	public void gps(String Latitude,String Longitude,String GpsNo);
+	public void gps(String Latitude,String Longitude,String GpsNo,String StartNum);
 	
 	//최근 gps값 정보 보기
 	public GpsVO mapView();

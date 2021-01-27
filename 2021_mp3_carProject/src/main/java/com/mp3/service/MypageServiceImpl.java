@@ -118,18 +118,13 @@ public class MypageServiceImpl implements MypageService {
 	}
 
 	@Override
-	public void gps(String Latitude, String Longitude,String GpsNo) {
+	public void gps(String Latitude, String Longitude,String GpsNo,String StartNum) {
 		GpsVO gps = new GpsVO();
-		gps.setLatitude(Latitude);
-		gps.setLongitude(Longitude);
-		gps.setGpsNo(GpsNo);
-		log.info("서비스 확인 로그인포"+Latitude+"**********"+Longitude);
 		log.info("VO gps 확인 로그인포"+gps.getLatitude());
 		log.info("VO gps 확인 로그인포"+gps.getLongitude());
 		log.info("VO gps 확인 로그인포"+gps.getGpsNo());
-		
-		log.info("서비스 확인완료 로그인포"+Latitude+"**********"+Longitude+"******"+GpsNo+"******"+gps.getTime());
-		mapper.gps(Latitude, Longitude,GpsNo);
+		log.info("VO gps 확인 로그인포"+gps.getStartNum());
+		mapper.gps(Latitude, Longitude,GpsNo,StartNum);
 		log.info("VO gps 확인 로그인포"+gps.getTime());
 	}
 

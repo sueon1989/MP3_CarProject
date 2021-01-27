@@ -70,17 +70,17 @@
         
         <div class="form-group">
            <label>ID</label>
-           <input type="text" name='id' 
+           <input type="text" name='member_id' 
            	id="member_id" class="form-control form-control-lg" required>
          </div>     	
          <div class="form-group">
            <label>Name</label>
-           <input type="text" name='name'  
+           <input type="text" name='member_name'  
            	id="member_name" class="form-control form-control-lg" required>
          </div>
          <div class="form-group">
            <label>Email</label>
-           <input type="text" name='email'  
+           <input type="text" name='member_mail'  
            	id="member_mail" class="form-control form-control-lg" required>
          </div>
 
@@ -91,11 +91,10 @@
          
 		
 	
-	<!-- 페이지 소스 보기: 
-		강제로 세션 쿠키를 삭제한 후에 "/customLogin"을 다시 호출했을 때 CSRF 토큰의 값이 변경된 것 확인
-		<input type="hidden" name="_csrf" value="c9c2f8c9-b49b-4faf-87ef-46e973c8cffd" /> 
-		<input type="hidden" name="_csrf" value="3c446b1b-6e93-4c9f-b3de-3146d1757c3c" />  -->
 
+			<!-- CSRF (Cross-site Request Forgery) 토큰: CSRF(사이트간 요청 위조) 방지 -->
+		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}" />
+		<%-- ${_csrf.parameterName}: 실제 브라우저에서는 "_csrf"라는 이름으로 처리됨 --%>
 		</form>
 		<!-- Modal -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -136,12 +135,13 @@
     <script src='/resources/light/js/jquery.dataTables.min.js'></script>
     <script src='/resources/light/js/dataTables.bootstrap4.min.js'></script>
 
-	   
+
+
 	
   
   <script>  
 $(document).ready(function(){
-	var result ='${result}'; //result 값을 읽고 get타입으로 보내온
+	var result =${result}; //result 값을 읽고 get타입으로 보내온
 	console.log("값찍기"+result);  //크롬F12 console 클릭
 	
 	console.log("전"+history.state);
@@ -151,14 +151,22 @@ $(document).ready(function(){
 	console.log("후"+history.state);
 	
 	function checkModal(result){
-    	if(result == ''){ //뒤로 가기가 아닐때
-    		return;
-    		if(result == 'findPassInputMail'){
+		
+//      	if(result == ''){ //뒤로 가기가 아닐때
+//     		console.log("후sdadasda");
+//    		return;
+    		
+//     	}
+    	if(result == true ){
+    		console.log("후dkdkdkdk");
     			$(".modal-body").html("메일 발송 완료 되었습니다.");
+    			$("#myModal").modal("show");
+    		}else{
+    			$(".modal-body").html("해당 회원이 없습니다.");
     			$("#myModal").modal("show");
     		}
 	   	}
- 	}
+ 	
 })
  </script>    
 </body>

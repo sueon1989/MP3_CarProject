@@ -32,7 +32,7 @@
   	
 		<!--   	내차량 정보 보기 -->
   	<select id="Mycarlist" resultType="com.mp3.domain.CarRegistrationVO">
-		SELECT car_company, car_model_year, car_model, car_fual, car_engineoilrp, car_distancedriven, member_id FROM member natural join car WHERE member_id = #{member_id}
+		SELECT * FROM member natural join car WHERE member_id = #{member_id} 
   	</select>
   	
 

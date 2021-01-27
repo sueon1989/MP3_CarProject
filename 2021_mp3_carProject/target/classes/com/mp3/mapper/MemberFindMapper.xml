@@ -10,7 +10,10 @@
 		select member_id from member where member_name=#{member_name} and member_mail=#{member_mail}
   	</select>
   	
-  	
+  	<!--   이름 체크  -->
+  	<select id="namecheck" resultType="int">
+		SELECT COUNT(*) FROM member WHERE member_name=#{member_name}
+  	</select>
 
 <!--   	비밀번호 초기화  아이디,이름,메일-->
   	<update id="MemverPassFindMail" >

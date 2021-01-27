@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<!-- 담당자: Oh -->
+<mapper namespace="com.mp3.mapper.Car_fixMapper">
+
+<!--   내 차량 등록 -->
+	
+	<insert id="car_fix">
+  		INSERT INTO repair (member_id, repair, repairshop, repair_date, amount) 
+  		VALUES (#{member_id},#{repair} , #{repairshop}, #{repair_date}, #{amount})
+	</insert>
+	
+  	  	<!-- 회원 수정 - update 처리 -->
+  	<update id="car_fixUpdate">
+  		update repair
+  		set  
+  			repair = #{repair}, 
+  			repairshop = #{repairshop}, 
+  			repair_date=#{repair_date},
+  			repair_updatedata = now(), 
+	    	amount = #{amount}
+	    	
+  		where member_id = #{member_id}
+  	</update>
+
+
+
+
+
+
+
+
+
+</mapper>

@@ -12,6 +12,9 @@ public interface MemberFindMapper {
 	//비밀번호 찾기(이메일)
 	public int MemverPassFindMail(MemberVO member);
 	
+	//이름 중복체크
+	public int namecheck(MemberVO member);
+	
 
 	
 

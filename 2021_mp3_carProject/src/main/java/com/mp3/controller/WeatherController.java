@@ -18,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mp3.domain.AuthVO;
 import com.mp3.domain.MemberVO;
+import com.mp3.domain.WeatherLocationVO;
 import com.mp3.domain.WeatherVO;
 import com.mp3.service.MypageService;
 import com.mp3.service.WeatherService;
@@ -43,20 +44,21 @@ public class WeatherController {
 		log.info("날씨정보 조회");
 		String serviceKey = "HnXMKIO%2FZdGJgfHsO%2Fxv2OlX0AR%2BuhAAV0zyLZlER5M7ehOb%2BHzBPgWBPmJ4BKr1FfIfxNxtKbERPR1t5gtnrA%3D%3D";
 		
-		// 현재 날짜/시간 읽기 
+		// 예보일시 지정
 //		String baseDate = "20210122"; 	// 예보일자
 //      String baseTime = "0200"; 		// 예보시각		(0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회))
-
-		weather = service.getNowDate(weather);
-		String baseDate = weather.getBaseDate(); 	// 예보일자
-        String baseTime = weather.getBaseTime(); 	// 예보시각		(0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회))
-
-
-        // gps 위치정보 읽어오기
-        int nx = 60;  	//경도
-        int ny = 120;   //위도
+		weather = service.getNowDate();	// 예보일시
+       
+		// gps 위치정보 읽어오기
+//      int nx = 60;  	//경도
+//      int ny = 120;   //위도
+		
+		String gpsAdd = service.getGpsAdd();	// gps 주소정보
+        WeatherLocationVO weatherLocation = service.getNowLocation(gpsAdd);	// 예보위치
+        weather.setNx( Integer.parseInt(weatherLocation.getNx()) );
+        weather.setNy( Integer.parseInt(weatherLocation.getNy()) );
         
-        weather = service.getWeatherAPI(serviceKey, baseDate, baseTime, nx, ny);
+        weather = service.getWeatherAPI(serviceKey, weather);	// 날씨조회 API
         log.info("날씨조회 API service 완료: "+ weather);
         log.info("날씨 DB등록 service 완료: "+ service.register(weather) +
         		" (baseDate: "+weather.getFcstDate()+" "+weather.getFcstTime()+")");
@@ -64,8 +66,9 @@ public class WeatherController {
         weather = service.getWeatherInfo(weather);
         log.info("날씨 정보등록 service 완료: "+ weather);
         
+
+        model.addAttribute("weatherLocation", weatherLocation);
         model.addAttribute("weather", weather);
-//        model.addAttribute("weatherInfo", weather);
 		log.info("날씨정보 조회완료");
 		
 		return "/common/weather/weatherInfo";

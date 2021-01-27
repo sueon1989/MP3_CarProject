@@ -21,5 +21,16 @@
     	]]>
   	</insert>
   	 	
+    <!-- 위치 조회 (한 행) - read (select) 처리 -->
+   	<select id="readGpsAdd" resultType="String">
+		SELECT * FROM gpsadd ORDER BY 1 LIMIT 1
+  	</select>
+  	 	
+    <!-- 위치 조회 (한 행) - read (select) 처리 -->
+   	<select id="readLocation" resultType="com.mp3.domain.WeatherLocationVO">
+   		<!-- SELECT * FROM weatherLocation WHERE lo1st='경기도' AND lo2nd='수원시권선구' AND lo3rd='권선2동' -->
+		SELECT * FROM weatherLocation WHERE lo1st= #{lo1st} AND lo2nd= #{lo2nd} AND lo3rd= #{lo3rd}
+  	</select>
+  	
   	
 </mapper>

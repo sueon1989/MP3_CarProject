@@ -7,11 +7,15 @@ public class WeatherLocationVO {
 	
 	private String Latitude;
     private String Longitude;
+    
     private String country;
     private String code;
     private String lo1st;
     private String lo2nd;
+    private String lo2nd_si;
+    private String lo2nd_gu;
     private String lo3rd;
+    
     private String nx;
     private String ny;
     private String longitude1;

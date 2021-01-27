@@ -29,6 +29,7 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mp3.domain.AuthVO;
 import com.mp3.domain.MemberVO;
+import com.mp3.domain.WeatherLocationVO;
 import com.mp3.domain.WeatherVO;
 
 import lombok.extern.log4j.Log4j;
@@ -63,12 +64,15 @@ public class WeatherServiceTests {
 		// 공공데이터포털 API 연동
 //		String serviceKey = "위에서 전역변수 선언(properties 파일 사용)";
 		String serviceKey = "HnXMKIO%2FZdGJgfHsO%2Fxv2OlX0AR%2BuhAAV0zyLZlER5M7ehOb%2BHzBPgWBPmJ4BKr1FfIfxNxtKbERPR1t5gtnrA%3D%3D";
-		String baseDate = "20210122"; 	// 예보일자
-        String baseTime = "0200"; 		// 예보시각		(0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회))
-		int nx = 60;  	//경도
-        int ny = 120;   //위도
-        
-        WeatherVO weather = service.getWeatherAPI(serviceKey, baseDate, baseTime, nx, ny);
+//		String baseDate = "20210122"; 	// 예보일자
+//        String baseTime = "0200"; 		// 예보시각		(0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회))
+//		int nx = 60;  	//경도
+//        int ny = 120;   //위도
+
+		WeatherVO weather = service.getNowDate();
+		
+		weather.setBaseTime("0080");	// 예보시각		(0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회))
+        weather = service.getWeatherAPI(serviceKey, weather);
         log.info("날씨조회 API service 완료: "+ weather);
         log.info("날씨 DB등록 service 완료: "+ service.register(weather) +" (baseDate: "+weather.getFcstDate()+" "+weather.getFcstTime()+")");
         
@@ -79,16 +83,15 @@ public class WeatherServiceTests {
 
 	@Test
 	public void getNowDate() {
-		WeatherVO weather = new WeatherVO();
-		weather = service.getNowDate(weather);
+		WeatherVO weather = service.getNowDate();
 		log.info("현재 날짜조회 service 완료: "+ weather.getBaseDate()+" "+weather.getBaseTime());
 	}
 
 	@Test
-	public void getWeatherInfo() {
-		WeatherVO weather = new WeatherVO();
-		weather = service.getNowDate(weather);
-		log.info("현재 날짜조회 service 완료: "+ weather.getBaseDate()+" "+weather.getBaseTime());
+	public void getNowLocation() {
+		String gpsAdd = service.getGpsAdd();
+        WeatherLocationVO weatherLocation = service.getNowLocation(gpsAdd);
+		log.info("현재 위치조회 service 완료: nx: "+ weatherLocation.getNx()+" ny: "+weatherLocation.getNy());
 	}
 
 		
@@ -103,19 +106,27 @@ public class WeatherServiceTests {
 		// 공공데이터포털 API 연동
 //		String serviceKey = "위에서 전역변수 선언(properties 파일 사용)";
 		String serviceKey = "HnXMKIO%2FZdGJgfHsO%2Fxv2OlX0AR%2BuhAAV0zyLZlER5M7ehOb%2BHzBPgWBPmJ4BKr1FfIfxNxtKbERPR1t5gtnrA%3D%3D";
-		String baseDate = "20210122"; 	// 예보일자
-        String baseTime = "0200"; 		// 예보시각		(0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회))
-		int nx = 60;  	//경도
-        int ny = 120;   //위도
+//		String baseDate = "20210122"; 	// 예보일자
+//		String baseTime = "0200"; 		// 예보시각		(0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회))
+//		int nx = 60;  	//경도
+//		int ny = 120;   //위도
         
-        WeatherVO weather = service.getWeatherAPI(serviceKey, baseDate, baseTime, nx, ny);
+        WeatherVO weather = service.getNowDate();
+        
+        String gpsAdd = service.getGpsAdd();
+        WeatherLocationVO weatherLocation = service.getNowLocation(gpsAdd);
+        weather.setNx( Integer.parseInt(weatherLocation.getNx()) );
+        weather.setNy( Integer.parseInt(weatherLocation.getNy()) );
+        
+        weather = service.getWeatherAPI(serviceKey, weather);
+        
         log.info("날씨조회 API service 완료: "+ weather);
-        log.info("날씨 DB등록 service 완료: "+ service.register(weather) +" (no: "+ weather.getWeather_no() +")");
+        log.info("날씨 DB등록 service 완료: "+ service.register(weather) +
+        		" (baseDate: "+weather.getFcstDate()+" "+weather.getFcstTime()+")");
         // 여기까지 controller 구현 완료
-    	
-        WeatherVO weatherInfo = service.getWeatherInfo(weather);
-        log.info("날씨조회: "+ weather);
-        log.info("날씨정보: "+ weatherInfo);
+
+        weather = service.getWeatherInfo(weather);
+        log.info("날씨 정보등록 service 완료: "+ weather);
         
     }
 	

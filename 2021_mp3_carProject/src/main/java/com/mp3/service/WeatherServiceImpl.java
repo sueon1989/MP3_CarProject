@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
+import com.mp3.domain.WeatherLocationVO;
 import com.mp3.domain.WeatherVO;
 import com.mp3.mapper.WeatherMapper;
 
@@ -25,21 +26,19 @@ import lombok.extern.log4j.Log4j;
 @Service
 @AllArgsConstructor
 public class WeatherServiceImpl implements WeatherService {
+
 	
 //	@Autowired
 //	단일 파라미터를 받는 생성자의 경우, 필요한 파라미터를 자동으로 주입
 	private WeatherMapper mapper;
 	
 	@Override
-	public WeatherVO getWeatherAPI(String serviceKey, String baseDate, String baseTime, int nx, int ny) {
+	public WeatherVO getWeatherAPI(String serviceKey, WeatherVO weather) {
 		//baseDate : 기준날짜, baseTime : 기준시간, nx : 경도, ny : 위도
         	
 		log.info("날씨조회 API service 시작");
-		log.info("조회할 날짜......"+baseDate);
+		log.info("조회할 날짜......"+weather.getBaseDate());
 				
-		// 결과 데이터를 저장할 weather 객체생성
-		WeatherVO weather = new WeatherVO(); 
-		log.info("weatherVO 생성: "+weather);
 		
 		try {
 			// JSON 데이터를 요청하는 apiURL (공공데이터포털 API 연동)
@@ -48,10 +47,10 @@ public class WeatherServiceImpl implements WeatherService {
 //	        		+ "&pageNo=1"
 //	        		+ "&numOfRows=10"
 	        		+ "&dataType=JSON"
-	        		+ "&base_date=" + baseDate
-	        		+ "&base_time=" + baseTime
-	        		+ "&nx=" + nx
-	        		+ "&ny=" + ny;
+	        		+ "&base_date=" + weather.getBaseDate()
+	        		+ "&base_time=" + weather.getBaseTime()
+	        		+ "&nx=" + weather.getNx()
+	        		+ "&ny=" + weather.getNy();
 	        
 	        // 완성된 apiURL을 이용해서 URL 객체생성 후 결과 데이터 가져오기
 	        URL url = new URL(apiURL); 
@@ -81,10 +80,10 @@ public class WeatherServiceImpl implements WeatherService {
             weather.setResultCode( (String)parse_header.get("resultCode") );
         	weather.setResultMsg( (String)parse_header.get("resultMsg") );
         	weather.setDataType( (String)parse_body.get("dataType") );
-            weather.setBaseDate(baseDate);
-            weather.setBaseTime(baseTime);
-            weather.setNx(nx);
-            weather.setNy(ny);
+//            weather.setBaseDate(baseDate);
+//            weather.setBaseTime(baseTime);
+//            weather.setNx(nx);
+//            weather.setNy(ny);
             
         	// 필요한 날씨 데이터를 WeatherVO 객체에 저장
         	for(int i = 0; i < parse_item.size(); i++) {
@@ -166,10 +165,11 @@ public class WeatherServiceImpl implements WeatherService {
 	}
 
 	@Override
-	public WeatherVO getNowDate(WeatherVO weather) {
+	public WeatherVO getNowDate() {
 
 		log.info("현재날짜 조회");
 		
+		WeatherVO weather = new WeatherVO();
 		LocalDateTime dateAndtime = LocalDateTime.now();
 //		LocalDateTime dateAndtime = LocalDateTime.of(2021, 1, 22, 1, 10);	// 테스트용
 		log.info("날짜조회: "+dateAndtime+" (패턴 변경전)");	// 날짜조회: 2021-01-22T14:30:50.158
@@ -213,15 +213,47 @@ public class WeatherServiceImpl implements WeatherService {
 		
 		return weather;
 	}
+
+	// gps 주소정보 조회
+	@Override
+	public String getGpsAdd() {
+		return mapper.readGpsAdd();
+	}
 	
 	@Override
-	public WeatherVO getNowLocation(WeatherVO weather) {
+	public WeatherLocationVO getNowLocation(String gpsAdd) {
 		
 		// 학원 위치정보 (gps 센서값)
-		String Latitude = "37.249035";		// 위도
-		String Longitude = "127.022705";	// 경도
+//		String Latitude = "37.249035";		// 위도
+//		String Longitude = "127.022705";	// 경도
 		
-		return weather;
+		// gps 주소정보 조회
+//		String gpsAdd = "경기도 수원시 권선구 평동";
+//		String gpsAdd = mapper.readGpsAdd();
+		log.info("gpsAdd 조회: "+ gpsAdd);
+		
+//		공백(" ")으로 문자열 자르기
+		String[] gpsArray = gpsAdd.split(" ");
+		for(int i=0; i<gpsArray.length; i++) {
+			System.out.println(gpsArray[i]);
+		}
+		WeatherLocationVO weatherLocation = new WeatherLocationVO();
+//		weatherLocation.setLo1st(gpsArray[0]);
+//		weatherLocation.setLo2nd(gpsArray[1]+gpsArray[2]);
+//		weatherLocation.setLo3rd(gpsArray[3]);
+
+		String lo1st = gpsArray[0];
+		String lo2nd = gpsArray[1]+gpsArray[2];
+		String lo3rd = gpsArray[3];
+		
+		weatherLocation = mapper.readLocation(lo1st, lo2nd, lo3rd);			// DB정보 조회
+		weatherLocation.setLo2nd_si(gpsArray[1]);
+		weatherLocation.setLo2nd_gu(gpsArray[2]);
+		log.info("DB 조회: "+ weatherLocation);
+		log.info("주소정보: "+ weatherLocation.getLo1st()+" "+weatherLocation.getLo2nd()+" "+weatherLocation.getLo3rd());
+		log.info("위치정보: nx: "+ weatherLocation.getNx()+" ny: "+weatherLocation.getNy());
+		
+		return weatherLocation;
 	}
 
 

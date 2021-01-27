@@ -24,7 +24,11 @@ public class MemberFindServiceImpl implements MemberFindService {
 	private MemberFindMapper mapper;
 	private MemberMapper mapper1;
 	
-
+	public boolean namecheck(MemberVO member) {
+		
+		boolean namecheck = mapper.namecheck(member) == 1;
+		return namecheck;
+	}
 
 	
 	@Override
@@ -35,7 +39,7 @@ public class MemberFindServiceImpl implements MemberFindService {
 			String charSet = "utf-8";
 			String hostSMTP = "smtp.naver.com";
 			String hostSMTPid = "ghgh4075@naver.com";
-			String hostSMTPpwd = "##";
+			String hostSMTPpwd = "wnsxor123@";
 
 			// 보내는 사람 EMail, 제목, 내용
 			String fromEmail = "ghgh4075@naver.com";
@@ -95,20 +99,22 @@ public class MemberFindServiceImpl implements MemberFindService {
 		}
 	//아이디 찾기
 	@Override
-	public MemberVO MemverIDFindMail(MemberVO member) {
+	public boolean MemverIDFindMail(MemberVO member) {
+		boolean namecheck = mapper.namecheck(member) == 1;
+		log.info("오준택님 큰일났는데..."+namecheck);
 		mapper.MemverIDFindMail(member);
 			//메일 발송
 			send_mail(member, "MemverIDFindMail");
 			log.info(member);		
 			
-		return member;
+		return namecheck;
 	}
 	
 	//비밀번호 찾기	
 	@Override
-	public MemberVO MemverPassFindMail(MemberVO member) {
+	public boolean MemverPassFindMail(MemberVO member) {
 		boolean checkId = mapper1.checkId(member) == 1;
-		
+		log.info("오준택님 큰일났는데..."+checkId);
 			String member_pw= "";
 			for (int i = 0; i < 12; i++) {
 				member_pw += (char) ((Math.random() * 26) + 97);
@@ -120,9 +126,10 @@ public class MemberFindServiceImpl implements MemberFindService {
 				send_mail(member, "MemverPassFindMail");
 				log.info(member);	
 				
-		return 	member;	
+		return 	checkId;	
 	}
-	
+
+
 	
 }	
 	

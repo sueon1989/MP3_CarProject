@@ -25,6 +25,8 @@
     <!-- App CSS -->
     <link rel="stylesheet" href="/resources/light/css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="/resources/light/css/app-dark.css" id="darkTheme" disabled>
+
+    
   </head>
         	<!-- 로그인하지 않은 경우 -->
 	<sec:authorize access="isAnonymous()">
@@ -50,81 +52,91 @@
                         <thead>
       
       
-       <form role="form" action="carReg1_company" method="post" class="col-lg-6 col-md-8 col-10 mx-auto">
+       <form role="form" action="car_fix" method="post" class="col-lg-6 col-md-8 col-10 mx-auto">
           <div class="mx-auto text-center my-4">
             <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/">
  			<span>      
              	 <img src="/resources/light/assets/images/car_logo.png" alt="..." 
               		  class="img-rounded" width="50px" height="45px"></span>     
             </a>
-            <h2 class="my-3">차량 등록</h2>
+            <h2 class="my-3">정비 / 기타</h2>
           </div>
-	
-	    
-	      <div class="form-group">
-	       <p><label for="car_company">제조사 :</label>
-	        <select name = "car_company" id="car_company" onchange="firstChange(this.form);">
-	            <option value="">제조사를 선택 하세요</option> 
-	            <option value="현대">현대</option>
-	            <option value="기아">기아</option>
-	            <option value="쉐보레">쉐보레</option>
-	            <option value="르노삼성">르노삼성</option>
-	            <option value="쌍용자동차">쌍용자동차</option>
-	        </select></p>
-	       </div>
-	       
-	      <div class="form-group">
-	       <p><label for="car_model">모델 :</label>
-	        <select name = "car_model" id="car_model" onchange="firstChange(this.form);">
-	            <option value="">차량 모델을 선택 하세요</option> 
-	            <option value="현대">모닝</option>
-	            <option value="기아">스파크</option>
-	            <option value="쉐보레">벨로스터</option>
-	        </select></p>
-	       </div>
-	          
-
-	 <div class="form-group">
-	       <p><label for="car_model">연료 :</label>
-	        <select name = "car_fual" id="car_fual" onchange="firstChange(this.form);">
-	            <option value="">차량 연료를 선택 하세요</option> 
-	            <option value="가솔린">가솔린</option>
-	            <option value="고급 가솔린">고급 가솔린</option>
-	            <option value="디젤">디젤</option>
-	            <option value="전기">전기</option>
-	            <option value="하이브리드">하이브리드</option>
-	        </select></p>
-	       </div>
-                
+       
           <div class="form-group">
-            <label for="car_model_year">차량 연식</label>
-            <input type="date" class="form-control" id=car_model_year 
-            name="car_model_year"  required>
+	       <p><label for="repair">정비 목록</label>
+	        <select name = "repair" id="repair" onchange="firstChange(this.form);">
+	            <option value="">"${car_fixUpdate.repair}"</option> 
+	            <option value="엔진오일 및 오일필터">엔진오일 및 오일필터</option>
+	            <option value="에어컨필터(향균필터)">에어컨필터(향균필터)</option>
+	            <option value="와이퍼 블레이드">와이퍼 블레이드</option>
+	            <option value="구동벨트">구동벨트</option>
+	            <option value="미션오일">미션오일</option>
+	            <option value="배터리">배터리</option>
+	            <option value="보증수리">보증수리</option>
+	            <option value="브레이크 오일">브레이크 오일</option>
+	            <option value="브레이크 패드 및 디스크">브레이크 패드 및 디스크</option>
+	            <option value="에어클리너 필터">에어클리너 필터</option>
+	            <option value="엔진 부동액(냉각수)">엔진 부동액(냉각수)</option>
+	            <option value="연료 필터">연료 필터</option>
+	            <option value="외장수리복원">외장수리복원</option>
+	            <option value="일반 수리">일반 수리</option>
+	            <option value="점화 플러그">점화 플러그</option>
+	            <option value="타이밍 벨트">타이밍 벨트</option>
+	            <option value="타이어">타이어</option>
+	            <option value="타이어 위치 교환">타이어 위치 교환</option>
+	            <option value="타이어 펑크 수리">타이어 펑크 수리</option>
+	            <option value="파워 스티어링 오일">파워 스티어링 오일</option>
+	            <option value="휠 얼라인먼트">휠 얼라인먼트</option>
+	            <option value="기타">기타</option>	            
+	        </select></p>
+	       </div>
+          
+          <div class="form-group">
+            <label for="repair_date">정비 일자</label>
+            <input type="date" class="form-control" id=repair_date 
+            name="repair_date"  required>
           </div>
-
-
+          
+          
           <div class="form-group">
-	       <p><label for="car_engineoilrp">엔진오일 교체 시기 :</label>
-	        <select name = "car_engineoilrp" id="car_engineoilrp" onchange="firstChange(this.form);">
-	            <option value="">엔진오일 교체 시기를 선택 하세요</option> 
-	            <option value="현대">1개월 이내</option>
-	            <option value="현대">1 ~ 3개월</option>
-	            <option value="기아">4 ~ 6개월</option>
-	            <option value="쉐보레">6개월 이상</option>
-	            <option value="쉐보레">잘 모르겠어요</option>
+            <label for="amount">정비 / 기타 비용</label>
+            <input type="text" class="form-control" id="amount" 
+            name="amount" value="${car_fixUpdate.setAmount}" required>
+          </div> 
+          
+         <div class="form-group">
+	       <p><label for="repairshop">서비스 센터</label>
+	        <select name = "repairshop" id="repairshop" onchange="firstChange(this.form);">
+	            <option value="">${car_fixUpdate.repairshop}" </option> 
+	            <option value="현대 블루핸즈">현대 블루핸즈</option>
+	            <option value="기아 오토큐">기아 오토큐</option>
+	            <option value="보레 서비스센터">쉐보레 서비스센터</option>
+	            <option value="르노삼성 엔젤센터">르노삼성 엔젤센터</option>
+	            <option value="Master">Master</option>
+	            <option value="KTAMG (케이티에이엠지)">KTAMG (케이티에이엠지)</option>
+	            <option value="투투정비소">투투정비소</option>
+	            <option value="공임나라">공임나라</option>
+	            <option value="카포스">카포스</option>
+	            <option value="SPEEDMATE">SPEEDMATE</option>
+	            <option value="Auto Oasis (오토 오아시스)">Auto Oasis (오토 오아시스)</option>
+	            <option value="카젠">카젠</option>	            
+	            <option value="T station(티스테이션)">T station(티스테이션)</option>
+	            <option value="한국타이어">한국타이어</option>
+	            <option value="금호타이어">금호타이어</option>
+	            <option value="넥센타이어">넥센타이어</option>
+	            <option value="타이어 테크">타이어 테크</option>
+	            <option value="타이어 프로">타이어 프로</option>
+	            <option value="타이어 뱅크">타이어 뱅크</option>
+	            <option value="기타">기타</option>
+	            
 	            
 	        </select></p>
 	       </div>
-		  
-		  <div class="form-group">
-            <label for="car_distancedriven">차량 주행거리</label>
-            <input type="text" class="form-control" id="car_distancedriven" 
-            name="car_distancedriven" value="0000Km" required>
-          </div> 
           
           <div class="form-group">
            <input type="hidden" name="member_id"   id="member_id" value="<sec:authentication property="principal.member.member_id"/>"/>
           </div> 
+  
           
           <button class="btn btn-lg btn-primary btn-block" type="submit">완료</button>
           <p class="mt-5 mb-3 text-muted text-center">© 2020</p>	
@@ -153,7 +165,7 @@
                                             <h4 class="modal-title" id="myModalLabel">처리완료</h4>
                                         </div>
                                         <div class="modal-body">
-                                            처리 완료 되었습니다.                            </div>
+                                           처리 완료 되었습니다.                            </div>
                                         <div class="modal-footer">
                                             <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                                         </div>
@@ -190,7 +202,7 @@
     </script> -->
       <script>  
 $(document).ready(function(){
-	var result =${Mycar}; //result 값을 읽고 get타입으로 보내온
+	var result =${car_fix}; //result 값을 읽고 get타입으로 보내온
 	console.log("값찍기"+result);  //크롬F12 console 클릭
 	
 	console.log("전"+history.state);
@@ -201,9 +213,7 @@ $(document).ready(function(){
 	
 	function checkModal(result){
 		
-//     	if(result == ''){ //뒤로 가기가 아닐때
-//     	  		return;
-//       	}
+
     	if(result == true ){
     			$(".modal-body").html("등록 완료 되었습니다.");
     			$("#myModal").modal("show");

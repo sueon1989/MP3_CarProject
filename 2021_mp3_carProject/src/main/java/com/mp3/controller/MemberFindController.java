@@ -31,26 +31,15 @@ public class MemberFindController {
 	}
 	
 //	아이디 찾기 폼 
-	@GetMapping("/findIdResultViewMail")
+	@PostMapping("/findIdInputMail")
 	public String find_id_Mail(MemberVO member ,Model model){
 		log.info("이름값"+member.getMember_name()+"메일값"+member.getMember_mail());
-		model.addAttribute("find_id_Mail", service.MemverIDFindMail(member));
+		model.addAttribute("result", service.MemverIDFindMail(member));
 		
-		return "/common/auth/findIdResultViewMail";
+		return "/common/auth/findIdInputMail";
 	}
 
-	
-//	@GetMapping("/test")
-//	public String find_pw_Mail1() {
-//		 return"common/auth/findPassInputMail" ;
-//	}	
-//	
-//	@PostMapping("/test")
-//	public String find_pw_Mail2() {
-//		 return"common/auth/findPassInputMail" ;
-//	}	
-//	
-	// 비밀번호 찾기
+		// 비밀번호 찾기
 	@GetMapping("/findPassInputMail")
 	public String find_pw_Mail() {
 		 return"common/auth/findPassInputMail" ;
@@ -60,7 +49,7 @@ public class MemberFindController {
 	@PostMapping("/findPassInputMail")
 	public String find_pw_Mail(MemberVO member, Model model) {
 		log.info("아이디값"+member.getMember_id()+"이름 값"+member.getMember_name()+"메일 값");
-		model.addAttribute("resust", service.MemverPassFindMail(member));
+		model.addAttribute("result", service.MemverPassFindMail(member));
 		return"common/auth/findPassInputMail" ;
 		 		
 	}

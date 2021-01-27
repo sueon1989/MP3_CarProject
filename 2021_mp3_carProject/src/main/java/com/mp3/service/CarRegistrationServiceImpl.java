@@ -20,7 +20,7 @@ public class CarRegistrationServiceImpl implements CarRegistrationService {
 	// 회원정보 보기
 	@Override
 	public CarRegistrationVO Mycarlist(String member_id) {
-		CarRegistrationVO carRegistration = mapper.Mycarlist(member_id);
+		CarRegistrationVO carRegistration = mapper.Mycarlist(member_id );
 		
 		return carRegistration;
 	}

@@ -41,6 +41,14 @@ public class MemberFindMapperTests {
 		member.setMember_mail("test@mp3.com");
 		mapper.MemverPassFindMail(member); 
 	}
+	
+	@Test
+	public void namecheck() {
+		MemberVO member = new MemberVO();
+		member.setMember_name("사용자2");
+		log.info("이름 값"+mapper.namecheck(member));
+		
+	}
 
 	
 	

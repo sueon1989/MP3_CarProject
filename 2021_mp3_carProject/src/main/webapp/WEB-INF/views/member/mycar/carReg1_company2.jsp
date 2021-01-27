@@ -31,6 +31,7 @@
       
       
       
+       <form role="form" action="/###" method="post" class="col-lg-6 col-md-8 col-10 mx-auto">
           <div class="mx-auto text-center my-4">
             <a class="navbar-brand mx-auto mt-2 flex-fill text-center" href="/">
  			<span>      

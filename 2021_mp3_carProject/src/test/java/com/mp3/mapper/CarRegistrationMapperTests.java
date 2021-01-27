@@ -58,7 +58,7 @@ public class CarRegistrationMapperTests {
 	
 	@Test
 	public void	MycarlistTest() {
-		CarRegistrationVO carRegistration = mapper.Mycarlist("user10");
+		CarRegistrationVO carRegistration = mapper.Mycarlist("user1");
 		log.info(carRegistration);
 	}
 	

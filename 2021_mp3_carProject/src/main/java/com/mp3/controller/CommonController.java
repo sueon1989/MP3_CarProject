@@ -21,25 +21,27 @@ public class CommonController {
 	}
 
 	@GetMapping("/customLogin")
-	public void loginInput(String error, String logout, Model model) {
+	public String loginInput(String error, String logout, Model model) {
 
 
 		if (error != null) {
-			model.addAttribute("error", "Login Error Check Your Account");
+			model.addAttribute("error", "정확한 ID/PW를 입력해주세요");
 		}
 
 		if (logout != null) {
-			model.addAttribute("logout", "Logout!!");
+			model.addAttribute("logout", "로그아웃이 정상적으로 완료되었습니다");
 		}
 		
 		log.info("error: " + error);
 		log.info("logout: " + logout);
+		return "/common/auth/customLogin";
 	}
 
 	@GetMapping("/customLogout")
-	public void logoutGET() {
+	public String logoutGET() {
 
 		log.info("custom logout");
+		return "/common/auth/customLogout";
 	}
 	
 	//서비스소개 페이지 연결

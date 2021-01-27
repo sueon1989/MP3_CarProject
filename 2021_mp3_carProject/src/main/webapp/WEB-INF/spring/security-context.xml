@@ -27,9 +27,11 @@
 		<!-- 추가 p618 -->
 		<!-- 특정한 URI에 접근할 때 인터셉터를 이용해서 접근을 제한하는 설정 -->
 		<!-- <security:intercept-url pattern= "URI 패턴"	access="권한 체크" /> -->
-		<security:intercept-url pattern="/sample/all"		access="permitAll" />
+		<!-- <security:intercept-url pattern="/sample/all"		access="permitAll" />
 		<security:intercept-url pattern="/sample/member"	access="hasRole('ROLE_MEMBER')" />
-		<security:intercept-url pattern="/sample/admin"		access="hasRole('ROLE_ADMIN')" />	<!-- 추가 p624 -->
+		<security:intercept-url pattern="/sample/admin"		access="hasRole('ROLE_ADMIN')" /> -->	<!-- 추가 p624 -->
+		<security:intercept-url pattern="/"					access="permitAll" />
+		<security:intercept-url pattern="/member/list"		access="hasRole('ROLE_ADMIN')" />
 		<!-- 추가 끝 p618 -->
 		
 		<!-- 프로젝트 내용 추가 -->

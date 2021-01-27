@@ -72,16 +72,20 @@
          
          <h1 class="h1 mb-3"><font size="15"> Login </font></h1>
          
+			<p>
+				<c:out value="${error}"/>
+				<c:out value="${logout}"/>
+			</p>
          
          <div class="form-group">
            <label for="inputID" class="sr-only">username</label>
-           <input type="text" name='username' value='admin90' 
-           	id="inputID" class="form-control form-control-lg" placeholder="userid" required="" autofocus="">
+           <input type="text" name='username' 
+           	id="inputID" class="form-control form-control-lg" placeholder="ID" required="" autofocus="">
          </div>
          <div class="form-group">
-           <label for="inputPassword" class="sr-only">Password</label>
-           <input type="password" name='password' value='pw90' 
-           	id="inputPassword" class="form-control form-control-lg" placeholder="Password" required="">
+           <label for="inputPassword" class="sr-only">password</label>
+           <input type="password" name='password' 
+           	id="inputPassword" class="form-control form-control-lg" placeholder="PW" required="">
          </div>
          <div class="checkbox mb-3">
            <label><input type="checkbox" name="remember-me" id="remember-me"> Remember Me </label>

@@ -61,8 +61,9 @@ public class WeatherController {
         weather = service.getWeatherAPI(serviceKey, weather);	// 날씨조회 API
         log.info("날씨조회 API service 완료: "+ weather);
         log.info("날씨 DB등록 service 완료: "+ service.register(weather) +
-        		" (baseDate: "+weather.getFcstDate()+" "+weather.getFcstTime()+")");
-        
+        		" (baseDate: "+weather.getBaseDate()+" baseTime: "+weather.getBaseTime()+")");
+
+        //
         weather = service.getWeatherInfo(weather);
         log.info("날씨 정보등록 service 완료: "+ weather);
         
@@ -74,4 +75,15 @@ public class WeatherController {
 		return "/common/weather/weatherInfo";
 		
 	}
+	
+	@RequestMapping(value = "/carMagTipBySeason", method = RequestMethod.GET)
+	public String carMagTipBySeason(WeatherVO weather, Model model) {
+		return "/common/weather/carMagTipBySeason";
+	}
+	
+	@RequestMapping(value = "/driveCourseBySeason", method = RequestMethod.GET)
+	public String carMagTipByWeather(WeatherVO weather, Model model) {
+		return "/common/weather/driveCourseBySeason";
+	}
+	
 }

@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-    
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -161,14 +162,13 @@
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="ui-elements">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="/weather/weatherInfo"><span class="ml-1 item-text">내 주변 실시간 기상 정보</span>
-                  </a>
+                  <a class="nav-link pl-3" href="/weather/weatherInfo"><span class="ml-1 item-text">내 주변 실시간 기상 정보</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./ui-typograpy.html"><span class="ml-1 item-text">계절별 차량 관리 Tip</span></a>
+                  <a class="nav-link pl-3" href="/weather/carMagTipBySeason"><span class="ml-1 item-text">계절별 차량 관리 Tip</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./ui-icons.html"><span class="ml-1 item-text">계절별 추천 드라이브 코스</span></a>
+                  <a class="nav-link pl-3" href="/weather/driveCourseBySeason"><span class="ml-1 item-text">계절별 추천 드라이브 코스</span></a>
                 </li>
 <!--                 <li class="nav-item"> -->
 <!--                   <a class="nav-link pl-3" href="/mypage/mapView"><span class="ml-1 item-text">지도보기</span></a> -->

@@ -93,10 +93,10 @@
          <!-- Change this to a button or input when using this as a form -->
          <!--  <button class="btn btn-lg btn-primary btn-block" type="submit">Login</button><br> -->
 		 <a href="/member/get?member_id=user2001" class="btn btn-lg btn-success btn-block">Login</a>
-         <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = 'member/findIdInput'">Find ID</button>
-         <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = 'member/findPassInput'">Find PW</button>
          <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = 'member/register'">Sign Up</button>
-         <p class="mt-5 mb-3 text-muted">© 2021-</p>
+         <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/memberFind/findIdInputMail'">Find ID</button>
+         <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/memberFind/findPassInputMail'">Find PW</button>
+         <p class="mt-5 mb-3 text-muted">© 2021-MIT Car Care Service</p>
          
 		
 	<!-- CSRF (Cross-site Request Forgery) 토큰: CSRF(사이트간 요청 위조) 방지 -->

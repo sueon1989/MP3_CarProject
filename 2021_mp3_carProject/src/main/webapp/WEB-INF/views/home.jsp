@@ -211,8 +211,10 @@
        	<button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/member/list'">회원관리</button>
     </form>  --> 	
 	</sec:authorize>
-
-
+	
+	<div class="text-center">
+		<p class="mt-5 mb-3 text-muted">© 2021-MIT Car Care Service</p>
+	</div>
 
 
             </div> <!-- .col-12 -->

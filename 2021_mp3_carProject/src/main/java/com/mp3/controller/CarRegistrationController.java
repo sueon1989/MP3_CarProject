@@ -49,7 +49,7 @@ public class CarRegistrationController {
 		if(member_id != null) {
 			CarRegistrationVO carRegistrationVO= new CarRegistrationVO();
 			carRegistrationVO.setMember_id(member_id);
-			CarRegistrationVO carRegistration = service.Mycarlist(member_id);
+			CarRegistrationVO carRegistration = service.Mycarlist(member_id); // ·Î±× Âï±âÀ§ÇØ
 			model.addAttribute("Mycarlist",service.Mycarlist(member_id));
 			log.info("°ªÀ» Âï¾îº¾½Ã´Ù"+carRegistration);
 			

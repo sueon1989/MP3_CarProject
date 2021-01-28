@@ -28,10 +28,10 @@
 
     
   </head>
-        	<!-- 로그인하지 않은 경우 -->
 	<sec:authorize access="isAnonymous()">
-		        <a href="/customLogin">로그인후이용하세요</a><br>
-				<a href="/member/register">회원이 아닌경우 회원가입으로</a> <br>
+				<p><em>로그인후 이용하세요.</em></p>
+		      <button type="button" class="btn mb-2 btn-outline-info" onclick = "location.href = '/customLogin'">로그인</button><br>
+		      <button type="button" class="btn mb-2 btn-outline-info" onclick = "location.href = '/member/register'">회원가입</button>
 	</sec:authorize>
 	
 

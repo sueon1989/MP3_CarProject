@@ -49,7 +49,9 @@ public class Car_fixMapperTests {
 	}
 	@Test
 	public void	car_fixTest() {
-		mapper.car_fixlist("user3").forEach(car_fix -> log.info(car_fix));;
+		Car_fixVO car_fix = new Car_fixVO();
+		car_fix.setMember_id("ghgh9795");
+		mapper.car_fixlist("user3");
 		
 		}
 	}

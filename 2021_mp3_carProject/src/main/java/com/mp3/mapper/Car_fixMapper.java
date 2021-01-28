@@ -10,7 +10,7 @@ public interface Car_fixMapper {
 //	// 지출 내역 보기
 //		public Car_fixVO Car_Spending(String member_id);
 	// 정비/기타 목록 보기
-		 public List<Car_fixVO>  car_fixlist(String member_id);
+	public Car_fixVO car_fixlist(String member_id);
 	// 내 정비 등록	
 		public int car_fix(Car_fixVO car_fix);
 

@@ -314,10 +314,10 @@ function getTimeHTML(distance) {
     content += '        <span class="label">총거리</span><span class="number">' + distance + '</span>m';
     content += '    </li>';
     content += '    <li>';
-    content += '        <span class="label">도보 예상 소요 시간</span>' + walkHour + walkMin;
+    content += '        <span class="label">도보</span>' + walkHour + walkMin;
     content += '    </li>';
     content += '    <li>';
-    content += '        <span class="label">차 예상 소요 시간</span>' + bycicleHour + bycicleMin;
+    content += '        <span class="label">차</span>' + bycicleHour + bycicleMin;
     content += '    </li>';
     content += '</ul>'
 

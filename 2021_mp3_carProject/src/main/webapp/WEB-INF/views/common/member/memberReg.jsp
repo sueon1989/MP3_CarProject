@@ -41,35 +41,35 @@
     
           <div class="form-group">
             <label for="input1">아이디</label>
-            <input type="text" class="form-control" id="input1" name="member_id" value="user00001" required>
+            <input type="text" class="form-control" id="input1" name="member_id" required autofocus>
           </div>
           <div class="form-group">
             <label for="input2">비밀번호</label>
-            <input type="password" class="form-control" id="input2" name="member_pass" value="1234" required>
+            <input type="password" class="form-control" id="input2" name="member_pass" required>
           </div>
 		  <div class="form-group">
             <label for="input3">이름</label>
-            <input type="text" class="form-control" id="input3" name="member_name" value="김길동" required>
+            <input type="text" class="form-control" id="input3" name="member_name" required>
           </div>
 		  <div class="form-group">
             <label for="input4">성별</label>
-            <input type="text" class="form-control" id="input4" name="member_gender" value="남" required>
+            <input type="text" class="form-control" id="input4" name="member_gender" required>
           </div>
 		  <div class="form-group">
             <label for="input5">생년월일</label>
-            <input type="date" class="form-control" id="input5" name="member_birth" value="2010-12-25" required>
+            <input type="date" class="form-control" id="input5" name="member_birth" required>
           </div>
 		  <div class="form-group">
             <label for="input6">전화번호</label>
-            <input type="tel" class="form-control" id="input6" name="member_phone" value="010-1245-1231" required>
+            <input type="tel" class="form-control" id="input6" name="member_phone" required>
           </div>
 		  <div class="form-group">
             <label for="input7">주소</label>
-            <input type="text" class="form-control" id="input7" name="member_address" value="수원시" required>
+            <input type="text" class="form-control" id="input7" name="member_address" required>
           </div>
 		  <div class="form-group">
             <label for="input8">메일</label>
-            <input type="text" class="form-control" id="input8" name="member_mail" value="12aaa@mp3.com" required>
+            <input type="text" class="form-control" id="input8" name="member_mail" required>
           </div>
 		  <div class="form-group">
             <label for="input9">메일수신여부</label>

@@ -38,60 +38,51 @@
           <i class="fe fe-menu navbar-toggler-icon"></i>
         </button>
         <ul class="nav">
+
           <li class="nav-item">
             <a class="nav-link text-muted my-2" href="#" id="modeSwitcher" data-mode="light">
               <i class="fe fe-sun fe-16"></i>
             </a>
           </li>
-          <!-- <li class="nav-item">
-            <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-shortcut">
-              <span class="fe fe-grid fe-16"></span>
-            </a>
-          </li>
-          <li class="nav-item nav-notif">
-            <a class="nav-link text-muted my-2" href="./#" data-toggle="modal" data-target=".modal-notif">
-              <span class="fe fe-bell fe-16"></span>
-              <span class="dot dot-md bg-success"></span>
-            </a>
-          </li> -->
           
-          
-	          	<sec:authorize access="isAnonymous()">
-	          
-		          <li class="nav-item">
-		          	<a class="nav-link text-muted my-2" href="/customLogin">로그인</a>
-		          </li>
-		          <li class="nav-item">
-		          	<a class="nav-link text-muted my-2" href="/member/register">회원가입</a>
-		          </li>
+	         	<sec:authorize access="isAnonymous()">
+	         
+	          <li class="nav-item">
+	          	<a class="nav-link text-muted my-2" href="/customLogin">로그인</a>
+	          </li>
+	          <li class="nav-item">
+	          	<a class="nav-link text-muted my-2" href="/member/register">회원가입</a>
+	          </li>
 	
-	          	</sec:authorize>
-	          
+	         	</sec:authorize>
+	         
 	
-				<sec:authorize access="hasRole('ROLE_ADMIN')">
+			<sec:authorize access="hasRole('ROLE_ADMIN')">
 	
-		          <li class="nav-item">
-		          	<a class="nav-link text-muted my-2" href="/member/list">회원관리</a>
-		          </li>
+	          <li class="nav-item">
+	          	<a class="nav-link text-muted my-2" href="/member/list">회원관리</a>
+	          </li>
 	
-				</sec:authorize>
+			</sec:authorize>
 	
-				<sec:authorize access="isAuthenticated()">
-				
-		          <!-- <li class="nav-item">
-		          	<a class="nav-link text-muted my-2" href="/mypage/myInfoRead"">내 정보</a>
-		          </li> -->
-		          <li class="nav-item">
-		          	<form action="/customLogout" method='post'>
-						<button class="btn nav-link text-muted my-2">로그아웃</button>
-						<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-					</form>
-		          </li>
-	
-				</sec:authorize>
+			<sec:authorize access="isAuthenticated()">
 			
-            </div>
+	          <!-- <li class="nav-item">
+	          	<a class="nav-link text-muted my-2" href="/mypage/myInfoRead"">내 정보</a>
+	          </li> -->
+	          <li class="nav-item">
+	          	<form action="/customLogout" method='post'>
+					<button class="btn nav-link text-muted my-2">로그아웃</button>
+					<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+				</form>
+	          </li>
+	
+			</sec:authorize>
+                    
+          <li class="nav-item">
+          	<a class="nav-link text-muted my-2" href="/">HOME</a>
           </li>
+              
         </ul>
       </nav>
       <aside class="sidebar-left border-right bg-white shadow" id="leftSidebar" data-simplebar>

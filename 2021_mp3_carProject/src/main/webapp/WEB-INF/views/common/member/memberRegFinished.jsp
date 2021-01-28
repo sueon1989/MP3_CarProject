@@ -50,9 +50,9 @@
 			<%-- ${status} --%>
 			
 			<hr class="my-4">
-			
-	        <a href="/customLogin">로그인 페이지로 이동</a><br>
-			
+            <div class="text-center">
+				<button class="btn mb-2 btn-outline-primary" type="button" style="width: 100pt;" onclick = "location.href = '/customLogin'">로그인</button>
+            </div>
           </div>
         
         

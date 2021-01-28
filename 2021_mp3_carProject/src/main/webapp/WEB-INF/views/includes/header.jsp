@@ -153,13 +153,13 @@
                   <a class="nav-link pl-3" href="/fix/car_fix"><span class="ml-1 item-text">정비/기타 목록/수정</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="/mypage/ViewTest2"><span class="ml-1 item-text">주유기록</span></a>
+                  <a class="nav-link pl-3" href="/mypage/ViewTest2"><span class="ml-1 item-text">주유기록<span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="/mypage/ViewTest2"><span class="ml-1 item-text">주유기록 목록/수정</span></a>
+                  <a class="nav-link pl-3" href="/mypage/ViewTest2"><span class="ml-1 item-text">주유기록 목록 <span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
             	 </li>
                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/fix/car_fix"><span class="ml-1 item-text">월별 사용내역</span></a>
+                  <a class="nav-link pl-3" href="/fix/car_fix"><span class="ml-1 item-text">월별 사용내역 <span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
                 </li>
               </ul>
             </li>

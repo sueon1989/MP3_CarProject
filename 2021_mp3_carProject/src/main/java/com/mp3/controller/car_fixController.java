@@ -47,5 +47,19 @@ public class car_fixController {
 		model.addAttribute("car_fixUpdate",service.car_fixUpdate(car_fix));
 		return "common/record/car_fixUpdate";
 	}
+	
+	// 목록 보기
+//		@GetMapping("/car_fixlist")
+//		public String  car_fixlist(String member_id,Model model){
+//			model.addAttribute("car_fixlist",service.car_fixlist(member_id));
+//			return "common/record/car_fixlist";
+//		}
+//		// 목록 보기
+//		@GetMapping("/car_fixlist")
+//		public String  car_fixlist() {
+//			
+//			return "common/record/car_fixlist";
+//		}
 
 }
+

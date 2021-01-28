@@ -4,7 +4,7 @@ import com.mp3.domain.Car_fixVO;
 
 public interface Car_fixService  {
 	
-//	public Car_fixVO car_fixlist(String member_id);
+	public Car_fixVO car_fixlist(String member_id);
 	
 	public boolean car_fix(Car_fixVO car_fix);
 	

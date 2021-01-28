@@ -1,18 +1,19 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt"%>
-<%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
-
+    <%@ taglib uri="http://www.springframework.org/security/tags" prefix="sec" %>
+     <%@include file="/WEB-INF/views/includes/header.jsp" %>   
 <!DOCTYPE html>
-<html lang="kr">
+<html lang="en">
   <head>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
     <link rel="icon" href="favicon.ico">
-    <title>회원가입</title>
+    <title>차량 등록</title>
     <!-- Simple bar CSS -->
     <link rel="stylesheet" href="/resources/light/css/simplebar.css">
     <!-- Fonts CSS -->
@@ -25,12 +26,31 @@
     <link rel="stylesheet" href="/resources/light/css/app-light.css" id="lightTheme">
     <link rel="stylesheet" href="/resources/light/css/app-dark.css" id="darkTheme" disabled>
   </head>
-  <body class="light ">
-    <div class="wrapper vh-100">
-      <div class="row align-items-center h-100">
+
+      
+        	
+       	<!-- 로그인하지 않은 경우 -->
+	<sec:authorize access="isAnonymous()">
+		        <a href="/customLogin">로그인후이용하세요</a><br>
+				<a href="/member/register">회원이 아닌경우 회원가입으로</a> <br>
+	</sec:authorize>
+	
+
       
       
 
+      
+   <sec:authorize access="isAuthenticated()">
+		    <hr class="my-4"> 
+              <h2 class="mb-2 page-title"></h2>
+              <div class="row my-4">
+            
+                <div class="col-md-12">
+                  <div class="card shadow">
+                    <div class="card-body">
+                     
+                      <table class="table datatables" id="dataTable-1">
+                        <thead>
       
         <form role="form" action="myCarUpdate" method="post" class="col-lg-6 col-md-8 col-10 mx-auto">
           <div class="mx-auto text-center my-4">
@@ -86,7 +106,16 @@
 			<%-- ${_csrf.parameterName}: 실제 브라우저에서는 "_csrf"라는 이름으로 처리됨 --%>
 			
         </form>
-                			Modal
+        </sec:authorize>
+               <!-- 관리자로 로그인한 경우 -->
+	<sec:authorize access="hasRole('ROLE_ADMIN')">
+				<hr class="my-4">
+		        <div class="form-group">
+		        	<h5>관리자</h5>
+		        </div>
+              	<a href="/sample/admin">회원관리</a>
+	</sec:authorize>
+<!--                 			Modal -->
                             <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                                 <div class="modal-dialog">
                                     <div class="modal-content">
@@ -104,7 +133,7 @@
                                 </div>
                                 /.modal-dialog
                             </div>
-                            /.modal
+<!--                             /.modal -->
         
         
         
@@ -120,18 +149,8 @@
     <script src="/resources/light/js/tinycolor-min.js"></script>
     <script src="/resources/light/js/config.js"></script>
     <script src="/resources/light/js/apps.js"></script>
-    <!-- Global site tag (gtag.js) - Google Analytics -->
-    <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-56159088-1"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
+    <%@include file="/WEB-INF/views/includes/footer.jsp" %>
 
-      function gtag()
-      {
-        dataLayer.push(arguments);
-      }
-      gtag('js', new Date());
-      gtag('config', 'UA-56159088-1');
-    </script> -->
       <script>  
 $(document).ready(function(){
 	var result =${carUpdate}; //result 값을 읽고 get타입으로 보내온
@@ -157,6 +176,8 @@ $(document).ready(function(){
  	
 })
  </script> 
+ 
+    
   </body>
 </html>
 </body>

@@ -48,4 +48,10 @@ public class Car_fixServiceTests {
 		service.car_fixUpdate(car_fix);
 		log.info("¿À·ù³µ³ª??"+car_fix);
 	}
+	@Test
+	public void	car_fixTest() {
+		Car_fixVO car_fix =	service.car_fixlist("user3");
+		log.info("¿À·ù³µ³ª??"+car_fix);
+	
+	}
 }

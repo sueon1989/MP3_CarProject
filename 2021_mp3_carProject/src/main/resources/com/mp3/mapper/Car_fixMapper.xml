@@ -25,6 +25,11 @@
 	    	
   		where member_id = #{member_id}
   	</update>
+  	
+  			<!--   	내차량 정보 보기 -->
+  	<select id="car_fixlist" resultType="com.mp3.domain.Car_fixVO">
+		select * from repair where member_id = #{member_id}
+  	</select>
 
 
 

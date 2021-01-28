@@ -38,17 +38,22 @@ public class CarRegistrationController {
 		
 	}
 
+
+
+	
 	@GetMapping("/myCarUpdate")
 	public String  car_myCarUpdate(Principal principal,Model model) {
 		log.info("이게 로그인된 유저 아이디다!"+principal.getName());
+	
 		String member_id=principal.getName();
-		
-		log.info("집에가고싶다");
-		CarRegistrationVO carRegistrationVO= new CarRegistrationVO();
-		carRegistrationVO.setMember_id(member_id);
-		CarRegistrationVO carRegistration = service.Mycarlist(member_id);
-		model.addAttribute("Mycarlist",service.Mycarlist(member_id));
-		log.info("값을 찍어봅시다"+carRegistration);
+		if(member_id != null) {
+			CarRegistrationVO carRegistrationVO= new CarRegistrationVO();
+			carRegistrationVO.setMember_id(member_id);
+			CarRegistrationVO carRegistration = service.Mycarlist(member_id);
+			model.addAttribute("Mycarlist",service.Mycarlist(member_id));
+			log.info("값을 찍어봅시다"+carRegistration);
+			
+		}
 		return "member/mycar/myCarUpdate";	
 	
 	}
@@ -66,17 +71,17 @@ public class CarRegistrationController {
 
 	
 
-//	http://localhost:8081/mycar/myCarlist?member_id=user963852
-	@PostMapping("/myCarlist")
-	public String Mycarlist(String member_id , Model model){
-	
-		CarRegistrationVO carRegistrationVO= new CarRegistrationVO();
-		carRegistrationVO.setMember_id(member_id);
-		CarRegistrationVO carRegistration = service.Mycarlist(member_id);
-		model.addAttribute("Mycarlist",service.Mycarlist(member_id));
-		log.info("값을 찍어봅시다"+carRegistration);
-		return "member/mycar/myCarlist";
-	}
-
+////	http://localhost:8081/mycar/myCarlist?member_id=user963852
+//	@PostMapping("/myCarlist")
+//	public String Mycarlist(String member_id , Model model){
+//	
+//		CarRegistrationVO carRegistrationVO= new CarRegistrationVO();
+//		carRegistrationVO.setMember_id(member_id);
+//		CarRegistrationVO carRegistration = service.Mycarlist(member_id);
+//		model.addAttribute("Mycarlist",service.Mycarlist(member_id));
+//		log.info("값을 찍어봅시다"+carRegistration);
+//		return "member/mycar/myCarlist";
+//	}
+//
+//}
 }
-	

@@ -32,10 +32,10 @@ public class Car_fixServiceImpl implements Car_fixService {
 	}
 
 
-//	@Override
-//	public Car_fixVO car_fixlist(String member_id) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
+	@Override
+	public Car_fixVO car_fixlist(String member_id) {
+		mapper.car_fixlist(member_id);
+		return null;
+	}
 
 }

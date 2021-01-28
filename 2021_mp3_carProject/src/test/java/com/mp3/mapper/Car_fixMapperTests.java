@@ -47,5 +47,13 @@ public class Car_fixMapperTests {
 		mapper.car_fixUpdate(car_fix);
 		log.info("¿À·ù³µ³ª??"+car_fix);
 	}
-}
+	@Test
+	public void	car_fixTest() {
+		mapper.car_fixlist("user3").forEach(car_fix -> log.info(car_fix));;
+		
+		}
+	}
+	
+	
+
 

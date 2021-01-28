@@ -274,13 +274,13 @@ public class WeatherServiceImpl implements WeatherService {
     	String wsd = weather.getWsd();			// 풍속		(m/s)
 
     	// NumberFormatException: For input string: "" 오류 보정
-    	int r06 = 0;
+    	Double r06 = 0.0;
     	if (weather.getR06() != "") {
-        	r06 = Integer.parseInt(weather.getR06());	// 6시간 강수량	(1 mm)
+        	r06 = Double.parseDouble(weather.getR06());	// 6시간 강수량	(1 mm)
     	}
-    	int s06 = 0;
+    	Double s06 = 0.0;
     	if (weather.getS06() != "") {
-    		s06 = Integer.parseInt(weather.getS06());	// 6시간 신적설	(1 cm)
+    		s06 = Double.parseDouble(weather.getS06());	// 6시간 신적설	(1 cm)
     	}
         // 하늘상태(SKY) 코드 : 맑음(1), 구름많음(3), 흐림(4)
         if 		(sky.equals("1"))	weather.setSky("맑음");

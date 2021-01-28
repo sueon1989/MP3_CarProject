@@ -97,7 +97,7 @@ function displayCenterInfo(result, status) {
             // 행정동의 region_type 값은 'H' 이므로
             if (result[i].region_type === 'H') {
                 gpsadd = infoDiv.innerHTML = result[i].address_name;
-                location.href ="http://localhost:8082/mypage/gpsadd1?gpsadd="+gpsadd;
+                location.href ="http://mit4.iptime.org:2180/mypage/gpsadd1?gpsadd="+gpsadd;
                 break;
             }
         }

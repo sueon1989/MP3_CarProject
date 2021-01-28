@@ -80,11 +80,13 @@
                             <td><fmt:formatDate pattern="yyyy-MM-dd" value="${member.member_updateDate}" /></td>
                             <td><c:out value="${member.member_permission}" /></td>
                                                         
-                            <td><button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <td>
+                              <!-- <button class="btn btn-sm dropdown-toggle more-horizontal" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="text-muted sr-only">Action</span>
-                              </button>
+                              </button> -->
                               <div>
-                              	<a class="dropdown-item" href="#">회원 삭제</a>
+                              	<a class="nav-link text-muted my-2" href="#">회원 삭제</a>
+                              	<!-- <a class="dropdown-item" href="#">회원 삭제</a> -->
                               </div>
                               <!-- <div class="dropdown-menu dropdown-menu-right">
                                 <a class="dropdown-item" href="#">Edit</a>

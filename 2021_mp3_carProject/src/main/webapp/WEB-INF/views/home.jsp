@@ -14,8 +14,24 @@
 
 	   <!-- 기본 화면 -->
    <h2></h2>
-   <h2 class="mb-2 page-title">Main Page</h2>
+   <h2 class="mb-2 page-title">MIT Car Care Service</h2>
    <hr class="my-4">
+   
+	<!-- 로그인한 경우 -->
+	<sec:authorize access="isAuthenticated()">
+	<div class="col-lg-3 col-md-4 col-10 text-center">
+	
+		<%-- <p><sec:authentication property="principal.username"/> 님, 환영합니다!</p> --%>
+       	<%-- <h5>로그인 정보</h5>
+		<p>principal:	<sec:authentication property="principal"/></p>
+		<p>MemberVO:	<sec:authentication property="principal.member"/></p>
+		<p>사용자이름:	<sec:authentication property="principal.member.member_name"/></p> --%>
+		<%-- <p>사용자PW:	<sec:authentication property="principal.member.member_pass"/></p>
+		<p>사용자 권한 리스트:	<sec:authentication property="principal.member.authList"/></p>	
+		<br>	 --%>
+       	
+	</div>
+	</sec:authorize>
    
    <!-- 예보시각      (0200, 0500, 0800, 1100, 1400, 1700, 2000, 2300 (1일 8회)) -->
    <%-- <c:set var="baseTime" value="${weather.baseTime}"/> --%>
@@ -27,27 +43,27 @@
            <div class="row mt-1 align-items-center">
            
              <div class="col-12 col-lg-4 text-left pl-4">
-               
-               <span>   
                <span>
                   <%-- <p class="mb-1 small text-muted"> ${weather.baseDate} </p> --%>
                   <p class="mb-1 small text-muted"> ${weatherLocation.lo2nd_si } ${weatherLocation.lo2nd_gu } ${weatherLocation.lo3rd }</p>
                </span>
-                   <span>   
-                  <c:if test="${weather.sky eq '맑음'}">
-                  <img src="/resources/weatherSVG/sun.svg" alt="맑음" height="80px">
-               </c:if>   
-               <c:if test="${weather.sky eq '구름많음'}">
-                  <img src="/resources/weatherSVG/clouds.svg" alt="구름많음" height="100px">
-               </c:if>
-               <c:if test="${weather.sky eq '흐림'}">
-                  <img src="/resources/weatherSVG/cloud.svg" alt="흐림" height="120px">
-               </c:if>
-               <c:if test="${weather.pty eq '비'}">
-                  <img src="/resources/weatherSVG/umbrella-drizzle.svg" alt="비" height="80px">
-               </c:if>
+               <span>  
+					<c:if test="${weather.pty == '비'}">
+						<img src="/resources/weatherSVG/umbrella-drizzle.svg" alt="비" height="80px">
+					</c:if>
+					<c:if test="${weather.pty == '눈'}">
+						<img src="/resources/weatherSVG/snow.svg" alt="눈" height="100px">
+					</c:if>
+	            	<c:if test=" ${weather.pty =='' && weather.sky} == '맑음'">
+						<img src="/resources/weatherSVG/sun.svg" alt="맑음" height="80px">
+					</c:if>	
+					<c:if test="${weather.pty =='' && weather.sky} == '구름많음'">
+						<img src="/resources/weatherSVG/clouds.svg" alt="구름많음" height="100px">
+					</c:if>
+					<c:if test="${weather.pty =='' && weather.sky} == '흐림'">
+						<img src="/resources/weatherSVG/cloud.svg" alt="흐림" height="120px">
+					</c:if>
                </span>
-            </span>
              </div>
              <div class="col-6 col-lg-2 text-center py-4">
             <p class="mb-1 small text-muted">${fn:substring(weather.baseTime,0,2) }시 예보</p>
@@ -66,14 +82,14 @@
                <span class="h3">${weather.pop}%</span><br />
              </div>
                            
-           <c:if test="${weather.pty eq '비'}">   
+           <c:if test="${weather.pty eq '비' && weather.r06 !=''}">   
            <div class="col-6 col-lg-2 text-center py-4">
                <p class="mb-1 small text-muted">강수량</p>
                <span class="h3">${weather.r06}</span><br />
              </div>
            </c:if>
            
-           <c:if test="${weather.pty eq '눈'}">   
+           <c:if test="${weather.pty eq '눈' && weather.s06 !=''}" >   
            <div class="col-6 col-lg-2 text-center py-4">
                <p class="mb-1 small text-muted">신적설</p>
                <span class="h3">${weather.s06}</span><br />
@@ -150,9 +166,7 @@
        </div> <!-- .card -->
    </div>
 
-	<!-- 로그인하지 않은 경우 -->
-	<sec:authorize access="isAnonymous()">
-	
+
 	<div class="mb-2 align-items-center">
 	    <div class="card shadow mb-4">
 	      <div class="card-body">
@@ -196,42 +210,26 @@
 	    </div> <!-- .card -->
 	</div>
 	
-	<form action="#" method='post' class="col-lg-3 col-md-4 col-10 text-center">
-		<button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/customLogin'">Login</button>
-		<button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/member/register'">Sign Up</button>
-        <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/memberFind/findIdInputMail'">Find ID</button>	
-        <button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/memberFind/findPassInputMail'">Find PW</button>
-	</form>
+	<!-- 로그인하지 않은 경우 -->
+	<sec:authorize access="isAnonymous()">
+		<div class="text-center">
+			<button class="btn mb-2 btn-outline-primary" type="button" style="width: 100pt;" onclick = "location.href = '/member/register'">회원가입</button>
+			<button class="btn mb-2 btn-outline-primary" type="button" style="width: 100pt;" onclick = "location.href = '/customLogin'">로그인</button><br>
+	        <button class="btn mb-2 btn-outline-primary" type="button" style="width: 100pt;" onclick = "location.href = '/memberFind/findIdInputMail'">아이디 찾기</button>	
+	        <button class="btn mb-2 btn-outline-primary" type="button" style="width: 100pt;" onclick = "location.href = '/memberFind/findPassInputMail'">비밀번호 찾기</button>
+       </div>
 	</sec:authorize>
 	
 	
-	<!-- 로그인한 경우 -->
-	<sec:authorize access="isAuthenticated()">
-	<form action="/customLogout" method='post' class="col-lg-3 col-md-4 col-10 text-center">
-	
-       	<h5>로그인 정보</h5>
-		<p>principal:	<sec:authentication property="principal"/></p>
-		<p>MemberVO:	<sec:authentication property="principal.member"/></p>
-		<p>사용자이름:	<sec:authentication property="principal.member.member_name"/></p>
-		<p>사용자ID: 	<sec:authentication property="principal.username"/></p>
-		<p>사용자PW:	<sec:authentication property="principal.member.member_pass"/></p>
-		<p>사용자 권한 리스트:	<sec:authentication property="principal.member.authList"/></p>	
-		<br>	
-       	
-		<button class="btn btn-lg btn-primary btn-block">로그아웃</button>
-		<input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
-		
-	</form>
-	</sec:authorize>
 	
 	
 	<!-- 관리자로 로그인한 경우 -->
 	<sec:authorize access="hasRole('ROLE_ADMIN')">
-	<hr class="my-4">
+	<!-- <hr class="my-4">
 	<form action="#" method='post' class="col-lg-3 col-md-4 col-10 text-center">
        	<h5>관리자</h5>
        	<button class="btn btn-lg btn-primary btn-block" type="button" onclick = "location.href = '/member/list'">회원관리</button>
-    </form>  	
+    </form>  --> 	
 	</sec:authorize>
 
 

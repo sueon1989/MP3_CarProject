@@ -27,59 +27,61 @@
 	      <div class="card-body">
 	        <div class="row mt-1 align-items-center">
 	        
-	          <div class="col-12 col-lg-4 text-left pl-4">
-	            
-	            <span>	
-					<span>
-						<%-- <p class="mb-1 small text-muted"> ${weather.baseDate} </p> --%>
-						<p class="mb-1 small text-muted"> ${weatherLocation.lo2nd_si } ${weatherLocation.lo2nd_gu } ${weatherLocation.lo3rd }</p>
-					</span>
-	             	<span>	
-	            	<c:if test="${weather.sky eq '맑음'}">
-						<img src="/resources/weatherSVG/sun.svg" alt="맑음" height="80px">
-					</c:if>	
-					<c:if test="${weather.sky eq '구름많음'}">
-						<img src="/resources/weatherSVG/clouds.svg" alt="구름많음" height="100px">
-					</c:if>
-					<c:if test="${weather.sky eq '흐림'}">
-						<img src="/resources/weatherSVG/cloud.svg" alt="흐림" height="120px">
-					</c:if>
-					<c:if test="${weather.pty eq '비'}">
-						<img src="/resources/weatherSVG/umbrella-drizzle.svg" alt="비" height="80px">
-					</c:if>
-					</span>
-				</span>
+	             <div class="col-12 col-lg-4 text-left pl-4">
+	               <span>
+	                  <%-- <p class="mb-1 small text-muted"> ${weather.baseDate} </p> --%>
+	                  <p class="mb-1 small text-muted"> ${weatherLocation.lo2nd_si } ${weatherLocation.lo2nd_gu } ${weatherLocation.lo3rd }</p>
+	               </span>
+	               <span>  
+						<c:if test="${weather.pty == '비'}">
+							<img src="/resources/weatherSVG/umbrella-drizzle.svg" alt="비" height="80px">
+						</c:if>
+						<c:if test="${weather.pty == '눈'}">
+							<img src="/resources/weatherSVG/snow.svg" alt="눈" height="100px">
+						</c:if>
+		            	<c:if test=" ${weather.pty =='' && weather.sky} == '맑음'">
+							<img src="/resources/weatherSVG/sun.svg" alt="맑음" height="80px">
+						</c:if>	
+						<c:if test="${weather.pty =='' && weather.sky} == '구름많음'">
+							<img src="/resources/weatherSVG/clouds.svg" alt="구름많음" height="100px">
+						</c:if>
+						<c:if test="${weather.pty =='' && weather.sky} == '흐림'">
+							<img src="/resources/weatherSVG/cloud.svg" alt="흐림" height="120px">
+						</c:if>
+	               </span>
+	             </div>
+	             <div class="col-6 col-lg-2 text-center py-4">
+	            	<p class="mb-1 small text-muted">${fn:substring(weather.baseTime,0,2) }시 예보</p>
+					<span class="h3">${weather.sky}</span><br />
+	             </div>
+	             <div class="col-6 col-lg-2 text-center py-4 mb-2">
+	               <p class="mb-1 small text-muted">온도</p>
+	               <span class="h3">${weather.t3h}℃</span><br />
+	             </div>
+	             <div class="col-6 col-lg-2 text-center py-4">
+	               <p class="mb-1 small text-muted">습도</p>
+	               <span class="h3">${weather.reh}%</span><br />
+	             </div>
+	           <div class="col-6 col-lg-2 text-center py-4">
+	               <p class="mb-1 small text-muted">강수확률</p>
+	               <span class="h3">${weather.pop}%</span><br />
+	             </div>
+	                           
+	           <c:if test="${weather.pty eq '비' && weather.r06 !=''}">   
+	           <div class="col-6 col-lg-2 text-center py-4">
+	               <p class="mb-1 small text-muted">강수량</p>
+	               <span class="h3">${weather.r06}</span><br />
+	           </div>
+	           </c:if>
+	           
+	           <c:if test="${weather.pty eq '눈' && weather.s06 !=''}" >   
+	           <div class="col-6 col-lg-2 text-center py-4">
+	               <p class="mb-1 small text-muted">신적설</p>
+	               <span class="h3">${weather.s06}</span><br />
+	           </div>
+	           </c:if>
+           
 	          </div>
-	          <div class="col-6 col-lg-2 text-center py-4">
-				<p class="mb-1 small text-muted">${fn:substring(weather.baseTime,0,2) }시 예보</p>
-	            <span class="h3">${weather.sky}</span><br />
-	          </div>
-	          <div class="col-6 col-lg-2 text-center py-4 mb-2">
-	            <p class="mb-1 small text-muted">온도</p>
-	            <span class="h3">${weather.t3h}℃</span><br />
-	          </div>
-	          <div class="col-6 col-lg-2 text-center py-4">
-	            <p class="mb-1 small text-muted">습도</p>
-	            <span class="h3">${weather.reh}%</span><br />
-	          </div>
-			  <div class="col-6 col-lg-2 text-center py-4">
-	            <p class="mb-1 small text-muted">강수확률</p>
-	            <span class="h3">${weather.pop}%</span><br />
-	          </div>
-                           
-			  <c:if test="${weather.pty eq '비'}">	
-			  <div class="col-6 col-lg-2 text-center py-4">
-	            <p class="mb-1 small text-muted">강수량</p>
-	            <span class="h3">${weather.r06}</span><br />
-	          </div>
-			  </c:if>
-			  
-			  <c:if test="${weather.pty eq '눈'}">	
-			  <div class="col-6 col-lg-2 text-center py-4">
-	            <p class="mb-1 small text-muted">신적설</p>
-	            <span class="h3">${weather.s06}</span><br />
-	          </div>
-			  </c:if>
 	          
 	        </div> <!-- row mt-1 align-items-center -->
 	      </div> <!-- .card-body -->

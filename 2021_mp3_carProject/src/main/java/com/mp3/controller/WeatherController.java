@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.mp3.domain.AuthVO;
+import com.mp3.domain.GpsVO;
 import com.mp3.domain.MemberVO;
 import com.mp3.domain.WeatherLocationVO;
 import com.mp3.domain.WeatherVO;
@@ -33,10 +34,29 @@ import lombok.extern.log4j.Log4j;
 public class WeatherController {
 
 	private WeatherService service;	
-	private MypageService mypageService;	
+	private MypageService serviceMypage;	
 //	@Value("${weather.api.serviceKey}")
 //	private String serviceKey;
 	
+	
+
+	//map test
+	@GetMapping("/gpsadd")
+	public String gpsadd1(Model model,String gpsadd) {
+		GpsVO gps = new GpsVO();
+		gps.setGpsadd(gpsadd);
+		log.info(gps);
+		log.info("setGpsadd 테스트: "+gpsadd);
+		
+		serviceMypage.gpsadd(gpsadd);	// setGpsAdd (DB 저장)
+		log.info(gpsadd);
+		log.info("serviceMypage.gpsadd(gpsadd) 테스트: "+gpsadd);
+		
+		model.addAttribute("gpsadd", gpsadd);
+		return "/weather/weatherInfo";
+	}
+	 
+	 
 	// 날씨정보
 	@RequestMapping(value = "/weatherInfo", method = RequestMethod.GET)
 	public String weather(WeatherVO weather, Model model) {

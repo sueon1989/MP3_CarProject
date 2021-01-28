@@ -23,8 +23,9 @@
   	 	
     <!-- 위치 조회 (한 행) - read (select) 처리 -->
    	<select id="readGpsAdd" resultType="String">
-		SELECT * FROM gpsadd ORDER BY 1 LIMIT 1
+		SELECT gpsadd FROM gpsadd ORDER BY 1 LIMIT 1
   	</select>
+  	
   	 	
     <!-- 위치 조회 (한 행) - read (select) 처리 -->
    	<select id="readLocation" resultType="com.mp3.domain.WeatherLocationVO">

@@ -39,10 +39,10 @@ public class MemberFindServiceImpl implements MemberFindService {
 			String charSet = "utf-8";
 			String hostSMTP = "smtp.naver.com";
 			String hostSMTPid = "ghgh4075@naver.com";
-			String hostSMTPpwd = "wnsxor123@";
+			String hostSMTPpwd = "Dhwnsxor12@";
 
 			// 보내는 사람 EMail, 제목, 내용
-			String fromEmail = "ghgh4075@naver.com";
+			String fromEmail = "admin";
 			String fromName = "main";
 			String subject = "";
 			String msg = "";
@@ -56,11 +56,11 @@ public class MemberFindServiceImpl implements MemberFindService {
 				msg += member.getMember_id() + "</p><br>";
 				
 				msg += "<p>비밀번호 찾기.";
-				msg += "<form method='get' action='http://localhost:8081/memberFind/findIdInputMail'>";
+				msg += "<form method='get' action='http://mit4.iptime.org:2180/customLogin'>";
 				msg += "<input type='submit' value='비밀번호 찾기'></form></p><br>";
 				
 				msg += "<p>로그인 하러가기.";
-				msg += "<form method='get' action='http://localhost:8081/customLogin'>";
+				msg += "<form method='get' action='http://mit4.iptime.org:2180/customLogin'>";
 				msg += "<input type='submit' value='로그인 하러가기'></form></p></div>";	
 				log.info(msg);
 			}	
@@ -72,7 +72,7 @@ public class MemberFindServiceImpl implements MemberFindService {
 				msg += "<h3><p>임시 비밀번호 : ";
 				msg += member.getMember_pass() + "</p></h3>";				
 				
-				msg += "<form method='get' action='http://localhost:8081/customLogin'>";
+				msg += "<form method='get' action='http://mit4.iptime.org:2180/customLogin'>";
 				msg += "<h2><input type='submit' value='로그인 하러가기'></h2></form></div>";	
 			}
 		

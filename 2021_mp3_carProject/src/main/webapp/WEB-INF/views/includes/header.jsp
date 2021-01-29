@@ -140,26 +140,26 @@
             <li class="nav-item dropdown">
               <a href="#driving" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle nav-link">
                 <i class="fe fe-box fe-16"></i>
-                <span class="ml-3 item-text">차량 메뉴</span>
+                <span class="ml-3 item-text">차량 관리</span>
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="driving">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="/fix/car_fix"><span class="ml-1 item-text">주행기록 <span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
+                  <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">주행기록 <span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="/fix/car_fix"><span class="ml-1 item-text">정비/기타 기록</span></a>
+                  <a class="nav-link pl-3" href="/fix/car_fix"><span class="ml-1 item-text">정비/기타 지출 기록</span></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="/fix/car_fixUpdate"><span class="ml-1 item-text">정비/기타 목록</span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="/fix/car_fix"><span class="ml-1 item-text">주유기록<span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
+                  <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">주유기록<span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="/fix/car_fix"><span class="ml-1 item-text">주유기록 목록 <span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
+                  <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">주유기록 목록 <span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
             	 </li>
                <li class="nav-item">
-                  <a class="nav-link pl-3" href="/fix/car_fix"><span class="ml-1 item-text">월별 사용내역 <span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
+                  <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">월별 사용내역 <span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
                 </li>
               </ul>
             </li>
@@ -211,7 +211,7 @@
               </a>
               <ul class="collapse list-unstyled pl-4 w-100" id="forms">
                 <li class="nav-item">
-                  <a class="nav-link pl-3" href="./form_elements.html"><span class="ml-1 item-text">주행거리 관리<span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
+                  <a class="nav-link pl-3" href="#"><span class="ml-1 item-text">주행거리 관리<span class="badge badge-pill badge-primary">업데이트 예정</span></span></a>
                 <li class="nav-item">
                   <a class="nav-link pl-3" href="/mypage/ViewTest"><span class="ml-1 item-text">현재 차량 위치</span></a>
                 </li>

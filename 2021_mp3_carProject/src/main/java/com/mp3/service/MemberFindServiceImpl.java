@@ -42,8 +42,8 @@ public class MemberFindServiceImpl implements MemberFindService {
 			String hostSMTPpwd = "Dhwnsxor12@";
 
 			// 보내는 사람 EMail, 제목, 내용
-			String fromEmail = "admin";
-			String fromName = "main";
+			String fromEmail = "ghgh4075@naver.com";
+			String fromName = "admin";
 			String subject = "";
 			String msg = "";
 			

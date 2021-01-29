@@ -39,9 +39,9 @@ public class MemberFindServiceTests {
 		
 		MemberVO member = new MemberVO();
 		member.setMember_pass("pw");
-		member.setMember_id("user1");
-		member.setMember_name("»ç¿ëÀÚ1");
-		member.setMember_mail("test@mp3.com");
+		member.setMember_id("user777");
+		member.setMember_name("111");
+		member.setMember_mail("leejy_222@naver.com");
 		service.MemverPassFindMail(member); 
 		log.info(member);
 		

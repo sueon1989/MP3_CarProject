@@ -1,4 +1,5 @@
-# MTI 프로젝트 
+# MIT 프로젝트 
+
 # mp3_carProject
 
 
